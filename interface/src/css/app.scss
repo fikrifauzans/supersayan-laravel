@@ -1,0 +1,120 @@
+// app global css in SCSS form
+
+
+
+
+.container {
+  width: 90%;
+}
+
+
+// ------------------------------------------- TABLE
+.q-table {
+  position: relative;
+  border-radius: 20px;
+  //margin-left: 15px;
+  //border-left: 1px solid $grey-4  ;
+  //border-right: 1px solid $grey-4  ;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.add-top-table {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+// STICKY COLUMNS
+.q-table > thead > tr {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  color: $primary;
+
+}
+
+.left-menu-superadmin{
+  color: $primary;
+  background: white;
+}
+
+.menu-system{
+  font-weight: 400;
+  line-height: 19px;
+  font-size: 11px !important;
+}
+
+.helvetica {
+  font-family: 'Helvetica';
+  font-style: normal;
+}
+
+
+
+.q-table > thead > tr > th {
+  height: 50px;
+  // border-top: 1px solid $grey-4  ;
+  // color: $grey;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  border-color: white;
+
+
+}
+.q-table td {
+
+  border-color: white;
+}
+
+
+
+.q-table__control  .q-btn--actionable .q-btn__content i  {
+  background-color: $primary;
+  color: white;
+  padding: 1px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+// TOP TABLE STYLE
+.q-absolute_label.q-field--focused // on focused
+  > .q-field__inner
+  > .q-field__control
+  > .q-field__control-container
+  > .q-field__label {
+  top: 0;
+  left: 10;
+  background: white;
+  z-index: 100;
+  border-radius: 20px;
+  padding-right: 2.5px;
+  padding-left: 2.5px;
+  tarnsform: translateY(-100%) scale(0.75);
+}
+.q-absolute_label.q-field--focused
+  > .q-field__inner
+  > .q-field__control
+  > .q-field__control-container
+  > .q-field__native { // input
+  margin-bottom: 10px;
+}
+
+
+// ------------------------------------------- FORM
+.s-card-content {
+  border: 1px solid $grey-3;
+}
+
+.bg-warning-2 {
+  background: rgba(239, 193, 19, 0.15);
+}
