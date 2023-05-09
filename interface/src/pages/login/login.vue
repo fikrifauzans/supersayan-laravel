@@ -5,7 +5,7 @@
     <div class="col-12 justify-start row" v-if="type == 'login'">
       <div class="text-h5 text-bold col-12"></div>
       <div class="col-12 text-center q-mb-xl text-bold text-h6">
-        Codedynamics
+        Aplikasi Sekolah
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Username </small>
@@ -27,12 +27,9 @@
       </div>
       <div class="col-12 justify-between row q-mt-sm q-mb-lg">
         <small class="text-weight-bold"></small>
-        <!-- <small class="text-weight-light">Lupa kata sandi? <span class="text-bold cursor-pointer"
-            @click="() => type = 'forgot'">klik disini</span>
-        </small> -->
+
       </div>
       <div class="col-12 justify-around row text-weight-light q-mt-sm">
-        <!-- <small class="col-12 row text-weight-light justify-center q-mt-md">2023 @ PT. Kafilah Maghfirah Wisata</small> -->
       </div>
     </div>
     <Forgot v-if="type == 'forgot'" v-model="username" @forgot="forgot" />
