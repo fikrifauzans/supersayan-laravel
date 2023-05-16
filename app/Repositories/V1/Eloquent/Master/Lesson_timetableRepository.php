@@ -12,7 +12,7 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T21:07                                             |
+| generate in 2023-05-16T21:26                                             |
 |--------------------------------------------------------------------------|
 */
 class Lesson_timetableRepository extends BaseRepository 

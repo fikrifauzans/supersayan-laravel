@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T21:07                                             |
+| generate in 2023-05-16T21:26                                             |
 |--------------------------------------------------------------------------|
 */
 class Lesson_timetable extends Model
@@ -23,16 +23,28 @@ class Lesson_timetable extends Model
     /**
      * The attributes that are mass assignable.
      * @var code string 
-* @var name string 
-* @var grade string 
-* @var remark text 
+* @var teacher_id integer 
+* @var class_id integer 
+* @var study_id integer 
+* @var smester string 
+* @var start_time string 
+* @var end_time string 
+* @var year string 
+* @var sort integer 
+* @var day integer 
 */
     protected $table =  'lesson_timetable';
     protected $fillable = [
 'code',  
-'name',  
-'grade',  
-'remark',  
+'teacher_id',  
+'class_id',  
+'study_id',  
+'smester',  
+'start_time',  
+'end_time',  
+'year',  
+'sort',  
+'day',  
 
     ];
 
@@ -41,9 +53,15 @@ class Lesson_timetable extends Model
 
     public $searchable = [
 'code',  
-'name',  
-'grade',  
-'remark',  
+'teacher_id',  
+'class_id',  
+'study_id',  
+'smester',  
+'start_time',  
+'end_time',  
+'year',  
+'sort',  
+'day',  
 
     ];
 }

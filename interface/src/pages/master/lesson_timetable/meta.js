@@ -15,11 +15,23 @@
                 
               code:null,
 
-              name:null,
+              teacher_id:null,
 
-              grade:null,
+              class_id:null,
 
-              remark:null,
+              study_id:null,
+
+              smester:null,
+
+              start_time:null,
+
+              end_time:null,
+
+              year:null,
+
+              sort:null,
+
+              day:null,
 
             },
    
@@ -30,11 +42,23 @@
 
                 { name: 'code', label: 'Code', field: 'code', sortable: true, align: 'left', },
 
-                { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
+                { name: 'teacher_id', label: 'Teacher Id', field: 'teacher_id', sortable: true, align: 'left', },
 
-                { name: 'grade', label: 'Grade', field: 'grade', sortable: true, align: 'left', },
+                { name: 'class_id', label: 'Class Id', field: 'class_id', sortable: true, align: 'left', },
 
-                { name: 'remark', label: 'Remark', field: 'remark', sortable: true, align: 'left', },
+                { name: 'study_id', label: 'Study Id', field: 'study_id', sortable: true, align: 'left', },
+
+                { name: 'smester', label: 'Smester', field: 'smester', sortable: true, align: 'left', },
+
+                { name: 'start_time', label: 'Start Time', field: 'start_time', sortable: true, align: 'left', },
+
+                { name: 'end_time', label: 'End Time', field: 'end_time', sortable: true, align: 'left', },
+
+                { name: 'year', label: 'Year', field: 'year', sortable: true, align: 'left', },
+
+                { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
+
+                { name: 'day', label: 'Day', field: 'day', sortable: true, align: 'left', },
 
                 ]
               }

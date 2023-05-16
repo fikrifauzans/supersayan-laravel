@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T21:07                                             |
+| generate in 2023-05-16T21:26                                             |
 |--------------------------------------------------------------------------|
 */
 return new class extends Migration
@@ -28,9 +28,15 @@ Schema::create('lesson_timetable', function (Blueprint $table) {
     $table->id();
     
     $table->string('code')->nullable();
-    $table->string('name')->nullable();
-    $table->string('grade')->nullable();
-    $table->text('remark')->nullable();
+    $table->integer('teacher_id')->nullable()->default(0);
+    $table->integer('class_id')->nullable()->default(0);
+    $table->integer('study_id')->nullable()->default(0);
+    $table->string('smester')->nullable();
+    $table->string('start_time')->nullable();
+    $table->string('end_time')->nullable();
+    $table->string('year')->nullable();
+    $table->integer('sort')->nullable()->default(0);
+    $table->integer('day')->nullable()->default(0);
     $table->softDeletes();
     $table->timestamps();
     $table->integer('created_by')->nullable()->default(0);

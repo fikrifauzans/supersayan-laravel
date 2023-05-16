@@ -6,9 +6,15 @@
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Lesson_timetable'>
 <t-input col='4' label='code' v-model='model.code' topLabel='code' />
-<t-input col='4' label='name' v-model='model.name' topLabel='name' />
-<t-input col='4' label='grade' v-model='model.grade' topLabel='grade' />
-<t-text-editor col='4' label='remark'  type='textarea' v-model='model.remark' />
+<t-currency col='4' label='teacher_id' currency v-model='model.teacher_id'  topLabel='teacher_id' />
+<t-currency col='4' label='class_id' currency v-model='model.class_id'  topLabel='class_id' />
+<t-currency col='4' label='study_id' currency v-model='model.study_id'  topLabel='study_id' />
+<t-input col='4' label='smester' v-model='model.smester' topLabel='smester' />
+<t-input col='4' label='start_time' v-model='model.start_time' topLabel='start_time' />
+<t-input col='4' label='end_time' v-model='model.end_time' topLabel='end_time' />
+<t-input col='4' label='year' v-model='model.year' topLabel='year' />
+<t-currency col='4' label='sort' currency v-model='model.sort'  topLabel='sort' />
+<t-currency col='4' label='day' currency v-model='model.day'  topLabel='day' />
 
         </s-form>
       </div>
