@@ -9,7 +9,7 @@ class System {
       // return 'https://api.ums.dutabaitullah.com/'
     }
     // else return 'api.ums.dutabaitullah.com/'
-    else return 'https://api.beytcoffeetigabelas.com/'
+    else return 'https://ec-api.beytcoffeetigabelas.com/'
     // else return 'http://localhost:8090/'
   }
   apiTimeout() { return 10000 }
