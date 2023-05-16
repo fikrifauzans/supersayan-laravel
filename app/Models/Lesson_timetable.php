@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T20:39                                             |
+| generate in 2023-05-16T21:07                                             |
 |--------------------------------------------------------------------------|
 */
 class Lesson_timetable extends Model
@@ -27,7 +27,7 @@ class Lesson_timetable extends Model
 * @var grade string 
 * @var remark text 
 */
-    protected $table =  'Lesson_timetable';
+    protected $table =  'lesson_timetable';
     protected $fillable = [
 'code',  
 'name',  

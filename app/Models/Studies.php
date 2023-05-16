@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T20:39                                             |
+| generate in 2023-05-16T21:07                                             |
 |--------------------------------------------------------------------------|
 */
 class Studies extends Model
@@ -27,7 +27,7 @@ class Studies extends Model
 * @var remark text 
 * @var color string 
 */
-    protected $table =  'Studies';
+    protected $table =  'studies';
     protected $fillable = [
 'code',  
 'name',  

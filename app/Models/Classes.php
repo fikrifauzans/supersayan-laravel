@@ -13,9 +13,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T20:39                                             |
+| generate in 2023-05-16T21:07                                             |
 |--------------------------------------------------------------------------|
 */
+
 class Classes extends Model
 {
     use SoftDeletes;
@@ -23,16 +24,16 @@ class Classes extends Model
     /**
      * The attributes that are mass assignable.
      * @var code string 
-* @var name string 
-* @var grade string 
-* @var color text 
-*/
-    protected $table =  'Classes';
+     * @var name string 
+     * @var grade string 
+     * @var color text 
+     */
+    protected $table =  'classes';
     protected $fillable = [
-'code',  
-'name',  
-'grade',  
-'color',  
+        'code',
+        'name',
+        'grade',
+        'color',
 
     ];
 
@@ -40,12 +41,10 @@ class Classes extends Model
     protected $hidden = [];
 
     public $searchable = [
-'code',  
-'name',  
-'grade',  
-'color',  
+        'code',
+        'name',
+        'grade',
+        'color',
 
     ];
 }
-
-            

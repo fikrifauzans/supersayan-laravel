@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-05-16T20:39                                             |
+| generate in 2023-05-16T21:07                                             |
 |--------------------------------------------------------------------------|
 */
 class Contents extends Model
@@ -38,7 +38,7 @@ class Contents extends Model
 * @var details text 
 * @var photo_id integer 
 */
-    protected $table =  'Contents';
+    protected $table =  'contents';
     protected $fillable = [
 'code',  
 'parent_id',  
