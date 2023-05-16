@@ -1,42 +1,54 @@
 <template>
   <div v-if="!useModal">
-
-    <q-header class="bg-white shadow text-grey ">
+    <q-header :class="$q.screen.gt.md ? 'bg-white q-py-md text-grey q-px-sm' : 'bg-white'">
       <q-toolbar>
         <!-- LEFT MENU  -->
-        <q-btn dense flat round :icon="iconTitle != null ? iconTitle : 'menu'" size="sm" color="dark"
-          @click="toggleLeftDrawer" />
+        <q-btn dense flat round size="md " color="dark" @click="toggleLeftDrawer">
+          <q-icon name="img:images/icons/left-drawer.svg" size="30px" />
+        </q-btn>
         <!-- APP NAME  -->
 
         <q-toolbar-title>
           <!-- AVATAR  -->
-          <div class="text-dark" style="font-weight: 700; font-size:16px">
-            {{ Meta ? Meta.module_name : "" }}
+          <div>
+            <div class="q-gutter-sm">
+              <q-icon :name="$Handle.checkMenusLabelOrIcon(Meta.menu_slug).icon.toString()" color="primary" size="30px" />
+              <q-btn noCaps size="sm" flat style="border: 1px solid rgba(0, 0, 0, 0.12);">
+                <span class="header-module-title">
+                  {{ Meta && Meta.menu_slug ? $Handle.checkMenusLabelOrIcon(Meta.menu_slug).name : Meta.module_name ?
+                    Meta.module_name : '' }}
+                </span>
+              </q-btn>
+            </div>
 
           </div>
         </q-toolbar-title>
         <!-- RIGHT BUTTON  -->
 
-        <!-- REFRESH  -->
-        <q-btn dense flat round icon="refresh" size="sm" @click="refresh">
-          <q-tooltip>Refresh</q-tooltip>
-        </q-btn>
-
         <!-- FULLSCREEN  -->
-        <q-btn size="sm" round flat @click="$q.fullscreen.toggle()"
+        <q-btn color="dark" label="Fullscreen" size="sm" flat @click="$q.fullscreen.toggle()"
           :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'">
           <q-tooltip>Fullscreen</q-tooltip>
         </q-btn>
+        <!-- REFRESH  -->
+        <q-btn color="dark" label="Refresh" flat icon="cached" size="sm" @click="refresh">
+          <q-tooltip>Refresh</q-tooltip>
+        </q-btn>
+
 
 
 
         <!-- <q-btn dense flat round icon="notifications" @click="toggleRightDrawer" size="sm" color="grey"
           class="bg-white" /> -->
+        <div class="column text-dark q-ml-lg">
+          <div class="header-user-name ">{{ user && user.name ? user.name : '' }}</div>
+          <div class="header-user-role">{{ user && user.role ? user.role.name : '' }}</div>
+        </div>
         <s-account class="q-mx-auto" :user="user" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" side="left" bordered persistent show-if-above no-swipe-backdrop width="250">
+    <q-drawer class="bg-accent" v-model="leftDrawerOpen" side="left" bordered persistent show-if-above no-swipe-backdrop width="250">
       <!-- FILTER  -->
       <s-filter :table="table" v-if="filter && filter.value" @update:modelValue="(val) => updateFilter(val)"
         :model-value="modelValue" @closeFilter="closeFilter" :filter="filter" @refresh="$emit('refreshQuery')" />
@@ -52,21 +64,27 @@
         <div class="row" v-if="form == ''"></div>
 
         <div v-if="table">
-          <div class=" q-mt-sm">
-            <div class="q-px-md">
+          <div v-if="wrapCard === ''">
+            <q-card class="q-px-md q-mt-sm q-ma-md" style="border-radius: 10px;">
               <slot />
+            </q-card>
+          </div>
+          <div v-else>
+            <div class="q-px-md q-mt-sm q-px-lg">
+              <slot />
+          
             </div>
           </div>
         </div>
         <div v-else>
           <slot />
           <div
-            :class="$q.screen.lt.md ? 'q-gutter-xs row justify-between  q-pb-lg' : 'q-gutter-xs row justify-between q-px-xl q-pb-lg'"
+            :class="$q.screen.lt.md ? 'q-gutter-xs row justify-between  q-pb-lg' : 'q-gutter-xs row justify-between q-px-lg  q-mt-sm q-pb-lg'"
             v-if="hideOpt !== ''">
-            <q-btn icon="arrow_left" label="back" flat class="text-primary cursor-pointer text-bold" size="sm"
+            <t-button icon="arrow_left" label="back"  class="text-primary cursor-pointer text-bold" 
               type="button" @click="$emit('back')" />
-            <q-btn v-if="detail != ''" :label="'Simpan ' + (Meta ? Meta.name : '')" size="sm" type="submit"
-              color="secondary" class="save-btn" />
+            <t-button v-if="detail != ''" :label="'Simpan ' + (Meta ? Meta.name : '')"  type="submit"
+              active="true" class="save-btn" />
             <q-btn v-if="useEdit == ''" :label="'Edit ' + (Meta ? Meta.name : '')" size="sm" type="submit"
               color="secondary" class="save-btn" @click="$emit('edit')" />
           </div>
@@ -79,6 +97,7 @@
   </div>
 </template>
 <script>
+import { ref } from "vue"
 
 export default {
   setup() {
@@ -109,14 +128,15 @@ export default {
     "iconTitle",
     "useEdit",
     "hideOpt",
+    "wrapCard",
   ],
   data() {
     return {
       user: null,
       menus: null,
+      permissions: [],
       app: null,
       link: "",
-      permision: [],
       leftDrawerOpen: false,
       rightDrawerOpen: false,
     }
@@ -136,9 +156,12 @@ export default {
         (data, status, message, full) => {
           if (status == 200) {
             this.user = data
+
             this.menus = data.role.master_menu.menu_details
+            this.role = data.role
             this.permisions = data.role.permission_access_index
             this.$Handle.setLS("menus", this.menus)
+            this.$Handle.setLS("role", this.role)
             this.$Handle.setLS("permissions", this.permisions)
           }
         },
@@ -181,5 +204,27 @@ export default {
   padding-right: 20px;
   border-radius: 10px;
   font-weight: bold;
+}
+
+.header-module-title {
+  font-weight: 700;
+  font-size: 12px;
+  color:$primary;
+  ;
+}
+
+.header-user-name {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.header-user-role {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 160%;
 }
 </style>

@@ -113,6 +113,16 @@ class Handler {
     
   }
 
+  checkMenusLabelOrIcon(slug) {
+    let menus = this.getLS('menus')
+    if (menus) {
+      let module = menus.filter((m) => m.menu.path == slug)
+      if (module.length > 0) return { name: module[0].menu.name, icon: [module[0].menu.icon.toString()] }
+      else return { name: '', icon: '' }
+    } else return { name: '', icon: '' }
+
+  }
+
   existingRelationlabel(val, relationField ,defaultField ='name'){
     return val[defaultField] ? val[defaultField] : relationField ? relationField[defaultField] : defaultField
    }

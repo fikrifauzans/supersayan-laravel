@@ -30,7 +30,8 @@ import ProgressBar from '../components/tools/ProgressBar.vue'
 import ApiWhatsapp from '../components/tools/ApiWhatsapp.vue'
 import SelectServerside from '../components/tools/SelectServerside.vue'
 import Year from '../components/tools/Year.vue'
-// Analysis Card
+import ButtonStandard from '../components/system/ButtonStandard.vue'
+
 
 
 
@@ -52,6 +53,8 @@ export default boot(async ({
   app.component('s-drawer-c', HeaderCustomer)
   app.component('s-profile', Profile)
 
+
+  app.component('t-button', ButtonStandard)
   app.component('t-modal', Modal)
   app.component('t-input', Input)
   app.component('t-select-api', SelectApi)

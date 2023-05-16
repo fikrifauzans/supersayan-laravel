@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- <div class="col-12 text-center text-bold text-h6 text-white bg-primary q-py-xl">
-      Supersayan
-    </div> -->
+
     <q-list class="text-grey menu-system" v-for="(item, i) in $Handle.getLS('menus')" :key="i"
       v-show="$Handle.getLS('menus')">
       <q-item v-if="item.menu && item.parent_id == null && item.menu.link" clickable v-ripple
@@ -18,7 +16,7 @@
         <q-item v-for="(item, index) in item.childs" :key="index" v-show="item && item.menu" clickable v-ripple
           :active="item.menu && link === item.menu.path" @click="pushRoute(item)" active-class="left-menu-superadmin">
           <q-item-section avatar class="q-ml-md" v-if="item && item.menu">
-            <q-icon :name="item ? item.menu.icon : ''" />
+            <q-icon :name="item ? item.menu.icon : ''" :class="item.menu && link === item.menu.path ? 'text-white' : ''" />
           </q-item-section>
           <q-item-section>{{ item && item.menu ? item.menu.name : "" }}</q-item-section>
         </q-item>

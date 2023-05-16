@@ -3,11 +3,15 @@
     <s-loading :load="loading" />
     <s-drawer @refresh="refresh" :Meta="Meta" :filter="filter" :table="table" v-model="filter.query"
       @update:modelValue="refresh">
-      <q-tabs @click="refresh" v-model="tab" no-caps class="bg-grey text-white shadow-2 col-12 row" align="justify"
-        style="border-radius: 10px 10px 0px 0px" indicator-color="transparent">
-        <q-tab v-for="(item, index) in options" :key="index" :name="item.name" :label="item.label"
-          :class="tab == item.name ? 'bg-primary' : ''" />
-      </q-tabs>
+
+      <div class="col-12 row q-pt-md">
+        <div class="row col-12 q-my-sm ">
+          <div v-for="(item, index) in options" :key="index" class="col-6 row q-px-sm">
+            <t-button :label="item.label" @click="() => { tab = item.name; refresh(); }" :active="tab == item.name"
+              col="12" />
+          </div>
+        </div>
+      </div>
       <q-table virtual-scroll :rows="table.rows" :columns="table.columns" row-key="id" selection="multiple"
         v-model:selected="table.selected" v-model:pagination="table.pagination" :style="$Static.table.height('120px')"
         :dense="$Static.table.dense()" :flat="$Static.table.flat()" :color="$Static.table.color()"
@@ -26,10 +30,10 @@
           <s-table-option v-else @show="detail(props.key)" @edit="edit(props.key)" :Meta="Meta" />
         </template>
       </q-table>
-      <t-modal  v-model="modal" @submit="submit" :title="Meta.name + ' Form'">
+      <t-modal v-model="modal" @submit="submit" :title="Meta.name + ' Form'">
         <FormModal v-if="modalType == 'form'" :modal="useModal" :id="id" :submitOnModal="submitOnModal"
           @closeModal="modal = !modal" @refresh="refresh" />
-        <Detail v-else :modal="useModal" :id="id"  />
+        <Detail v-else :modal="useModal" :id="id" />
       </t-modal>
     </s-drawer>
   </div>
