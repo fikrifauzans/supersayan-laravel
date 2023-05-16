@@ -1,7 +1,7 @@
 <template>
   <div>
     <s-loading :load="loading" />
-    <s-drawer @refresh="refresh" :Meta="Meta" :filter="filter" :table="table" v-model="filter.query"
+    <s-drawer wrapCard @refresh="refresh" :Meta="Meta" :filter="filter" :table="table" v-model="filter.query"
       @update:modelValue="refresh">
 
       <div class="col-12 row q-pt-md">

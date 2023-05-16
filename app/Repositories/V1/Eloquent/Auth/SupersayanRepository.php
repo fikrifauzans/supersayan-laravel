@@ -64,7 +64,12 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Roles',               'icon' => 'assignment_ind',                  'path' => 'roles',                        'link' => '/roles'],            //4
             ['name' => 'Master Data',         'icon' => 'source',                          'path' => null,                           'link' => null],                //8
             ['name' => 'Files',               'icon' => 'source',                          'path' => 'files',                        'link' => '/files'],            //9
-
+            ['name' => 'Schools',            'icon' => 'circle' , 'path' => 'schools' , 'link' => '/schools'],      //10
+            ['name' => 'Studies',               'icon' => 'circle' , 'path' => 'studies' , 'link' => '/studies'],   //11
+            ['name' => 'Classes',               'icon' => 'circle' , 'path' => 'classes' , 'link' => '/classes'],    //12
+            ['name' => 'Lesson Timetable',      'icon' => 'circle' , 'path' => 'lesson_timetable' , 'link' => '/lesson_timetable'], //13
+            ['name' => 'Contents',              'icon' => 'circle' , 'path' => 'contents' , 'link' => '/contents'], //14
+            ['name' => 'Presences',             'icon' => 'circle' , 'path' => 'presences' , 'link' => '/presences'], //15
 
 
         ];
@@ -87,6 +92,13 @@ class SupersayanRepository extends BaseRepository
             //Master Data ------------------------------------------------------------------------/
             ['master_menu_id' => 1, 'parent_id' => null, 'menu_id' => 8, 'sort' => 3], //'id' => 8,
             ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 9, 'sort' => 1], //'id' => 9, //
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 10, 'sort' => 1], //'id' => 10, //
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 11, 'sort' => 1], //'id' => 11, //
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 12, 'sort' => 1], //'id' => 12, //
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 13, 'sort' => 1], //'id' => 13, //
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 14, 'sort' => 1], //'id' => 14, //
+            ['master_menu_id' => 1, 'parent_id' => null,  'menu_id' => 15, 'sort' => 4], //'id' => 15, //
+       
 
         ];
 
