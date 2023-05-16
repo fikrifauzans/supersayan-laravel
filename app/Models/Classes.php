@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+namespace App\Models;
+
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -13,5 +16,36 @@ use Illuminate\Support\Facades\Route;
 | generate in 2023-05-16T20:39                                             |
 |--------------------------------------------------------------------------|
 */
-include 'v1/cms.php';
-include 'v1/generator.php';
+class Classes extends Model
+{
+    use SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     * @var code string 
+* @var name string 
+* @var grade string 
+* @var color text 
+*/
+    protected $table =  'Classes';
+    protected $fillable = [
+'code',  
+'name',  
+'grade',  
+'color',  
+
+    ];
+
+
+    protected $hidden = [];
+
+    public $searchable = [
+'code',  
+'name',  
+'grade',  
+'color',  
+
+    ];
+}
+
+            

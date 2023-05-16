@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+namespace App\Repositories\V1\Eloquent\Master;
+
+use App\Models\Lesson_timetable;
+use App\Repositories\V1\Eloquent\BaseRepository;
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -13,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 | generate in 2023-05-16T20:39                                             |
 |--------------------------------------------------------------------------|
 */
-include 'v1/cms.php';
-include 'v1/generator.php';
+class Lesson_timetableRepository extends BaseRepository 
+{
+    protected $model;
+
+    public function __construct(Lesson_timetable $model)
+    {
+    $this->model = $model;
+    }
+    
+}

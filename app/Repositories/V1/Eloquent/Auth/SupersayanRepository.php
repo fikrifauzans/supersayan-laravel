@@ -105,6 +105,13 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Permissions',         'slug' => 'permissions'],
             ['name' => 'Permission Acess',    'slug' => 'permission-access'],
             ['name' => 'Files',               'slug' => 'files'],
+            ['name' => 'Schools',               'slug' => 'schools'],
+            ['name' => 'Studies',               'slug' => 'studies'],
+            ['name' => 'Classes',               'slug' => 'classes'],
+            ['name' => 'Lesson Timetable',               'slug' => 'lesson_timetable'],
+            ['name' => 'Lesson Timetable',               'slug' => 'lesson_timetable'],
+            ['name' => 'Presences',               'slug' => 'presences'],
+            ['name' => 'Contents',               'slug' => 'contents'],
             // Master Data
 
         ];
