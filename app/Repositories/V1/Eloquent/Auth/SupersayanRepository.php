@@ -45,13 +45,9 @@ class SupersayanRepository extends BaseRepository
         ]);
         Roles::insert([
             ['name'  => 'Superadmin',         'slug' => 'master',              'master_menu_id' => 1], //1
-            // ['name'  => 'Jamaah',             'slug' => 'jamaah',               'master_menu_id' => null], //2
-            // ['name'  => 'Tim Keuangan',       'slug' => 'tim-keuangan',         'master_menu_id' => 7], //3
-            // ['name'  => 'Tim Perlengkapan',   'slug' => 'tim-perlengkapan',     'master_menu_id' => 6], //4
-            // ['name'  => 'Tim Berkas',         'slug' => 'tim-berkas',           'master_menu_id' => 5], //5
-            // ['name'  => 'Cso',                'slug' => 'cso',                  'master_menu_id' => 4], //6
-            // ['name'  => 'Developer Duta',     'slug' => 'dev',                  'master_menu_id' => null], //7
-            // ['name'  => 'Admin',              'slug' => 'admin',                'master_menu_id' => 2], //8
+            ['name'  => 'Siswa',              'slug' => 'siswa',              'master_menu_id' => 1], //1
+            ['name'  => 'Guru',               'slug' => 'guru',              'master_menu_id' => 1], //1
+      
         ]);
 
         $menus = [
@@ -77,6 +73,8 @@ class SupersayanRepository extends BaseRepository
         MasterMenus::insert(
             [
                 ['name' => 'Superadmin',          'status' => 1], //1
+                ['name' => 'Siswa',               'status' => 1], //1
+                ['name' => 'Guru',                'status' => 1], //1
             ]
         );
 
