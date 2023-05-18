@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\V1\Master;
             
 use App\Http\Controllers\V1\Auth\Controller;
-use App\Repositories\V1\Eloquent\Master\ContentsRepository;
+use App\Repositories\V1\Eloquent\Master\LessonTimetableRepository;
 use Illuminate\Http\Request;
 use App\Services\Helper\Helper;
 use App\Services\Handler\JsonResponse as JsonCustomResponse;
@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Gate;
 
 // use App\User;
             
-class ContentsController extends Controller
+class LessonTimetableController extends Controller
     {
     /**
     * Retrieve the user for the given ID.
@@ -38,7 +38,7 @@ class ContentsController extends Controller
     protected $response;
     protected $relations = [];
                 
-    public function __construct(ContentsRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
+    public function __construct(LessonTimetableRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {
         $this->repository = $repository;
         $this->validator =  $validator;
@@ -49,7 +49,7 @@ class ContentsController extends Controller
     {
             
                 
-        if (Gate::denies('permission',  'contents-index' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-index' )) return $this->response->error($language, 'permission-denied');
                 
         $relations = $request->relations ? Helper::getRelations($request) : $this->relations;
                 
@@ -59,7 +59,7 @@ class ContentsController extends Controller
     public function show($language, $id, Request $request)
     {
                 
-        if (Gate::denies('permission',  'contents-show' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-show' )) return $this->response->error($language, 'permission-denied');
                 
         return $this->response->choseLang($language)->modeMessage('show', $this->repository->getTableName())->success($this->repository->findId($id, false));
     }
@@ -67,7 +67,7 @@ class ContentsController extends Controller
     public function store(Request $request, $language)
     {
                 
-        if (Gate::denies('permission',  'contents-store' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-store' )) return $this->response->error($language, 'permission-denied');
                 
         // $validated = $this->validator->validate($request, $language, $this->repository->getTableName());
                 
@@ -79,7 +79,7 @@ class ContentsController extends Controller
     public function update(Request $request,  $language, $id)
     {
                 
-        if (Gate::denies('permission',  'contents-update' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-update' )) return $this->response->error($language, 'permission-denied');
                 
         // $validated = $this->validator->validate($request, $language, $this->repository->getTableName());
                 
@@ -91,7 +91,7 @@ class ContentsController extends Controller
     public function destroy($language, $id, Request $request)
     {
                 
-        if (Gate::denies('permission',  'contents-destroy' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-destroy' )) return $this->response->error($language, 'permission-denied');
                 
         if ($this->repository->destroy($id)) return $this->response->choseLang($language)->modeMessage('delete', $this->repository->getTableName())->success([]);
     }
@@ -99,7 +99,7 @@ class ContentsController extends Controller
     public function force($language, $id, Request $request)
     {
                 
-        if (Gate::denies('permission',  'contents-force' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-force' )) return $this->response->error($language, 'permission-denied');
                 
         if ($this->repository->destroy($id, true)) return $this->response->choseLang($language)->modeMessage('force', $this->repository->getTableName())->success([]);
     }
@@ -107,7 +107,7 @@ class ContentsController extends Controller
     public function restore($language, $id, Request $request)
     {
                 
-        if (Gate::denies('permission',  'contents-restore' )) return $this->response->error($language, 'permission-denied');
+        if (Gate::denies('permission',  'lesson-timetable-restore' )) return $this->response->error($language, 'permission-denied');
                 
         if ($this->repository->restore($id)) return  $this->response->choseLang($language)->modeMessage('restore', $this->repository->getTableName())->success($this->repository->findId($id, false));
     }

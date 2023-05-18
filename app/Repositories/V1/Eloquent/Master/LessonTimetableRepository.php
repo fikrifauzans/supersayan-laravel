@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Repositories\V1\Eloquent\Master;
 
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\LessonTimetable;
+use App\Repositories\V1\Eloquent\BaseRepository;
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -16,36 +15,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-05-18T07:57                                             |
 |--------------------------------------------------------------------------|
 */
-class Classes extends Model
+class LessonTimetableRepository extends BaseRepository 
 {
-    use SoftDeletes;
+    protected $model;
 
-    /**
-     * The attributes that are mass assignable.
-     * @var code string 
-* @var name string 
-* @var grade string 
-* @var color text 
-*/
-    protected $table =  'classes';
-    protected $fillable = [
-'code',  
-'name',  
-'grade',  
-'color',  
-
-    ];
-
-
-    protected $hidden = [];
-
-    public $searchable = [
-'code',  
-'name',  
-'grade',  
-'color',  
-
-    ];
+    public function __construct(LessonTimetable $model)
+    {
+    $this->model = $model;
+    }
+    
 }
-
-            
