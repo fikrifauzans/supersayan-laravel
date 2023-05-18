@@ -12,10 +12,8 @@
             <div class="col-12">
               <div class="text-bold q-mt-md">Roles</div>
               <t-list :list="roleList" />
-
             </div>
           </s-form>
-        
         </div>
       </div>
     </s-drawer>
@@ -68,10 +66,7 @@ export default {
             class_name: data.class && data.class.name ? data.class.name : '',
 
           }
-          // console.log(data);
-          // dataList.school_name = data.school.name
-          // dataList.class_name = data.class.name
-
+  
           this.mainList = this.$Help.transformList(dataList, this.setup)
           this.roleList = this.$Help.transformList(dataList.role, {destroy:['master_menu_id' ,'master_menu' ,'permission_access_index' ,'updated_by']})
 
