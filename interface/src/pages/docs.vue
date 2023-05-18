@@ -107,14 +107,14 @@
             <!-- ---------------------------------------------------------------------------->
             <div class="col-12 q-pa-lg">Currency: {{ model.currency }}</div>
           </s-form>
-          <s-form title="Currency" class="q-pa-md">
+          <s-form title="Tab" class="q-pa-md">
             <!-- TAB  -->
             <t-tab :options="[
               { label: ' Button 1', value: 1 },
               { label: ' Button 2', value: 2 }
             ]" v-model="model.tab" />
 
-            {{ tab }}asd
+            {{ model.tab }}
           </s-form>
         </div>
       </div>
