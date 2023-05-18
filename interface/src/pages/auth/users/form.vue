@@ -12,11 +12,10 @@
           <t-input col="4" label="phone" v-model="model.phone" />
           <t-select-api col="4" api="roles" v-model="model.role_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.role, 'name') : ''
             " label="role" />
-          <t-select-api col="4" api="schools" v-model="model.school_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.schools, 'name') : ''
+          <t-select-api col="4" api="schools" v-model="model.school_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.school, 'name') : ''
           " label="school" />
-          <t-select-api col="4" api="classes" v-model="model.class_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.classes, 'name') : ''
+          <t-select-api col="4" api="classes" v-model="model.class_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.class, 'name') : ''
           " label="classes" />
-          {{ model.school_id }}
         </s-form>
       </div>
     </s-drawer>
