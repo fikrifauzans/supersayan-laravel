@@ -30,11 +30,9 @@ class UsersRepository extends BaseRepository
     public function transformIndex($request, $relations)
     {
 
-        if ($request['type']  == "Admin") return $this->queryController(Users::where(fn ($q)  => $q->where('is_customer', null)->orWhere('is_customer', 0)), $request, $relations);
+       
 
-        if ($request['type']  == "Jamaah")  return $this->queryController(Users::where('is_customer', 1), $request, $relations);
-
-        return  $this->get($request, $relations);
+        return  $this->get($request, $relations , $relations) ;
 
     }
 

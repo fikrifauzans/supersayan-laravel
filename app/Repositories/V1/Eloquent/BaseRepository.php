@@ -33,11 +33,11 @@ class BaseRepository implements EloquentBaseRepository
 
 
     // Get Index, Baca Di Dokumentasi Nanti-------------------------------
-    public function get($rawRequest = [], array $relations = [])
+    public function get($rawRequest = [], array $relations = [] , $relationQueries = [])
     {
         try {
             // Kontrol untuk query base
-            if ($rawRequest) return $this->queryController($this->model, $rawRequest, $relations);
+            if ($rawRequest) return $this->queryController($this->model, $rawRequest, $relations, $relationQueries);
         } catch (\Exception $e) {
             throw $e;
         }
