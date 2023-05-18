@@ -4,14 +4,6 @@
     <s-drawer wrapCard @refresh="refresh" :Meta="Meta" :filter="filter" :table="table" v-model="filter.query"
       @update:modelValue="refresh">
 
-      <div class="col-12 row q-pt-md">
-        <div class="row col-12 q-my-sm ">
-          <div v-for="(item, index) in options" :key="index" class="col-6 row q-px-sm">
-            <t-button :label="item.label" @click="() => { tab = item.name; refresh(); }" :active="tab == item.name"
-              col="12" />
-          </div>
-        </div>
-      </div>
       <q-table virtual-scroll :rows="table.rows" :columns="table.columns" row-key="id" selection="multiple"
         v-model:selected="table.selected" v-model:pagination="table.pagination" :style="$Static.table.height('120px')"
         :dense="$Static.table.dense()" :flat="$Static.table.flat()" :color="$Static.table.color()"
