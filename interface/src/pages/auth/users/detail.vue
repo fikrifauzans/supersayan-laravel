@@ -3,10 +3,19 @@
     <s-loading :load="loading" />
     <s-drawer @refresh="refresh" :useModal="useModal" form detail :Meta="Meta" @back="back">
       <div class="row">
-        <div class="col-md-6 col-12">
-          <s-form class="q-px-md py-sm q-mt-lg col-6" title="User">
-            <t-list :list="mainList" />
+        <div class="row col-12">
+          <s-form class="q-px-md py-sm q-mt-lg col-6">
+            <div class="col-12">
+              <div class="text-bold">Users</div>
+              <t-list :list="mainList" />
+            </div>
+            <div class="col-12">
+              <div class="text-bold q-mt-md">Roles</div>
+              <t-list :list="roleList" />
+
+            </div>
           </s-form>
+        
         </div>
       </div>
     </s-drawer>
@@ -35,10 +44,11 @@ export default {
       useModal: false,
       model: Meta.model,
       mainList: null,
+      roleList:null,
       loading: false,
       param: null,
       setup: {
-        destroy: ["id", "deleted_at", "created_at", "updated_at", "role_id"],
+        destroy: ["id", "deleted_at", "created_at", "updated_at", "role_id", 'is_customer', 'avatar_id', 'created_by', 'updated_by' ,'school' ,'role' ,'avatar' ,'class' ,'class_id' ,'class_id' ,'school_id' ,'deleted_by'],
         money: [],
         date: [],
       },
@@ -51,8 +61,20 @@ export default {
       let endpoint = Meta.module + "/" + id
       this.$api.get(endpoint, (data, status, message, full) => {
         if (status == 200) {
-          this.mainList = this.$Help.transformList(data, this.setup)
-          console.log(data)
+          // data.class_name = data.class.name
+          let dataList = {
+            ...data,
+            school_name: data.school && data.school.name ? data.school.name : '',
+            class_name: data.class && data.class.name ? data.class.name : '',
+
+          }
+          // console.log(data);
+          // dataList.school_name = data.school.name
+          // dataList.class_name = data.class.name
+
+          this.mainList = this.$Help.transformList(dataList, this.setup)
+          this.roleList = this.$Help.transformList(dataList.role, {destroy:['master_menu_id' ,'master_menu' ,'permission_access_index' ,'updated_by']})
+
           this.$Handle.loadingStop()
         }
       })
