@@ -63,7 +63,7 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Schools',            'icon' => 'circle' , 'path' => 'schools' , 'link' => '/schools'],      //10
             ['name' => 'Studies',               'icon' => 'circle' , 'path' => 'studies' , 'link' => '/studies'],   //11
             ['name' => 'Classes',               'icon' => 'circle' , 'path' => 'classes' , 'link' => '/classes'],    //12
-            ['name' => 'Lesson Timetable',      'icon' => 'circle' , 'path' => 'lesson_timetable' , 'link' => '/lesson_timetable'], //13
+            ['name' => 'Lesson Timetable',      'icon' => 'circle' , 'path' => 'lesson-timetable' , 'link' => '/lesson-timetable'], //13
             ['name' => 'Contents',              'icon' => 'circle' , 'path' => 'contents' , 'link' => '/contents'], //14
             ['name' => 'Presences',             'icon' => 'circle' , 'path' => 'presences' , 'link' => '/presences'], //15
 
@@ -118,8 +118,8 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Schools',               'slug' => 'schools'],
             ['name' => 'Studies',               'slug' => 'studies'],
             ['name' => 'Classes',               'slug' => 'classes'],
-            ['name' => 'Lesson Timetable',               'slug' => 'lesson_timetable'],
-            ['name' => 'Lesson Timetable',               'slug' => 'lesson_timetable'],
+            ['name' => 'Lesson Timetable',               'slug' => 'lesson-timetable'],
+            ['name' => 'Lesson Timetable',               'slug' => 'lesson-timetable'],
             ['name' => 'Presences',               'slug' => 'presences'],
             ['name' => 'Contents',               'slug' => 'contents'],
             // Master Data
