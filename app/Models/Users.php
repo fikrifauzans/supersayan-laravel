@@ -37,7 +37,9 @@ class Users extends Authenticatable
     'role_id',
     'phone',
     'is_customer',
-    'avatar_id'
+    'avatar_id',
+    'school_id',
+    'class_id'
   ];
 
   /**
@@ -70,9 +72,14 @@ class Users extends Authenticatable
   }
 
 
-  public function Bookings()
+  public function School()
   {
-    return $this->hasMany(BookingPackages::class, 'user_id', 'id');
+    return $this->belongsTo(Schools::class, 'school_id', 'id'); 
+  }
+
+  public function Class()
+  {
+    return $this->belongsTo(Classes::class, 'class_id', 'id'); 
   }
 
 
@@ -85,4 +92,5 @@ class Users extends Authenticatable
   {
     return $this->hasMany(Otps::class, 'phone', 'username');
   }
+
 }

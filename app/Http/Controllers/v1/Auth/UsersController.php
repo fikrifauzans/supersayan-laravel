@@ -25,7 +25,7 @@ class UsersController extends Controller
     protected $repository;
     protected $validator;
     protected $response;
-    protected $relations = ['Role', 'Avatar'];
+    protected $relations = ['Role', 'Avatar', 'Class', 'School'];
 
     public function __construct(UsersRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {

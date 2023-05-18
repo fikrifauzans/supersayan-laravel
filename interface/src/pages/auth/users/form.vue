@@ -7,15 +7,16 @@
           <t-input col="4" label="name" r-icon="person" required v-model="model.name" />
           <t-input col="4" label="username" r-icon="person" required v-model="model.username" />
           <t-input col="4" label="email" r-icon="mail" required v-model="model.email" />
-          <t-input col="4" type="password" label="password" r-icon="lock" required v-model="model.password" />
+          <t-input col="4" type="password" label="password" r-icon="lock" v-model="model.password" />
           <t-input col="4" label="address" r-icon="home" v-model="model.address" />
           <t-input col="4" label="phone" v-model="model.phone" />
           <t-select-api col="4" api="roles" v-model="model.role_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.role, 'name') : ''
             " label="role" />
           <t-select-api col="4" api="schools" v-model="model.school_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.schools, 'name') : ''
           " label="school" />
-          <t-select-api col="4" api="classes" v-model="model.classes" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.classes, 'name') : ''
+          <t-select-api col="4" api="classes" v-model="model.class_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.classes, 'name') : ''
           " label="classes" />
+          {{ model.school_id }}
         </s-form>
       </div>
     </s-drawer>
