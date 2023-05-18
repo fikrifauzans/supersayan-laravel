@@ -12,9 +12,9 @@
           <!-- AVATAR  -->
           <div>
             <div class="q-gutter-sm">
-              <q-icon :name="$Handle.checkMenusLabelOrIcon(Meta.menu_slug).icon.toString()" color="primary" size="30px" />
+              <q-icon :name="Meta ?  $Handle.checkMenusLabelOrIcon(Meta.menu_slug).icon.toString()  : ''" color="primary" size="30px" />
               <q-btn noCaps size="sm" flat style="border: 1px solid rgba(0, 0, 0, 0.12);">
-                <span class="header-module-title">
+                <span class="header-module-title" v-if="Meta">
                   {{ Meta && Meta.menu_slug ? $Handle.checkMenusLabelOrIcon(Meta.menu_slug).name : Meta.module_name ?
                     Meta.module_name : '' }}
                 </span>
@@ -83,9 +83,9 @@
             v-if="hideOpt !== ''">
             <t-button icon="arrow_left" label="back"  class="text-primary cursor-pointer text-bold" 
               type="button" @click="$emit('back')" />
-            <t-button v-if="detail != ''" :label="'Simpan ' + (Meta ? Meta.name : '')"  type="submit"
+            <t-button v-if="detail != ''" :label="'Simpan ' + (Meta && Meta.name ? Meta.name : '')"  type="submit"
               active="true" class="save-btn" />
-            <q-btn v-if="useEdit == ''" :label="'Edit ' + (Meta ? Meta.name : '')" size="sm" type="submit"
+            <q-btn v-if="useEdit == ''" :label="'Edit ' + (Meta && Meta.name ? Meta.name : '')" size="sm" type="submit"
               color="secondary" class="save-btn" @click="$emit('edit')" />
           </div>
         </div>

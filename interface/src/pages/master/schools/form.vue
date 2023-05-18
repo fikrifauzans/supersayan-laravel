@@ -1,19 +1,18 @@
 
-        <template>
+<template>
   <div>
     <s-loading :load='loading' />
     <s-drawer @refresh='refresh' :useModal='useModal' form @submit='submit' @back='back' :Meta='Meta'>
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Schools'>
-<t-input col='4' label='code' v-model='model.code' topLabel='code' />
-<t-input col='4' label='name' v-model='model.name' topLabel='name' />
-<t-text-editor col='4' label='address'  type='textarea' v-model='model.address' />
-<t-input col='4' label='city' v-model='model.city' topLabel='city' />
-<t-input col='4' label='province' v-model='model.province' topLabel='province' />
-<t-input col='4' label='long' v-model='model.long' topLabel='long' />
-<t-input col='4' label='lat' v-model='model.lat' topLabel='lat' />
-<t-currency col='4' label='logo_id' currency v-model='model.logo_id'  topLabel='logo_id' />
-
+          <t-input col='4' label='code' v-model='model.code' topLabel='code' />
+          <t-input col='4' label='name' v-model='model.name' topLabel='name' />
+          <t-text-editor col='4' label='address' type='textarea' v-model='model.address' />
+          <t-input col='4' label='city' v-model='model.city' topLabel='city' />
+          <t-input col='4' label='province' v-model='model.province' topLabel='province' />
+          <t-input col='4' label='long' v-model='model.long' topLabel='long' />
+          <t-input col='4' label='lat' v-model='model.lat' topLabel='lat' />
+          <t-currency col='4' label='logo_id' currency v-model='model.logo_id' topLabel='logo_id' />
         </s-form>
       </div>
     </s-drawer>
