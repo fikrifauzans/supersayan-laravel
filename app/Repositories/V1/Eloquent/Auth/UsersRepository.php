@@ -30,9 +30,8 @@ class UsersRepository extends BaseRepository
     public function transformIndex($request, $relations)
     {
 
-       
-
-        return  $this->get($request, $relations , $relations) ;
+    
+        return  $this->get($request, $relations , ['Role' , 'Class' , "School"]) ;
 
     }
 
