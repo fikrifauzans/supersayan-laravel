@@ -123,8 +123,8 @@ class Handler {
 
   }
 
-  existingRelationlabel(val, relationField ,defaultField ='name'){
-    return val[defaultField] ? val[defaultField] : relationField ? relationField[defaultField] : defaultField
+  existingRelationlabel(val, relationField ,defaultField =''){
+    return val[defaultField] ? val[defaultField] : relationField ? relationField[defaultField] : ''
    }
 
 }
