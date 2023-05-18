@@ -31,6 +31,7 @@ import ApiWhatsapp from '../components/tools/ApiWhatsapp.vue'
 import SelectServerside from '../components/tools/SelectServerside.vue'
 import Year from '../components/tools/Year.vue'
 import ButtonStandard from '../components/system/ButtonStandard.vue'
+import Tab from '../components/system/Tab.vue'
 
 
 
@@ -68,6 +69,7 @@ export default boot(async ({
   app.component('t-currency', Currency)
   app.component('t-progress-bar', ProgressBar)
   app.component('t-api-whatsapp', ApiWhatsapp)
+  app.component('t-tab', Tab)
   app.component('footer-customer', FooterCustomer)
 
 

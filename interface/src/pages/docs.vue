@@ -107,9 +107,19 @@
             <!-- ---------------------------------------------------------------------------->
             <div class="col-12 q-pa-lg">Currency: {{ model.currency }}</div>
           </s-form>
+          <s-form title="Currency" class="q-pa-md">
+            <!-- TAB  -->
+            <t-tab :options="[
+              { label: ' Button 1', value: 1 },
+              { label: ' Button 2', value: 2 }
+            ]" v-model="model.tab" />
+
+            {{ tab }}asd
+          </s-form>
         </div>
       </div>
     </s-drawer>
+
   </div>
 </template>
 <script>
@@ -125,6 +135,7 @@ export default {
         select_all: "",
         dateTime: "",
         onlyDate: "",
+        tab: 1,
       },
 
       oldVal: "relation value",
