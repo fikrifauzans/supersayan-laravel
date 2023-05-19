@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-05-18T07:57                                             |
 |--------------------------------------------------------------------------|
 */
+
 class LessonTimetable extends Model
 {
     use SoftDeletes;
@@ -23,28 +24,28 @@ class LessonTimetable extends Model
     /**
      * The attributes that are mass assignable.
      * @var code string 
-* @var teacher_id integer 
-* @var class_id integer 
-* @var study_id integer 
-* @var smester string 
-* @var start_time string 
-* @var end_time string 
-* @var year string 
-* @var sort integer 
-* @var day integer 
-*/
+     * @var teacher_id integer 
+     * @var class_id integer 
+     * @var study_id integer 
+     * @var smester string 
+     * @var start_time string 
+     * @var end_time string 
+     * @var year string 
+     * @var sort integer 
+     * @var day integer 
+     */
     protected $table =  'lesson_timetable';
     protected $fillable = [
-'code',  
-'teacher_id',  
-'class_id',  
-'study_id',  
-'smester',  
-'start_time',  
-'end_time',  
-'year',  
-'sort',  
-'day',  
+        'code',
+        'teacher_id',
+        'class_id',
+        'study_id',
+        'smester',
+        'start_time',
+        'end_time',
+        'year',
+        'sort',
+        'day',
 
     ];
 
@@ -52,18 +53,16 @@ class LessonTimetable extends Model
     protected $hidden = [];
 
     public $searchable = [
-'code',  
-'teacher_id',  
-'class_id',  
-'study_id',  
-'smester',  
-'start_time',  
-'end_time',  
-'year',  
-'sort',  
-'day',  
+        'code',
+        'teacher_id',
+        'class_id',
+        'study_id',
+        'smester',
+        'start_time',
+        'end_time',
+        'year',
+        'sort',
+        'day',
 
     ];
 }
-
-            
