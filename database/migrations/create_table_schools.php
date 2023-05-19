@@ -34,12 +34,12 @@ Schema::create('schools', function (Blueprint $table) {
     $table->string('province')->nullable();
     $table->string('long')->nullable();
     $table->string('lat')->nullable();
-    $table->integer('logo_id')->nullable()->default(0);
+    $table->integer('logo_id')->nullable();
     $table->softDeletes();
     $table->timestamps();
-    $table->integer('created_by')->nullable()->default(0);
-    $table->integer('updated_by')->nullable()->default(0);
-    $table->integer('deleted_by')->nullable()->default(0);
+    $table->integer('created_by')->nullable();
+    $table->integer('updated_by')->nullable();
+    $table->integer('deleted_by')->nullable();
 });
 }
             

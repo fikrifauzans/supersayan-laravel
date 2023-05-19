@@ -28,20 +28,20 @@ Schema::create('lesson_timetable', function (Blueprint $table) {
     $table->id();
     
     $table->string('code')->nullable();
-    $table->integer('teacher_id')->nullable()->default(0);
-    $table->integer('class_id')->nullable()->default(0);
-    $table->integer('study_id')->nullable()->default(0);
+    $table->integer('teacher_id')->nullable();
+    $table->integer('class_id')->nullable();
+    $table->integer('study_id')->nullable();
     $table->string('smester')->nullable();
     $table->string('start_time')->nullable();
     $table->string('end_time')->nullable();
     $table->string('year')->nullable();
-    $table->integer('sort')->nullable()->default(0);
-    $table->integer('day')->nullable()->default(0);
+    $table->integer('sort')->nullable();
+    $table->integer('day')->nullable();
     $table->softDeletes();
     $table->timestamps();
-    $table->integer('created_by')->nullable()->default(0);
-    $table->integer('updated_by')->nullable()->default(0);
-    $table->integer('deleted_by')->nullable()->default(0);
+    $table->integer('created_by')->nullable();
+    $table->integer('updated_by')->nullable();
+    $table->integer('deleted_by')->nullable();
 });
 }
             

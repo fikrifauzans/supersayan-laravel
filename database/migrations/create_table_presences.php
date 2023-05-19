@@ -28,10 +28,10 @@ Schema::create('presences', function (Blueprint $table) {
     $table->id();
     
     $table->string('code')->nullable();
-    $table->integer('user_id')->nullable()->default(0);
-    $table->integer('role_id')->nullable()->default(0);
-    $table->integer('school_id')->nullable()->default(0);
-    $table->integer('study_id')->nullable()->default(0);
+    $table->integer('user_id')->nullable();
+    $table->integer('role_id')->nullable();
+    $table->integer('school_id')->nullable();
+    $table->integer('study_id')->nullable();
     $table->string('status')->nullable();
     $table->dateTime('datetime')->nullable();
     $table->text('remark')->nullable();
@@ -40,9 +40,9 @@ Schema::create('presences', function (Blueprint $table) {
     $table->string('long')->nullable();
     $table->softDeletes();
     $table->timestamps();
-    $table->integer('created_by')->nullable()->default(0);
-    $table->integer('updated_by')->nullable()->default(0);
-    $table->integer('deleted_by')->nullable()->default(0);
+    $table->integer('created_by')->nullable();
+    $table->integer('updated_by')->nullable();
+    $table->integer('deleted_by')->nullable();
 });
 }
             

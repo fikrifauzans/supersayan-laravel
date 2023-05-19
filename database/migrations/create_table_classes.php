@@ -33,9 +33,9 @@ Schema::create('classes', function (Blueprint $table) {
     $table->text('color')->nullable();
     $table->softDeletes();
     $table->timestamps();
-    $table->integer('created_by')->nullable()->default(0);
-    $table->integer('updated_by')->nullable()->default(0);
-    $table->integer('deleted_by')->nullable()->default(0);
+    $table->integer('created_by')->nullable();
+    $table->integer('updated_by')->nullable();
+    $table->integer('deleted_by')->nullable();
 });
 }
             

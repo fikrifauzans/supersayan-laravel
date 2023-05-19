@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
     }
 

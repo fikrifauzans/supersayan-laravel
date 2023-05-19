@@ -28,7 +28,7 @@ Schema::create('contents', function (Blueprint $table) {
     $table->id();
     
     $table->string('code')->nullable();
-    $table->integer('parent_id')->nullable()->default(0);
+    $table->integer('parent_id')->nullable();
     $table->string('group')->nullable();
     $table->string('name')->nullable();
     $table->string('page')->nullable();
@@ -41,12 +41,12 @@ Schema::create('contents', function (Blueprint $table) {
     $table->string('sort')->nullable();
     $table->text('remark')->nullable();
     $table->text('details')->nullable();
-    $table->integer('photo_id')->nullable()->default(0);
+    $table->integer('photo_id')->nullable();
     $table->softDeletes();
     $table->timestamps();
-    $table->integer('created_by')->nullable()->default(0);
-    $table->integer('updated_by')->nullable()->default(0);
-    $table->integer('deleted_by')->nullable()->default(0);
+    $table->integer('created_by')->nullable();
+    $table->integer('updated_by')->nullable();
+    $table->integer('deleted_by')->nullable();
 });
 }
             

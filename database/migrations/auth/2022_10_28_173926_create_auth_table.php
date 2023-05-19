@@ -35,14 +35,14 @@ class CreateAuthTable extends Migration
             $table->string('password')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->tinyInteger('is_customer')->nullable()->default(0);
-            $table->integer('avatar_id')->nullable()->default(0);
+            $table->tinyInteger('is_customer')->nullable();
+            $table->integer('avatar_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
             
         });
 
@@ -55,9 +55,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
 
         Schema::create('master_menus', function (Blueprint $table) {
@@ -67,9 +67,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
 
         Schema::create('menu_details', function (Blueprint $table) {
@@ -82,9 +82,9 @@ class CreateAuthTable extends Migration
             $table->timestamps();
             $table->foreign('parent_id')->references('id')->on('menu_details')->onDelete('cascade');
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
 
         Schema::create('menus', function (Blueprint $table) {
@@ -96,9 +96,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
@@ -107,9 +107,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
 
         Schema::create('roles', function (Blueprint $table) {
@@ -121,9 +121,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
 
         Schema::create('files', function (Blueprint $table) {
@@ -133,14 +133,14 @@ class CreateAuthTable extends Migration
             $table->string('directory')->nullable();
             $table->string('type')->nullable();
             $table->string('reference_table')->nullable();
-            $table->integer('reference_id')->nullable()->default(0);
+            $table->integer('reference_id')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
         Schema::create('otps', function (Blueprint $table) {
             $table->id();
@@ -153,9 +153,9 @@ class CreateAuthTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->integer('created_by')->nullable()->default(0);
-            $table->integer('updated_by')->nullable()->default(0);
-            $table->integer('deleted_by')->nullable()->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
         });
     }
 
