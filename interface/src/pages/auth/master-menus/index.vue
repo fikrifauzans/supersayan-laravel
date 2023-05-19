@@ -4,13 +4,6 @@
     <s-loading :load="loading" />
     <s-drawer @refresh="refresh" :Meta="Meta" :filter="filter" :table="table" v-model="filter.query"
       @update:modelValue="refresh">
-      <!-- <div class="q-px-md">
-      <t-tab v-model="tab" :options="[
-        { label: 'All', value: null },
-        { label: 'Siswa', value: 1 },
-        { label: 'Guru', value: 2 },
-      ]" @click="refresh" />
-      </div> -->
       <q-table virtual-scroll class="q-my-sm" :rows="table.rows" :columns="table.columns" row-key="id"
         selection="multiple" v-model:selected="table.selected" v-model:pagination="table.pagination"
         :style="$Static.table.height()" :dense="$Static.table.dense()" :flat="$Static.table.flat()"

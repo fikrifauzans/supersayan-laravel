@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\V1\Auth;
+namespace App\Http\Controllers\v1\Auth;
 
 use App\Repositories\V1\Eloquent\Auth\FilesRepository;
 use Illuminate\Http\Request;
