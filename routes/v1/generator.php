@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\V1\Master\SchoolsController;
-use App\Http\Controllers\V1\Master\StudiesController;
-use App\Http\Controllers\V1\Master\ClassesController;
-use App\Http\Controllers\V1\Master\LessonTimetableController;
-use App\Http\Controllers\V1\Master\PresencesController;
-use App\Http\Controllers\V1\Master\ContentsController;
+use App\Http\Controllers\v1\Master\SchoolsController;
+use App\Http\Controllers\v1\Master\StudiesController;
+use App\Http\Controllers\v1\Master\ClassesController;
+use App\Http\Controllers\v1\Master\LessonTimetableController;
+use App\Http\Controllers\v1\Master\PresencesController;
+use App\Http\Controllers\v1\Master\ContentsController;
 
 
 

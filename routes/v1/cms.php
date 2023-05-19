@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\V1\Auth\UsersController;
-use App\Http\Controllers\V1\Auth\RolesController;
-use App\Http\Controllers\V1\Auth\AuthController;
-use App\Http\Controllers\V1\Auth\MenusController;
-use App\Http\Controllers\V1\Auth\MasterMenusController;
-use App\Http\Controllers\V1\Auth\PermissionAccessController;
-use App\Http\Controllers\V1\Auth\PermissionsController;
-use App\Http\Controllers\V1\Auth\FilesController;
+use App\Http\Controllers\v1\Auth\UsersController;
+use App\Http\Controllers\v1\Auth\RolesController;
+use App\Http\Controllers\v1\Auth\AuthController;
+use App\Http\Controllers\v1\Auth\MenusController;
+use App\Http\Controllers\v1\Auth\MasterMenusController;
+use App\Http\Controllers\v1\Auth\PermissionsAccessController;
+use App\Http\Controllers\v1\Auth\PermissionsController;
+use App\Http\Controllers\v1\Auth\FilesController;
 
 use App\Http\Controllers\InitController;
-use App\Http\Controllers\V1\DashboardController;
+use App\Http\Controllers\v1\DashboardController;
 use App\Http\Controllers\PaymentController as PaymentGatewayController;
 
 
@@ -96,13 +96,13 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::put('/restore/{id}', [PermissionsController::class, 'restore']);
             });
             Route::group(['prefix' => 'permission-access'], function () {
-                Route::get('/', [PermissionAccessController::class, 'index']);
-                Route::get('/{id}', [PermissionAccessController::class, 'show']);
-                Route::post('/', [PermissionAccessController::class, 'store']);
-                Route::put('/{id}', [PermissionAccessController::class, 'update']);
-                Route::delete('/{id}', [PermissionAccessController::class, 'destroy']);
-                Route::delete('/force/{id}', [PermissionAccessController::class, 'force']);
-                Route::put('/restore/{id}', [PermissionAccessController::class, 'restore']);
+                Route::get('/', [PermissionsAccessController::class, 'index']);
+                Route::get('/{id}', [PermissionsAccessController::class, 'show']);
+                Route::post('/', [PermissionsAccessController::class, 'store']);
+                Route::put('/{id}', [PermissionsAccessController::class, 'update']);
+                Route::delete('/{id}', [PermissionsAccessController::class, 'destroy']);
+                Route::delete('/force/{id}', [PermissionsAccessController::class, 'force']);
+                Route::put('/restore/{id}', [PermissionsAccessController::class, 'restore']);
             });
             Route::group(['prefix' => 'files'], function () {
                 Route::get('/', [FilesController::class, 'index']);
