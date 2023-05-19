@@ -5,17 +5,21 @@
     <s-drawer @refresh='refresh' :useModal='useModal' form @submit='submit' @back='back' :Meta='Meta'>
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Lesson Timetable'>
-        <t-input col='4' label='code' v-model='model.code' topLabel='code' />
-        <t-currency col='4' label='teacher_id' currency v-model='model.teacher_id'  topLabel='teacher_id' />
-        <t-currency col='4' label='class_id' currency v-model='model.class_id'  topLabel='class_id' />
-        <t-currency col='4' label='study_id' currency v-model='model.study_id'  topLabel='study_id' />
-        <t-input col='4' label='smester' v-model='model.smester' topLabel='smester' />
-        <t-input col='4' label='start_time' v-model='model.start_time' topLabel='start_time' />
-        <t-input col='4' label='end_time' v-model='model.end_time' topLabel='end_time' />
-        <t-input col='4' label='year' v-model='model.year' topLabel='year' />
-        <t-currency col='4' label='sort' currency v-model='model.sort'  topLabel='sort' />
-        <t-select col="4" label="day" optionValue="value" filterField="name" v-model="model.day"
-              :option="optionsDay" :optionLabel="(val) => (val == '' ? oldVal : val.name)" />
+            <t-input col='4' label='code' v-model='model.code' topLabel='code' />
+            <t-select-api col="4" api="users" v-model="model.teacher_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.teacher_id, 'name') : ''
+                " label="teacher_id" />
+            <t-select-api col="4" api="classes" v-model="model.class_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.class_id, 'name') : ''
+                " label="class_id" />
+            <t-select-api col="4" api="studies" v-model="model.study_id" optionValue="id" :optionLabel="(val) => val ? $Handle.existingRelationlabel(val, model.study_id, 'name') : ''
+                " label="study" />
+            <t-select col="4" label="semester" optionValue="value" filterField="name" v-model="model.smester"
+                  :option="optionSemester" :optionLabel="(val) => (val == '' ? oldVal : val.name)" />
+            <t-input col='4' label='start_time' v-model='model.start_time' topLabel='start_time' />
+            <t-input col='4' label='end_time' v-model='model.end_time' topLabel='end_time' />
+            <t-input col='4' label='year' v-model='model.year' topLabel='year' />
+            <t-currency col='4' label='sort' currency v-model='model.sort'  topLabel='sort' />
+            <t-select col="4" label="day" optionValue="value" filterField="name" v-model="model.day"
+                  :option="optionsDay" :optionLabel="(val) => (val == '' ? oldVal : val.name)" />
 
         </s-form>
       </div>
@@ -56,6 +60,10 @@ export default {
         { name : 'Kamis', value : 4},
         { name : 'Jumat', value : 5},
         { name : 'Sabtu', value : 6},
+      ],
+      optionSemester : [
+        {name : 'ganji', value : 1},
+        {name : 'genap', value : 2}
       ]
     }
   },
