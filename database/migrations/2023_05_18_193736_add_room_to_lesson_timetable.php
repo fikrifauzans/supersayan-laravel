@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('lesson_timetable', function (Blueprint $table) {
-            $table->string('room')->nullable()->after('day');
+            $table->string('room')->nullable();
         });
     }
 
