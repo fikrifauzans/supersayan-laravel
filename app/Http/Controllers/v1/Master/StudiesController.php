@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\V1\Master;
+namespace App\Http\Controllers\v1\Master;
             
 use App\Http\Controllers\V1\Auth\Controller;
 use App\Repositories\V1\Eloquent\Master\StudiesRepository;
