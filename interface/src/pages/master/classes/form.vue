@@ -1,14 +1,14 @@
 
-        <template>
+<template>
   <div>
     <s-loading :load='loading' />
     <s-drawer @refresh='refresh' :useModal='useModal' form @submit='submit' @back='back' :Meta='Meta'>
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Classes'>
-<t-input col='4' label='code' v-model='model.code' topLabel='code' />
-<t-input col='4' label='name' v-model='model.name' topLabel='name' />
-<t-input col='4' label='grade' v-model='model.grade' topLabel='grade' />
-<t-text-editor col='4' label='color'  type='textarea' v-model='model.color' />
+          <t-input col='4' label='code' v-model='model.code' topLabel='code' />
+          <t-input col='4' label='name' v-model='model.name' topLabel='name' />
+          <t-input col='4' label='grade' v-model='model.grade' topLabel='grade' />
+          <!-- <t-text-editor col='4' label='color' type='textarea' v-model='model.color' /> -->
 
         </s-form>
       </div>

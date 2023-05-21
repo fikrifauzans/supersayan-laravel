@@ -36,7 +36,7 @@ class LessonTimetableController extends Controller
     protected $repository;
     protected $validator;
     protected $response;
-    protected $relations = [];
+    protected $relations = ['Class' ,'Teacher' , 'Study'];
                 
     public function __construct(LessonTimetableRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {
@@ -61,7 +61,7 @@ class LessonTimetableController extends Controller
                 
         if (Gate::denies('permission',  'lesson-timetable-show' )) return $this->response->error($language, 'permission-denied');
                 
-        return $this->response->choseLang($language)->modeMessage('show', $this->repository->getTableName())->success($this->repository->findId($id, false));
+        return $this->response->choseLang($language)->modeMessage('show', $this->repository->getTableName())->success($this->repository->findId($id, false, $this->relations));
     }
                 
     public function store(Request $request, $language)

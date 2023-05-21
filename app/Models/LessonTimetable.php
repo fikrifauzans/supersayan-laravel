@@ -5,6 +5,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -65,4 +67,19 @@ class LessonTimetable extends Model
         'day',
 
     ];
+
+
+
+    public function Class()
+    {
+        return $this->belongsTo(Classes::class, 'class_id', 'id');
+    }
+    public function Teacher()
+    {
+        return $this->belongsTo(Users::class, 'teacher_id', 'id');
+    }
+    public function Study()
+    {
+        return $this->belongsTo(Studies::class, 'study_id', 'id');
+    }
 }

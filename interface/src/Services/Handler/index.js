@@ -2,6 +2,8 @@ import Storage from './storage'
 import Notify from './notify'
 import Midtrans from './midtrans'
 import permission from './permission'
+import Static from '../Static'
+
 import {
   Loading,
   exportFile,
@@ -12,6 +14,7 @@ import {
 class Handler {
   constructor() {
     this.Loading = Loading
+    this.Static = new Static()
   }
 
   // TABLE HANDLE
@@ -78,8 +81,8 @@ class Handler {
     const content = [columns.map(col => this.wrapCsvValue(col.label))].concat(
       rows.map(row => columns.map(col => this.wrapCsvValue(
         typeof col.field === 'function' ?
-        col.field(row) :
-        row[col.field === void 0 ? col.name : col.field],
+          col.field(row) :
+          row[col.field === void 0 ? col.name : col.field],
         col.format,
         row
       )).join(','))
@@ -110,7 +113,7 @@ class Handler {
 
     }
     return formData
-    
+
   }
 
   checkMenusLabelOrIcon(slug) {
@@ -123,9 +126,15 @@ class Handler {
 
   }
 
-  existingRelationlabel(val, relationField ,defaultField =''){
+  existingRelationlabel(val, relationField, defaultField = '') {
     return val[defaultField] ? val[defaultField] : relationField ? relationField[defaultField] : ''
-   }
+  }
+
+  getLabelSelect(options = 'day', value, filedLabel = 'label') {
+    let data = this.Static[options].filter((val) => val.value == value)
+    if (data[0] != undefined) return data[0][filedLabel] 
+    else if(value) return (value[filedLabel]);
+  }
 
 }
 

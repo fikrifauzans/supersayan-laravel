@@ -78,11 +78,17 @@
             <!---------------------------------------------------------------SELECT OBJECT  -->
             <t-datetime v-model="model.dateTime" col="12" dateTime label="DateTime" />
             <!-- ---------------------------------------------------------------------------->
-
             <div class="col-12 q-pa-lg">DateTime: {{ model.dateTime }}</div>
           </s-form>
         </div>
-
+        <div class="col-6">
+          <s-form title="Only Time" class="q-pa-md">
+            <!---------------------------------------------------------------SELECT OBJECT  -->
+            <t-datetime v-model="model.dateTime" col="12" onlyTime label="onlyTime" />
+            <!-- ---------------------------------------------------------------------------->
+            <div class="col-12 q-pa-lg">onlyTime: {{ model.dateTime }}</div>
+          </s-form>
+        </div>
         <div class="col-6">
           <s-form title="Only Date" class="q-pa-md">
             <!---------------------------------------------------------------ONLYDATE  -->
@@ -102,7 +108,6 @@
         <div class="col-6">
           <s-form title="Currency" class="q-pa-md">
             <!---------------------------------------------------------------ONLYDATE  -->
-
             <t-currency col="12" label="Currency" currency v-model="model.currency" />
             <!-- ---------------------------------------------------------------------------->
             <div class="col-12 q-pa-lg">Currency: {{ model.currency }}</div>
@@ -110,11 +115,9 @@
 
         </div>
         <div class="col-6">
-
           <s-form title="Tab" class="q-pa-md">
             <!-- TAB  -->
             <t-tab :options="tabOption" v-model="model.tab" />
-
             {{ model.tab }}
           </s-form>
         </div>

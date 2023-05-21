@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-05-18T07:57                                             |
 |--------------------------------------------------------------------------|
 */
+
 class Studies extends Model
 {
     use SoftDeletes;
@@ -23,16 +24,16 @@ class Studies extends Model
     /**
      * The attributes that are mass assignable.
      * @var code string 
-* @var name string 
-* @var remark text 
-* @var color string 
-*/
+     * @var name string 
+     * @var remark text 
+     * @var color string 
+     */
     protected $table =  'studies';
     protected $fillable = [
-'code',  
-'name',  
-'remark',  
-'color',  
+        'code',
+        'name',
+        'remark',
+        'color',
 
     ];
 
@@ -40,12 +41,10 @@ class Studies extends Model
     protected $hidden = [];
 
     public $searchable = [
-'code',  
-'name',  
-'remark',  
-'color',  
+        'code',
+        'name',
+        'remark',
+        'color',
 
     ];
 }
-
-            

@@ -1,12 +1,11 @@
 <template>
   <q-select outlined dense @clear="copyObject" :stack-label="modelValue != null ? true : false"
-    @update:model-value="(val) => updateValue(val)" :model-value="modelValue"
-    :option-label="optionLabel ? optionLabel : this.filterField" :optionValue="optionValue ? optionValue : 'id'"
-    :multiple="multiple == ''" use-input :use-chips="multiple == '' ? true : false" map-options
-    :emit-value="full == '' ? false : true" input-debounce="0" :label="label" :options="stringOptions"
-    @filter="filterFn" :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${
-      required != '' ? 'q-mb-lg' : ''
-    }`" :required="required == ''">
+    @update:model-value="(val) => updateValue(val)" :model-value="modelValue" :option-label="optionLabel ?? oldValue"
+    :optionValue="optionValue ? optionValue : 'id'" :multiple="multiple == ''" use-input
+    :use-chips="multiple == '' ? true : false" map-options :emit-value="full == '' ? false : true" input-debounce="0"
+    :label="label" :options="stringOptions" @filter="filterFn"
+    :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${required != '' ? 'q-mb-lg' : ''
+      }`" :required="required == ''">
     <template v-slot:no-option>
       <q-item>
         <q-item-section class="text-grey"> No results </q-item-section>
@@ -42,6 +41,7 @@ export default {
     "raw",
     "multiple",
     "required",
+    "oldValue",
   ],
   methods: {
     filterFn(val, update, abort) {

@@ -60,7 +60,7 @@
         },
         created() {
           this.table = this.$Handle.structureTable(
-            this.table.columns(this.$Help, this.$Lang, this.Static)
+            this.table.columns(this.$Help, this.$Handle, this.Static)
           )
           if (this.$route.query.trash) this.trash = JSON.parse(this.$route.query.trash)
           if (this.$route.query.search) this.trash = JSON.parse(this.$route.query.search)

@@ -7,6 +7,9 @@
     @filter-abort="abortFilterFn" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${
       required != '' ? 'q-mb-lg' : 'q-mb-sm'
     }`">
+    <template v-slot:append>
+      <q-btn v-if="modelValue != null" icon="close"  size="xs" flat round rounded  @click="val => $emit('update:modelValue' , null)"  />
+    </template>
     <template v-slot:no-option>
       <q-item>
         <q-item-section class="text-grey"> No results </q-item-section>
