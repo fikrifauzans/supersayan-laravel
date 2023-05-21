@@ -35,7 +35,7 @@ Schema::create('contents', function (Blueprint $table) {
     $table->string('device')->nullable();
     $table->string('title')->nullable();
     $table->string('subtitle')->nullable();
-    $table->string('description')->nullable();
+    $table->text('description')->nullable();
     $table->string('path')->nullable();
     $table->string('link')->nullable();
     $table->string('sort')->nullable();

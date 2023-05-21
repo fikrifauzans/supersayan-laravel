@@ -2,6 +2,7 @@
 
 namespace App\Repositories\V1\Eloquent\Auth;
 
+use App\Models\Contents;
 use App\Repositories\V1\Eloquent\BaseRepository;
 use App\Models\Users;
 use App\Models\Roles;
@@ -10,6 +11,8 @@ use App\Models\Menus;
 use App\Models\MenuDetails;
 use App\Models\PermissionAccess;
 use App\Models\Permissions;
+use GuzzleHttp\Promise\Create;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -142,6 +145,432 @@ class SupersayanRepository extends BaseRepository
     public function getMaster()
     {
         $user = Users::with('Role')->get();
+        Self::getContent();
+
         return $user;
+    }
+    public static function getContent()
+    {
+        /**
+         * The attributes that are mass assignable.
+         * @var code string 
+         * @var parent_id integer 
+         * @var group string 
+         * @var name string 
+         * @var page string 
+         * @var device string 
+         * @var title string 
+         * @var subtitle string 
+         * @var description string 
+         * @var path string 
+         * @var link string 
+         * @var sort string 
+         * @var remark text 
+         * @var details text 
+         * @var photo_id integer 
+         */
+        Contents::insert([
+
+            // ['group' => null, 'name' => null, 'path' => null,  'sort' => null  ,'title' => null , 'subtitle' => null , 'description' => null , 'link' => null , 'code' => null],
+            // NAVBAR MENU
+            ['group' => 'Menu',      'name' => 'Beranda',                 'path' => 'home',       'sort' => 1, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Paket Umrah',             'path' => 'paket-umrah', 'sort' => 2, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Paket Haji',              'path' => 'paket-haji', 'sort' => 3, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Dokumentasi',             'path' => 'paket-haji', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Tentang Kami',            'path' => 'paket-haji', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Carousel',  'name' => 'Carousel',            'path' => null,        'sort' => null, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Awards',    'name' => 'Traver Maghfirah Awards', 'path' => null,        'sort' => null, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Titles',    'name' => null, 'path' => null,         'sort' => null,      'title' => 'Maghfirah Travel', 'subtitle' => 'Temukan Esensi Perjalan Suci Bersama', 'description' => null, 'link' => null, 'code' => 'title-first'],
+            ['group' => 'Titles',    'name' => null, 'path' => null,         'sort' => null,      'title' => 'Maghfirah Travel', 'subtitle' => 'Paket Umrah & Haji ',                 'description' => null, 'link' => null, 'code' => 'title-haji-umrah'],
+
+
+            ['group' => 'Counter', 'name' => 'Jamaah Umrah', 'path' => null,  'sort' => null, 'title' => '67,065', 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Counter', 'name' => 'Jamaah Haji', 'path' => null,  'sort' => null, 'title' => '3,151', 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+
+            [
+                'group' => 'Text',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => null,
+                'subtitle' => null,
+                'description' => 'Terimakasih telah mempercayakan keberangkatan anda bersama kami',
+                'link' => null,
+                'code' => 'text-container-2'
+            ],
+            [
+                'group' => 'Titles',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Mengapa Memilih Maghfirah Travel ?',
+                'subtitle' => 'Membantu saudara muslim sebanyak-banyaknya untuk bisa berangkat Umrah & Haji dengan mudah dan nyaman.',
+                'description' => null,
+                'link' => null,
+                'code' => 'title-question'
+            ],
+
+            [
+                'group' => 'Card Solution',
+                'name' => null,
+                'path' => null,
+                'sort' => 1,
+                'title' => 'Pembimbing Berpengalaman',
+                'subtitle' => 'Memandu jamaah dengan ramah dan bersahabat dengan bimbingan ibadah Umroh dan Haji yang sesuai Sunnah Nabi ﷺ.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Card Solution',
+                'name' => null,
+                'path' => null,
+                'sort' => 2,
+                'title' => 'Legalitas Perusahaan',
+                'subtitle' => 'Perusahaan travel umroh yang terdaftar dari Kementrian Agama dan bersertifikat resmi',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Card Solution',
+                'name' => null,
+                'path' => null,
+                'sort' => 3,
+                'title' => 'Harga Terjangkau',
+                'subtitle' => 'Dapatkan paket Umrah & Haji maupun komponen lainnya dengan penawaran terbaik',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Card Solution',
+                'name' => null,
+                'path' => null,
+                'sort' => 4,
+                'title' => 'Layanan Terbaik',
+                'subtitle' => 'Perjalanan sesuai dengan deskripsi yang ditawarkan. Informasi produk terperinci, transparan, dan tidak ada hal yang kami tutupi.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+
+            [
+                'group' => 'About Us Summary',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Sekilas Maghfirah Travel',
+                'subtitle' => null,
+                'description' => 'Maghfirah Travel didirikan oleh DR.H. Ahmad Hatta',
+                'link' => null,
+                'code' => null
+            ],
+
+            [
+                'group' => 'Card - Contact Us',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Kami Siap Melayani Anda',
+                'subtitle' => null,
+                'description' => 'Dapatkan informasi lengkap tentang Paket-paket Umrah dan Haji Maghfirah Travel dan program - program diskon atau promo terbaru.',
+                'link' => 'Hubungi Kami',
+                'code' => null
+            ],
+            [
+                'group' => 'About Us - Service description',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Melayani & Membimbing dengan hati',
+                'subtitle' => null,
+                'description' => 'Jamaah haji dan umroh adalah tamu Allah, sehingga menjadi kehormatan bagi kami untuk memberikan pelayanan terbaik',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Titles',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Apa Kata Sahabat Maghfirah',
+                'subtitle' => 'Testimoni jamaah Maghfirah Travel',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Card - Testimonies',
+                'name' => 'Nama Orang',
+                'path' => null,
+                'sort' => null,
+                'title' => null,
+                'subtitle' => null,
+                'description' => 'Training THE POWER OF HAJJ & UMRAH membuat saya berpikir seandainya belum umrah atau haji mengikuti training ini pastilah kemabruran itu akan didapatkan." - Dini Budiarti (Peserta TPOH Maret 2015)',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Titles',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Para Ustadz Pembimbing Pilihan',
+                'subtitle' => 'Para pembimbing adalah ustadz-ustadz dengan pendidikan S1 dan S2 di universitas-universitas Islam ternama di Timur Tengah. Mereka memahami ilmu Islam dengan sangat baik dan mereka akan membimbing anda dengan sepenuh hati.',
+                'description' => null,
+                'link' => null,
+                'code' => 'title-ustadz-list'
+            ],
+            [
+                'group' => 'Titles',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Menjalin Kerjasama dengan Maghfirah Travel',
+                'subtitle' => null,
+                'description' => 'Beberapa perusahaan dan institusi yang telah bekerjasama dalam program perjalanan ibadah umroh dan haji bagi karyawan, nasabah dan para mitranya.',
+                'link' => null,
+                'code' => 'title-partner'
+            ],
+            [
+                'group' => 'Titles',
+                'name' => 'Ruang Edukasi',
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => null,
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Banner - Register',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Segera Daftarkan Diri Anda',
+                'subtitle' => 'Dapatkan pengalaman perjalanan yang nyaman untuk diri anda bersama kami',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'About Us - Content',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => null,
+                'description' => 'Maghfirah yang bermakna “Ampunan” adalah tujuan umat Islam menjalankan ibadah umrah dan haji. Sesuai namanya, Maghfirah Travel sangat menginginkan dapat membimbing jamaah untuk dapat melaksanakan ibadah umroh dan haji sebenar-benarnya, yaitu sesuai sunnah Nabi Muhammad saw, sehingga dapat meraih ampunan Allah. Pada tahun 2001, DR.H. Ahmad Hatta, MA. dan H. Firman M Nur, M.Sc. mendirikan Maghfirah Travel dengan badan hukum PT. Kafilah Maghfirah Wisata. Maghfirah yang berarti ampunan menjadi visi Maghfirah Travel.',
+                'link' => null,
+                'code' => null
+            ],
+
+            [
+                'group' => 'About Us - Vision',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => null,
+                'subtitle' => null,
+                'description' => 'Mengantarkan umat mendapatkan maghfirah (ampunan) dengan ilmu dan nilai yang sesuai tuntunan sunnah Rasulullah saw menuju bangsa yang diridhai.',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'About Us - Mission',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => null,
+                'subtitle' => null,
+                'description' => '
+                Fokus pada penanaman nilai dan pencerahan hidup
+                Pelaksanaan Ibadah sesuai sunnah Rasulullah saw.
+                Memberikan pelayanan prima, Memberikan layanan terbaik bagi para tamu Allah adalah bagian dari ibadah kami kepada Allah.
+                Memudahkan tercapainya tujuan atau cita-cita ibadah bagi umat Islam di Indonesia, agar semakin banyak umat Islam yang bisa menunaikan ibadah di tanah suci.',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Awards - List',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Meraih Sertifikasi ISO 9001',
+                'subtitle' => null,
+                'description' => 'Keseriusan Maghfirah Travel dalam memberikan pelayanan terbaik kepada jamaah diwujudkan dengan upaya standarisasi sistem manajemen dengan sertifikasi ISO 9001: 2015.
+                Dan dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mempertahankan penerapan sistem manajemen berstandar internasional, Maghfirah Travel telah meraih sertifikat standar mutu manajemen ISO 9001:2015.
+                Selain itu, Maghfirah Travel juga banyak meraih penghargaan dari berbagai institusi dan perusahaan-perusahaan yang menjalin kerjasama dengan Maghfirah Travel.',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Titles',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => '10 Keunggulan',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 1,
+                'title' => null,
+                'subtitle' => '1. Maghfirah Travel berpengalaman 21 tahun dalam memberikan pelayanan dan bimbingan terbaik kepada jamaah Haji dan Umroh Indonesia dengan telah memberangkatkan lebih dari 70.000 jamaah.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 2,
+                'title' => null,
+                'subtitle' => '2. Memiliki Pembimbing Ibadah terbaik dan merupakan lulusan S1, S2, dan S3 dari Universitas Ternama di Timur Tengah.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 3,
+                'title' => null,
+                'subtitle' => '3. Fokus pada optimalisasi ibadah, peningkatan ilmu, dan wawasan islam.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 4,
+                'title' => null,
+                'subtitle' => '4. Berkomitmen memberikan pelayanan terbaik dengan menerapkan manajemen mutu dan pelayanan yang berstandar Internasional ISO 9001:2015 yang dikeluarkan oleh Bureau Veritas Perancis dan Komite Akreditasi Nasional (KAN).',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 5,
+                'title' => null,
+                'subtitle' => '5. Maghfirah Travel berakreditasi Nilai A dari Kementrian Agama.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 6,
+                'title' => null,
+                'subtitle' => '6. Dipercaya oleh perusahaan Nasional, Internasional dan berbagai lembaga pemerintah dalam melayani Umroh, Haji, dan Muslim Tour.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 7,
+                'title' => null,
+                'subtitle' => '7. Maghfirah Travel telah mendapatkan penghargaan Moslem Choice Award pada tahun 2019 sebagai “The Best Management and Education Hajj & Umroh Organizer.”',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 8,
+                'title' => null,
+                'subtitle' => '8. Maghfirah Travel mendapatkan penghargaan sebagai Provider Visa Umrah terbaik dari Asosiasi Muslim Penyelenggara Haji dan Umrah Republik Indonesia (AMPHURI) tahun 2022.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+                [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 9,
+                'title' => null,
+                'subtitle' => '9. Secara konsisten survei tingkat kepuasan jamaah rata-rata berada di angka 9,8 dari skala 1-10.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Top Service',
+                'name' => null,
+                'path' => null,
+                'sort' => 10,
+                'title' => null,
+                'subtitle' => '10. Maghfirah Travel berkomitmen untuk terus amanah dan akuntable dalam menjalankan bisnis serta melayani para Tamu Allah.',
+                'description' => null,
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Footer - Address',
+                'name' => 'Maghfirah Travel',
+                'path' => null,
+                'sort' => null,
+                'title' => null,
+                'subtitle' => null,
+                'description' => 'Perkantoran Mitra Matraman Blok A1 No. 25-26, Jl. Matraman Raya No. 148 Jakarta 13150',
+                'link' => null,
+                'code' => null
+            ],
+            [
+                'group' => 'Banner - CSO',
+                'name' => null,
+                'path' => null,
+                'sort' => null,
+                'title' => 'Kami siap membantu anda',
+                'subtitle' => null,
+                'description' => 'Jika anda masih bingung memilih paket yang sesuai dengan kebutuhan anda segera hubungi kami.',
+                'link' => 'Konsultasi Sekarang',
+                'code' => null
+            ],
+            
+
+
+
+
+
+
+
+
+
+
+            // BERANDA - END 
+
+
+
+
+
+
+
+
+
+
+        ]);
     }
 }

@@ -33,6 +33,11 @@ import Year from '../components/tools/Year.vue'
 import ButtonStandard from '../components/system/ButtonStandard.vue'
 import Tab from '../components/system/Tab.vue'
 
+// CMS 
+import Navbar from '../components/system/Navbar.vue'
+
+
+
 
 
 
@@ -71,6 +76,8 @@ export default boot(async ({
   app.component('t-api-whatsapp', ApiWhatsapp)
   app.component('t-tab', Tab)
   app.component('footer-customer', FooterCustomer)
+
+  app.component('cms-navbar', Navbar)
 
 
 })
