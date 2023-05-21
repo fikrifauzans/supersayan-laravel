@@ -53,6 +53,8 @@ class Users extends Authenticatable
     'password',
   ];
 
+  protected $appens = ['RoleName'];
+
   public $searchable = [
     'name',
     'email',
@@ -74,12 +76,12 @@ class Users extends Authenticatable
 
   public function School()
   {
-    return $this->belongsTo(Schools::class, 'school_id', 'id'); 
+    return $this->belongsTo(Schools::class, 'school_id', 'id');
   }
 
   public function Class()
   {
-    return $this->belongsTo(Classes::class, 'class_id', 'id'); 
+    return $this->belongsTo(Classes::class, 'class_id', 'id');
   }
 
 
@@ -88,9 +90,9 @@ class Users extends Authenticatable
     return $this->belongsTo(Files::class, 'avatar_id', 'id');
   }
 
-  public function Otp()
+  public function getRoleNameAttribute()
   {
-    return $this->hasMany(Otps::class, 'phone', 'username');
+    $role = Roles::find($this->role_id, 'id');
+    return $role->name;
   }
-
 }

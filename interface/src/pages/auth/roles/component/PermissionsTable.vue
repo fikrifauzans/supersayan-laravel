@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <t-input col="12" label="search"  v-model="table.search" />
     <q-table virtual-scroll class="q-my-sm" :rows="table.rows" :columns="table.columns" row-key="id" selection="multiple"
       v-model:selected="table.selected" v-model:pagination="table.pagination" :style="$Static.table.height('300px')"
@@ -77,7 +78,7 @@ export default {
                 if (this.permissions[i].permission_id == this.table.rows[j].id) {
                   this.table.rows[j].status = true
                   this.table.selected.push(this.table.rows[j])
-                  // console.log();
+  
                 }
               }
             }

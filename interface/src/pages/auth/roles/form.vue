@@ -7,15 +7,15 @@
           <s-form title="Roles" class="q-px-md">
             <t-input col="12" label="name" required v-model="model.name" />
             <t-input col="12" label="slug" required v-model="model.slug" />
-            <t-select-api col="12" api="master-menus?" v-model="model.master_menu_id" optionValue="id" :optionLabel="
-              (val) => (val ? val.name ?? model.master_menu.name : '')
-            " label="Master Menu" />
+            <t-select-api col="12" api="master-menus?" v-model="model.master_menu_id" optionValue="id" :optionLabel="(val) => (val ? val.name ?? model.master_menu.name : '')
+              " label="Master Menu" />
           </s-form>
         </div>
 
         <div class="col-6" style="height: 100%">
           <s-form class="q-px-md" title="Permissions Access">
-            <PermissionsTable class="col-12" :permissions="model.permission_access" v-model="model.permission_access" />
+            <PermissionsTable v-if="showPermission" class="col-12" :permissions="model.permission_access"
+              v-model="model.permission_access" />
           </s-form>
 
           <!-- {{ model }} -->
@@ -55,6 +55,7 @@ export default {
       loading: false,
       edit: false,
       param: null,
+      showPermission:false
     };
   },
 
@@ -69,6 +70,7 @@ export default {
       this.$api.get(endpoint, (data, status, message, full) => {
         if (status == 200) {
           this.model = data;
+          this.showPermission = true
           this.$Handle.loadingStop();
         }
       });

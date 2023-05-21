@@ -29,9 +29,9 @@ class UsersRepository extends BaseRepository
 
     public function transformIndex($request, $relations)
     {
-
-    
-        return  $this->get($request, $relations , ['Role' , 'Class' , "School"]) ;
+        if($request->has('list')) return $this->get($request, [ 'Class' , "School"] , [ 'Class' , "School"]);
+        
+        else return  $this->get($request, $relations , ['Role' , 'Class' , "School"]) ;
 
     }
 
