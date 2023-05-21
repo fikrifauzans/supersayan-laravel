@@ -74,15 +74,6 @@ class Users extends Authenticatable
   }
 
 
-  public function School()
-  {
-    return $this->belongsTo(Schools::class, 'school_id', 'id');
-  }
-
-  public function Class()
-  {
-    return $this->belongsTo(Classes::class, 'class_id', 'id');
-  }
 
 
   public function Avatar()
