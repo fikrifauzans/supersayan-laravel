@@ -1,8 +1,6 @@
 <template>
-  <q-layout view="lHr lpR lFr">
-
+  <q-layout view="lHr lpR lFr" v-if="content">
     <cms-navbar />
-
     <q-drawer v-model="leftDrawerOpen" side="left">
       <!-- drawer content -->
     </q-drawer>
@@ -33,21 +31,33 @@
 import { ref } from 'vue'
 
 export default {
-  setup() {
-    const leftDrawerOpen = ref(false)
-    const rightDrawerOpen = ref(false)
 
+  created() {
+    this.getContents()
+  },
+  data() {
     return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value
-      }
+      leftDrawerOpen: false,
+      rightDrawerOpen: false,
+      content:false
     }
-  }
+  },
+  methods: {
+    getContents() {
+      this.$Handle.loadingStart()
+      let endpoint = 'contents'
+      this.$api.get(
+        endpoint, (data, status, message, full) => {
+          if (status == 200) {
+            this.$Handle.setLS('contents' , data.data)
+            this.$Handle.loadingStop()
+            this.content = true
+
+          }
+        },
+        (e) => { }
+      )
+    }
+  },
 }
 </script>

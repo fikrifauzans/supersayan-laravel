@@ -15,11 +15,9 @@ use App\Http\Controllers\v1\Master\ContentsController;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
     Route::group(['prefix' => '{language}'], function () {
-        Route::group(['middleware' => 'auth:sanctum'], function () {
-                
-       
-            Route::group(['prefix' => 'contents'], function () {
-                Route::get('/', [ContentsController::class, 'index']);
+        Route::group(['prefix' => 'contents'], function () {
+            Route::get('/', [ContentsController::class, 'index']);
+            Route::group(['middleware' => 'auth:sanctum'], function () {
                 Route::get('/{id}', [ContentsController::class, 'show']);
                 Route::post('/', [ContentsController::class, 'store']);
                 Route::put('/{id}', [ContentsController::class, 'update']);
@@ -27,10 +25,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::delete('/force/{id}', [ContentsController::class, 'force']);
                 Route::put('/restore/{id}', [ContentsController::class, 'restore']);
             });
-
         });
     });
 });
-
-            
-            

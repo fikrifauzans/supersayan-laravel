@@ -1,27 +1,23 @@
 <template>
-    <q-header class="navbar-cms text-white q-ma-md row items-center" height-hint="98" style="height: 100px;">
-        <q-toolbar>
+    <q-header class="navbar-cms text-dark q-ma-md row " height-hint="98" style="height: 100px;">
+        <q-toolbar class="row">
             <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
             <q-toolbar-title class="text-dark">
-                <q-avatar >
-                    <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-                </q-avatar>
-                Title
+                <q-img src="images/logo.png" style="width:143px" />
             </q-toolbar-title>
-            <q-toolbar-title class="bg-red row items-cener">
-                <q-avatar>
-                    <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-                </q-avatar>
-                Title
-            </q-toolbar-title>
-            <q-toolbar-title></q-toolbar-title>
-            <!-- <q-btn dense flat round icon="menu" color="dark"  /> -->
+
+            <cms-menu :data="$Handle.getContent('Menu')" />
+
+            <q-btn dense flat round icon="menu" color="dark" />
         </q-toolbar>
     </q-header>
 </template>
 <script>
 export default {
-    name: 'NavbarCms'
+    name: 'NavbarCms',
+    created() {
+
+    },
 }
 </script>
 <style lang="scss">

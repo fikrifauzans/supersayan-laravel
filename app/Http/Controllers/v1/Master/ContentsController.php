@@ -49,7 +49,7 @@ class ContentsController extends Controller
     {
             
                 
-        if (Gate::denies('permission',  'contents-index' )) return $this->response->error($language, 'permission-denied');
+        // if (Gate::denies('permission',  'contents-index' )) return $this->response->error($language, 'permission-denied');
                 
         $relations = $request->relations ? Helper::getRelations($request) : $this->relations;
                 

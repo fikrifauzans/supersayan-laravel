@@ -1,11 +1,12 @@
 
 import auth from './auth/index';
 import master from './master/index';
+import landing from './landing/index';
 import generator from './generator/generator'
 
 const routes = [
 
-  { path: '/', component: () => import('layouts/LandingPage.vue'), },
+  { path: '/', component: () => import('layouts/LandingPage.vue'), children: [...landing] },
   {
     path: '/management',
     component: () => import('layouts/MainLayout.vue'),
@@ -13,7 +14,7 @@ const routes = [
       { path: '', name: 'dashboard', component: () => import('pages/dashboard/index.vue'), },
       { path: 'docs', name: 'docs', component: () => import('pages/docs.vue'), },
       { path: 'profile', name: 'admin-profile', component: () => import('pages/auth/me/form.vue') },
-      ...auth, ...master, ...generator
+      ...auth, ...master, ...generator,
 
     ],
   },

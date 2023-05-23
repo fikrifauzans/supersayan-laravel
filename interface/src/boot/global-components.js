@@ -35,6 +35,10 @@ import Tab from '../components/system/Tab.vue'
 
 // CMS 
 import Navbar from '../components/system/Navbar.vue'
+import MenuCSM from '../components/system/MenuCms.vue'
+import CarouselCms from '../components/system/CarouselCms.vue'
+import ParagraphCms from '../components/system/ParagraphCms.vue'
+
 
 
 
@@ -78,6 +82,11 @@ export default boot(async ({
   app.component('footer-customer', FooterCustomer)
 
   app.component('cms-navbar', Navbar)
+  app.component('cms-menu', MenuCSM)
+  app.component('cms-carousel', CarouselCms)
+  app.component('cms-paragraph', ParagraphCms)
+
+  
 
 
 })

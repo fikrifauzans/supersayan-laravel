@@ -3,6 +3,7 @@ import Notify from './notify'
 import Midtrans from './midtrans'
 import permission from './permission'
 import Static from '../Static'
+import Contents from './contents'
 
 import {
   Loading,
@@ -142,5 +143,6 @@ Object.assign(Handler.prototype, Storage)
 Object.assign(Handler.prototype, Notify)
 Object.assign(Handler.prototype, Midtrans)
 Object.assign(Handler.prototype, permission)
+Object.assign(Handler.prototype, Contents)
 
 export default Handler

@@ -17,6 +17,7 @@
     "quasar": "^2.6.0",
     "v-money3": "^3.23.0",
     "vue": "^3.0.0",
+    "vue-carousel-3d": "^1.0.1",
     "vue-router": "^4.0.0",
     "vue3-apexcharts": "^1.4.1"
   },
