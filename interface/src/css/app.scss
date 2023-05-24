@@ -1,6 +1,7 @@
 // app global css in SCSS form
 
-
+@import url('https://fonts.cdnfonts.com/css/blenda-script');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 .container {
@@ -57,6 +58,10 @@
 
 .helvetica {
   font-family: 'Helvetica';
+  font-style: normal;
+}
+.poppins {
+  font-family: 'Poppins';
   font-style: normal;
 }
 
@@ -124,7 +129,8 @@
 .q-field--outlined .q-field__control {
   border-radius: 10px;
 }
-.square-input > .q-field--outlined .q-field__control  {
+
+.square-input>.q-field--outlined .q-field__control {
   border-radius: 0px !important;
 }
 
@@ -167,8 +173,8 @@
   line-height: 160%;
 }
 
-.q-item__section--side >.q-icon {
-  color:$primary;
+.q-item__section--side>.q-icon {
+  color: $primary;
 }
 
 .q-item__section--side .q-icon .left-menu-superadmin {
@@ -196,5 +202,7 @@ html body.desktop.no-touch.body--light div#q-app div.window-height.window-width.
   border-radius: 5px;
 }
 
-
-
+.default-button {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08), 0px 5px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}

@@ -1,10 +1,19 @@
 <template>
-    <div class="q-pa-md  row justify-center">
-        <q-carousel style="border-radius: 30px; width: 100%;" animated v-model="slide" navigation infinite
-            :autoplay="autoplay" arrows transition-prev="slide-right" transition-next="slide-left"
-            @mouseenter="autoplay = false" @mouseleave="autoplay = true" height="100">
-            <q-carousel-slide :name="1" img-src="images/carousel.webp" />
-        </q-carousel>
+    <div class=" col-12 row q-pt-lg row justify-center">
+        <div class="col-md-2 q-pt-lg" v-if="$q.screen.gt.sm">
+            <q-img src="images/carousel.webp" style="height: 180px; border-radius: 0 20px 20px 0; opacity: 0.5;"
+                class="col-12 fit" />
+        </div>
+        <div class="col-12 col-md-8 q-px-md  row relative-position">
+            <div class="col-12 row absolute-center justify-between  z-top">
+                <q-btn class="bg-white" icon="navigate_before" round rounded />
+                <q-btn class="bg-white" icon="navigate_next" round rounded />
+            </div>
+            <q-img src="images/carousel.webp" style="height: 200px;" class="col-12 fit" />
+        </div>
+        <div class="col-md-2 q-pt-lg" v-if="$q.screen.gt.sm">
+            <q-img src="images/carousel.webp" style="height: 200px;opacity: 0.5;" class="col-12 fit" />
+        </div>
     </div>
 </template>
   

@@ -1,12 +1,12 @@
 <template>
-    <q-header class="navbar-cms text-dark q-ma-md row " height-hint="98" style="height: 100px;">
+    <q-header class="navbar-cms text-dark q-ma-md row  z-max" height-hint="98" style="height: 100px;">
         <q-toolbar class="row">
             <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
             <q-toolbar-title class="text-dark">
                 <q-img src="images/logo.png" style="width:143px" />
             </q-toolbar-title>
 
-            <cms-menu :data="$Handle.getContent('Menu')" />
+            <cms-menu v-if="$q.screen.gt.md" :data="$Handle.getContent('Menu')" />
 
             <q-btn dense flat round icon="menu" color="dark" />
         </q-toolbar>
