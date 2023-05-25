@@ -38,6 +38,8 @@ import Navbar from '../components/system/Navbar.vue'
 import MenuCSM from '../components/system/MenuCms.vue'
 import CarouselCms from '../components/system/CarouselCms.vue'
 import ParagraphCms from '../components/system/ParagraphCms.vue'
+import CardCms from '../components/system/CardCms.vue'
+import CmsLogo from '../components/system/CmsLogo.vue'
 
 
 
@@ -85,6 +87,8 @@ export default boot(async ({
   app.component('cms-menu', MenuCSM)
   app.component('cms-carousel', CarouselCms)
   app.component('cms-paragraph', ParagraphCms)
+  app.component('cms-card', CardCms)
+  app.component('cms-logo', CmsLogo)
 
   
 

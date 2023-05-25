@@ -3,7 +3,7 @@
         <q-toolbar class="row">
             <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
             <q-toolbar-title class="text-dark">
-                <q-img src="images/logo.png" style="width:143px" />
+               <cms-logo width="143" />
             </q-toolbar-title>
 
             <cms-menu v-if="$q.screen.gt.md" :data="$Handle.getContent('Menu')" />

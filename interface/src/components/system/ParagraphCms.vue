@@ -2,8 +2,9 @@
     <div :class="`col-12 col-md-${col}`">
         <div class="top-text ">{{ topText }}</div>
         <div class="title">{{ title }}</div>
-        <div class="description"></div>
-    </div>
+        <div class="description poppins"> {{ description }}</div>
+        <slot name="bottom" />
+     </div>
 </template>
 <script>
 export default {
@@ -13,7 +14,7 @@ export default {
 </script>
 <style lang="scss">
 .top-text {
-  
+
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -27,10 +28,14 @@ export default {
     font-weight: 400;
     font-size: 34px;
     line-height: 160%;
-
     /* or 54px */
+}
 
-
-
+.description {
+    margin-top:25px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 160%;
+    text-align: justify;
 }
 </style>

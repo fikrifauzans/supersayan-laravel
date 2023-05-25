@@ -262,7 +262,14 @@ class SupersayanRepository extends BaseRepository
                 'sort' => null,
                 'title' => 'Sekilas Maghfirah Travel',
                 'subtitle' => null,
-                'description' => 'Maghfirah Travel didirikan oleh DR.H. Ahmad Hatta',
+                'description' => '
+                Maghfirah Travel didirikan oleh DR.H. Ahmad Hatta, MA. dan H. Firman M Nur, M.Sc. pada tahun 2001 sebagai penyelenggara perjalanan ibadah umrah dan haji. Izin resmi dari Kemenag telah dimiliki oleh Maghfirah Travel sejak tahun 2002, yaitu:
+
+1. Umroh No.D/252 Th.2002 dan diperbaharui No. U.561 Th. 2020
+2. Haji Khusus No. D/222 Th.2004 dan diperbaharui No.557 Th. 2019
+
+Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan menerapkan manajemen berstandar internasional, Maghfirah Travel telah meraih sertifikat standar mutu layanan dan manajemen ISO 9001:2015. Maghfirah Travel juga banyak meraih penghargaan dari berbagai institusi dan perusahaan-perusahaan yang menjalin kerjasama dengan Maghfirah Travel.
+                ',
                 'link' => null,
                 'code' => null
             ],
@@ -505,7 +512,7 @@ class SupersayanRepository extends BaseRepository
                 'link' => null,
                 'code' => null
             ],
-                [
+            [
                 'group' => 'Top Service',
                 'name' => null,
                 'path' => null,
@@ -549,7 +556,7 @@ class SupersayanRepository extends BaseRepository
                 'link' => 'Konsultasi Sekarang',
                 'code' => null
             ],
-            
+
 
 
 

@@ -30,6 +30,10 @@ class System {
   midtransUrl() {
     return 'https://app.sandbox.midtrans.com/snap/snap.js'
   }
+
+  apiUms() {
+    return 'https://api.ums.dutabaitullah.com/api/v1/en/'
+  }
 }
 
 export default System
