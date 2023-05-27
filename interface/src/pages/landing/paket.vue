@@ -1,0 +1,79 @@
+<template >
+    <div class="col-12 row q-mt-xl q-px-xl">
+        <div class="row col-12 justify-between">
+            <div>
+                <cms-paragraph :title="$Handle.getContent('title-haji-umrah', 'Titles', true).title"
+                    :topText="$Handle.getContent('title-haji-umrah', 'Titles', true).subtitle" />
+            </div>
+            <div>
+                <t-input label="Cari" rIcon="search" />
+            </div>
+
+        </div>
+        <div class=" col-12  q-gutter-md">
+            <q-btn v-for="(item) in optionCategory" :key="item" :label="item.name" unelevated
+                style="box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12);"
+                :class="buttonCategory == item.name ? 'default-button text-bold q-px-lg' : 'default-button bg-white text-grey text-bold q-px-lg'"
+                :color="buttonCategory == item.name ? 'secondary' : ''" @click="() => {
+                    buttonCategory = item.name
+                    getData()
+                }" />
+        </div>
+        <q-table virtual-scroll class='q-my-sm col-12' :rows='table.rows' :columns='table.columns' row-key='id'
+            v-model:pagination='table.pagination' :dense='$Static.table.dense()' :flat='$Static.table.flat()'
+            :color='$Static.table.color()' :rows-per-page-label='$Static.table.rowPerPageLabel()'
+            :rows-per-page-options='$Static.table.rowPerPageOption()' :square='$Static.table.square()'
+            :bordered='$Static.table.bordered()' binary-state-sort @request='getData' :loading='loading'
+            :separator='$Static.table.separator()' grid>
+            <template v-slot:item="props">
+                <div class="q-pa-lg col-xs-12 col-sm-6 col-md-4">
+                    <cms-card type="Product" :item="props.row" />
+                </div>
+            </template>
+
+        </q-table>
+
+
+
+    </div>
+</template>
+<script>
+export default {
+    name: 'IndexHome',
+    created() {
+        this.getData()
+    },
+    data() {
+        return {
+            buttonCategory: 'Haji',
+            optionCategory: [{ name: 'Haji' }, { name: 'Umrah' }],
+            packages: [],
+            slide: 1,
+            autoplay: true,
+            table: {
+                columns: [
+                    { name: 'name', label: 'name', field: 'name' },
+                    { name: 'quota', label: 'quota', field: 'quota' },
+                ],
+                rows: [],
+                pagination: []
+            }
+        }
+    },
+    methods: {
+        getData() {
+            this.$api.get(
+                this.$System.apiUms() + 'public/packages?table=&like=Category-name:' + this.buttonCategory,
+                (data, status, message, full) => {
+                    if (status == 200) {
+                        this.packages = data.data
+                        this.table.rows = data.data
+
+                    }
+                }, (e) => { }, true)
+
+        },
+    },
+}
+</script>
+<style lang="scss"></style>

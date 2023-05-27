@@ -5,9 +5,7 @@
             <q-toolbar-title class="text-dark">
                <cms-logo width="143" />
             </q-toolbar-title>
-
-            <cms-menu v-if="$q.screen.gt.md" :data="$Handle.getContent('Menu')" />
-
+            <cms-menu v-if="$q.screen.gt.md" :data="$Handle.getContent( null,'Menu')" />
             <q-btn dense flat round icon="menu" color="dark" />
         </q-toolbar>
     </q-header>

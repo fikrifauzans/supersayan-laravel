@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHr lpR lFr" v-if="content">
+  <q-layout view="lHr lpR lfr" v-if="content">
     <cms-navbar />
     <q-drawer v-model="leftDrawerOpen" side="left">
       <!-- drawer content -->
@@ -13,16 +13,9 @@
       <router-view />
     </q-page-container>
 
-    <!-- <q-footer class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer> -->
+    <div class="q-pt-xl">
+      <cms-footer />
+    </div>
 
   </q-layout>
 </template>
@@ -39,7 +32,7 @@ export default {
     return {
       leftDrawerOpen: false,
       rightDrawerOpen: false,
-      content:false
+      content: false
     }
   },
   methods: {
@@ -49,7 +42,7 @@ export default {
       this.$api.get(
         endpoint, (data, status, message, full) => {
           if (status == 200) {
-            this.$Handle.setLS('contents' , data.data)
+            this.$Handle.setLS('contents', data.data)
             this.$Handle.loadingStop()
             this.content = true
 

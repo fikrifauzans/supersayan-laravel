@@ -1,6 +1,8 @@
 <template>
     <div class="absolute row justify-center col-12 q-gutter-x-xl">
-        <div v-for="item, index in data" :key="index" :class="checkRoute(item.path) ? ' cms-menu text-bold' : 'cms-menu cursor-pointer'">{{ item.name }}</div>
+        <div v-for="item, index in data" :key="index"
+            :class="checkRoute(item.path) ? ' cms-menu text-bold' : 'cms-menu cursor-pointer'"
+            @click="$router.push({ name: item.path })">{{ item.name }}</div>
     </div>
 </template>
 <script>
@@ -18,7 +20,7 @@ export default {
 <style>
 .cms-menu {
     font-style: normal;
-   
+
     font-size: 14px;
 }
 </style>

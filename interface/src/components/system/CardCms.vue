@@ -22,26 +22,55 @@
             </div>
         </div>
     </q-card>
-
     <!-- CARD ABOUT US SUMMARY  -->
-    <q-card v-else-if="type == 'About Us'" :class="$q.screen.gt.sm ? 'row col-12 q-mt-xl card-about-us' : 'row col-12 q-mt-xl card-about-us'" >
+    <q-card v-else-if="type == 'About Us'"
+        :class="$q.screen.gt.sm ? 'row col-12 q-mt-xl card-about-us' : 'row col-12 q-mt-xl card-about-us'">
         <div class="col-md-5 col-12">
             <q-img class="fit" fit src="images/card-about-us.webp" />
         </div>
         <div :class="$q.screen.gt.sm ? 'col-md-7 row  q-pa-xl items-center row' : 'col-md-7 row  q-pa-lg items-center row'">
-            <cms-paragraph :title="item.title" :description="item.description" col="12">
+            <cms-paragraph :title="item.title" :description="item.description" col="12" :topText="topText">
                 <template v-slot:bottom>
-                    <q-btn unelevated size="lg" noCaps class="dafault-button q-mt-lg" label="Lihat Selengkapnya"
-                        color="primary" style="border-radius: 8px;" />
+                    <q-btn v-if="hidaButton !== ''" unelevated :size="$q.screen.gt.sm ? 'lg' : 'md'" noCaps class="dafault-button q-mt-lg"
+                        label="Lihat Selengkapnya" color="primary" style="border-radius: 8px;" />
                 </template>
             </cms-paragraph>
+        </div>
+    </q-card>
+    <!-- LIST USTADZ  -->
+    <q-card v-else-if="type == 'List Ustadz'" class="col-12 row" style="border-radius: 16px;">
+        <div class="col-12 bg-grey" style="height: 196px;"></div>
+        <div class="col-12 q-py-md">
+            <div class="text-bold text-center col-12  q-mb-md"> Name </div>
+            <div class=" text-center col-12"> Jamatannya Apa </div>
+        </div>
+    </q-card>
+    <!-- RUANG EDUKASI  -->
+    <q-card v-else-if="type == 'Ruang Edukasi'" class="col-12 row q-mb-md" style="border-radius: 12px; height: 395px;">
+        <div class="col-12 bg-grey" style="height: 200px;"></div>
+        <div class="col-12 q-py-md q-px-md">
+            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> Ingat 5 PASTI UMRAH dalam memilih travel
+            </div>
+            <div class=" text-start col-12" style="color: #616161;">Lörem ipsum hyda decilidade exoktiga. Telede beril disk innan autorar i hösk
+                plagekav. </div>
+            <div class=" text-start col-12 q-mt-md">12 April 2023</div>
+        </div>
+    </q-card>
+    <!-- RUANG EDUKASI  -->
+    <q-card flat v-else-if="type == 'Dokumentasi Video'" class="col-12 row q-mb-md" style="border-radius: 12px; height: 305px;">
+        <div class="col-12 bg-grey" style="height: 200px; border-radius: 16px;"></div>
+        <div class="col-12  q-px-xs ">
+            <div class=" text-start col-12" style="color: #616161;">Lörem  </div>
+            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> Ingat 5 PASTI UMRAH dalam memilih travel
+            </div>
+            <div class=" text-start col-12 q-mt-md">12 April 2023</div>
         </div>
     </q-card>
 </template>
 <script>
 export default {
     name: 'CardProducst',
-    props: ['type', 'item'],
+    props: ['type', 'item' ,'hidaButton' ,'topText'],
 }
 </script>
 <style>

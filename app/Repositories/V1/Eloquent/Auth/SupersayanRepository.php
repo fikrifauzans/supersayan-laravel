@@ -112,11 +112,11 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Permissions',         'slug' => 'permissions'],
             ['name' => 'Permission Acess',    'slug' => 'permission-access'],
             ['name' => 'Files',               'slug' => 'files'],
-            ['name' => 'Schools',               'slug' => 'schools'],
-            ['name' => 'Studies',               'slug' => 'studies'],
-            ['name' => 'Classes',               'slug' => 'classes'],
-            ['name' => 'Lesson Timetable',               'slug' => 'lesson-timetable'],
-            ['name' => 'Lesson Timetable',               'slug' => 'lesson-timetable'],
+            ['name' => 'Schools',             'slug' => 'schools'],
+            ['name' => 'Studies',             'slug' => 'studies'],
+            ['name' => 'Classes',             'slug' => 'classes'],
+            ['name' => 'Lesson Timetable',    'slug' => 'lesson-timetable'],
+            ['name' => 'Lesson Timetable',    'slug' => 'lesson-timetable'],
             ['name' => 'Presences',               'slug' => 'presences'],
             ['name' => 'Contents',               'slug' => 'contents'],
             // Master Data
@@ -174,10 +174,10 @@ class SupersayanRepository extends BaseRepository
             // ['group' => null, 'name' => null, 'path' => null,  'sort' => null  ,'title' => null , 'subtitle' => null , 'description' => null , 'link' => null , 'code' => null],
             // NAVBAR MENU
             ['group' => 'Menu',      'name' => 'Beranda',                 'path' => 'home',       'sort' => 1, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
-            ['group' => 'Menu',      'name' => 'Paket Umrah',             'path' => 'paket-umrah', 'sort' => 2, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
-            ['group' => 'Menu',      'name' => 'Paket Haji',              'path' => 'paket-haji', 'sort' => 3, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
-            ['group' => 'Menu',      'name' => 'Dokumentasi',             'path' => 'paket-haji', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
-            ['group' => 'Menu',      'name' => 'Tentang Kami',            'path' => 'paket-haji', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Paket Umrah & Haji',                    'path' => 'paket', 'sort' => 2, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            // ['group' => 'Menu',      'name' => 'Paket Haji',              'path' => 'paket', 'sort' => 3, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Dokumentasi',             'path' => 'dokumentasi', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
+            ['group' => 'Menu',      'name' => 'Tentang Kami',            'path' => 'tentang-kami', 'sort' => 4, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
             ['group' => 'Carousel',  'name' => 'Carousel',            'path' => null,        'sort' => null, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
             ['group' => 'Awards',    'name' => 'Traver Maghfirah Awards', 'path' => null,        'sort' => null, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
             ['group' => 'Titles',    'name' => null, 'path' => null,         'sort' => null,      'title' => 'Maghfirah Travel', 'subtitle' => 'Temukan Esensi Perjalan Suci Bersama', 'description' => null, 'link' => null, 'code' => 'title-first'],
@@ -273,6 +273,18 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
                 'link' => null,
                 'code' => null
             ],
+            [
+                'group' => 'About Us Content',
+                'name' => 'Tentang',
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => null,
+                'description' => 'Maghfirah yang bermakna “Ampunan” adalah tujuan umat Islam menjalankan ibadah umrah dan haji. Sesuai namanya, Maghfirah Travel sangat menginginkan dapat membimbing jamaah untuk dapat melaksanakan ibadah umroh dan haji sebenar-benarnya, yaitu sesuai sunnah Nabi Muhammad saw, sehingga dapat meraih ampunan Allah.
+                Pada tahun 2001, DR.H. Ahmad Hatta, MA. dan H. Firman M Nur, M.Sc. mendirikan Maghfirah Travel dengan badan hukum PT. Kafilah Maghfirah Wisata. Maghfirah yang berarti ampunan menjadi visi Maghfirah Travel.',
+                'link' => null,
+                'code' => null
+            ],
 
             [
                 'group' => 'Card - Contact Us',
@@ -292,7 +304,9 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
                 'sort' => null,
                 'title' => 'Melayani & Membimbing dengan hati',
                 'subtitle' => null,
-                'description' => 'Jamaah haji dan umroh adalah tamu Allah, sehingga menjadi kehormatan bagi kami untuk memberikan pelayanan terbaik',
+                'description' => 'Jamaah haji dan umroh adalah tamu Allah, sehingga menjadi kehormatan bagi kami untuk memberikan pelayanan terbaik.
+                
+                Maghfirah Travel juga berkomitmen untuk senantiasa membimbing dengan sebaik-baiknya dan sepenuh hati, sehingga setiap jamaah dapat menunaikan seluruh rangkaian ibadah haji dan umroh dengan benar dan khusyu, sesuai dengan tuntunan Rasulullah saw.',
                 'link' => null,
                 'code' => null
             ],
@@ -305,7 +319,7 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
                 'subtitle' => 'Testimoni jamaah Maghfirah Travel',
                 'description' => null,
                 'link' => null,
-                'code' => null
+                'code' => 'testimoni-title'
             ],
             [
                 'group' => 'Card - Testimonies',
@@ -349,7 +363,29 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
                 'subtitle' => null,
                 'description' => null,
                 'link' => null,
-                'code' => null
+                'code' => 'title-ruang-edukasi'
+            ],
+            [
+                'group' => 'Titles',
+                'name' => 'Dokumentasi Foto',
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => null,
+                'description' => null,
+                'link' => null,
+                'code' => 'title-dokumentasi-foto'
+            ],
+            [
+                'group' => 'Titles',
+                'name' => 'Dokumentasi Video',
+                'path' => null,
+                'sort' => null,
+                'title' => 'Maghfirah Travel',
+                'subtitle' => null,
+                'description' => null,
+                'link' => null,
+                'code' => 'title-dokumentasi-video'
             ],
             [
                 'group' => 'Banner - Register',
@@ -376,7 +412,7 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
 
             [
                 'group' => 'About Us - Vision',
-                'name' => null,
+                'name' => 'Visi',
                 'path' => null,
                 'sort' => null,
                 'title' => null,
@@ -387,7 +423,7 @@ Dengan komitmen terus-menerus memberikan pelayanan terbaik bagi jamaah dan mener
             ],
             [
                 'group' => 'About Us - Mission',
-                'name' => null,
+                'name' => 'Misi',
                 'path' => null,
                 'sort' => null,
                 'title' => null,

@@ -62,32 +62,112 @@
 
 
         <!-- BANNER  -->
-        <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl  q-mt-xl' : 'q-mt-md q-px-md'">
-            <q-card :class="$q.screen.gt.sm ? 'col-12 row q-px-xl  q-py-md' : ''">
+        <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl  q-mt-xl' : 'q-mt-md q-px-md '">
+            <q-card :class="$q.screen.gt.sm ? 'col-12 row q-px-xl  q-py-md' : ' q-pa-md'" style="border-radius: 24px;">
                 <div class="col-9 ">
                     <cms-paragraph :title="$Handle.getContent('', 'Card - Contact Us', true).title"
                         :description="$Handle.getContent('', 'Card - Contact Us', true).description" />
                 </div>
-                <div class="col-3 row justify-end">
+                <div :class="$q.screen.gt.sm ? 'col-3 row justify-end' : 'col-3 row justify-start'">
                     <q-img src="images/cso-icon.png" style="width: 150px; height: 150px;" />
-
                 </div>
-                <div >
-                    <q-btn unelevated size="lg" noCaps class="dafault-button q-mt-lg q-mr-md" label="Hubungi Kami (Ikhwan)"
-                        color="primary" style="border-radius: 8px;" />
-                    <q-btn unelevated size="lg" noCaps class="dafault-button q-mt-lg" label="Hubungi Kami (Akhwat)"
-                        color="primary" style="border-radius: 8px;" />
+                <div>
+                    <q-btn unelevated :size="$q.screen.gt.sm ? 'lg' : 'md'" noCaps class="dafault-button q-mt-lg q-mr-md"
+                        label="Hubungi Kami (Ikhwan)" color="primary" style="border-radius: 8px;" />
                 </div>
             </q-card>
         </div>
 
-        <div class="col-12 row q-mt-xl">
-            <div class="col-md-6">
+
+        <!-- ABOUNT US CONTENT  -->
+        <div class="col-12 row q-mt-sm q-px-xl">
+            <div class="col-md-6 col-12">
                 <q-img src="images/about-us.webp" fit class="fit" />
             </div>
-            <div class="col-md-6"></div>
+            <div class=" col-md-6 col-12 row items-center">
+                <div :class="$q.screen.gt.sm ? 'q-mx-xl q-px-xl' : 'q-mt-xl '">
+                    <cms-logo width="267" class="q-mb-lg" />
+                    <cms-paragraph :title="$Handle.getContent('', 'About Us - Service description', true).title"
+                        :description="$Handle.getContent('', 'About Us - Service description', true).description" />
+                </div>
+            </div>
         </div>
 
+
+        <!-- LIST USTADZ  -->
+        <div class="col-12 row justify-center  q-mt-xl q-pt-md">
+            <div class="col-md-10  col-12 text-center ">
+                <cms-paragraph :title="$Handle.getContent('title-ustadz-list', 'Titles', true).title"
+                    :description="$Handle.getContent('title-ustadz-list', 'Titles', true).subtitle" />
+            </div>
+            <div class="col-12 row q-px-xl q-mt-lg">
+                <div v-for="item in 4" :key="item" class="col-3 q-px-md">
+                    <cms-card type="List Ustadz" />
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTIMONI CONTAINER  -->
+        <div class="col-12 row justify-between q-px-xl q-mt-xl q-pt-xl">
+            <div class="col-3 row">
+                <div class="col-12 q-mb-md">
+                    <q-img src="images/comma.svg" style="width:72px" />
+                </div>
+                <div>
+                    <cms-paragraph :title="$Handle.getContent('testimoni-title', 'Titles', true).title"
+                        :description="$Handle.getContent('testimoni-title', 'Titles', true).subtitle" />
+                </div>
+            </div>
+            <div class="col-8  row">
+                <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" transition-prev="slide-right"
+                    transition-next="slide-left" @mouseenter="autoplay = false" @mouseleave="autoplay = true"
+                    class="col-12 q-pb-xl" control-color="primary" style="height: 300px;">
+                    <q-carousel-slide v-for="item in 4" :key="item" :name="item" class="q-px-xl">
+                        <q-card class="col-12 row fit q-pa-lg" flat style="border: 1px solid #99C3AF;border-radius: 16px;">
+                            <div class="col-8 ">
+                                <div class="text-h6 text-bold q-mb-md">Name</div>
+                                <div style="font-size: 17px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
+                                    quas suscipit officiis
+                                    tempore rerum tempora odit est cupiditate provident animi, ipsum, dignissimos hic
+                                    aliquam
+                                    maxime architecto optio esse iste. Voluptate.</div>
+                            </div>
+                            <div class="col-4">
+                                <div></div>
+                            </div>
+                        </q-card>
+                    </q-carousel-slide>
+                </q-carousel>
+            </div>
+        </div>
+
+        <!-- PARTNERSS  -->
+        <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
+            <cms-paragraph :title="$Handle.getContent('title-partner', 'Titles', true).title"
+                :description="$Handle.getContent('title-partner', 'Titles', true).description" />
+            <div class="col-12 row q-mt-xl">
+                <q-img src="images/garuda-indonesia.png" style="width: 175px;" />
+            </div>
+        </div>
+
+
+        <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
+            <div class="row col-12 justify-between items-center">
+                <div>
+                    <cms-paragraph :title="$Handle.getContent('title-ruang-edukasi', 'Titles', true).title"
+                        :topText="$Handle.getContent('title-ruang-edukasi', 'Titles', true).name" />
+                </div>
+                <div>
+                    <q-btn unelevated :size="$q.screen.gt.sm ? 'md' : 'md'" noCaps class="dafault-button q-mt-lg q-mr-md"
+                        label="Lihat Semua" color="primary" style="border-radius: 8px;" />
+                </div>
+            </div>
+            <div class="col-12 row  q-mt-lg">
+                <div v-for="item in 3" :key="item" class="col-4 q-px-sm">
+                    <cms-card type="Ruang Edukasi" />
+                </div>
+            </div>
+        </div>
 
 
 
@@ -107,6 +187,8 @@ export default {
             buttonCategory: 'Haji',
             optionCategory: [{ name: 'Haji' }, { name: 'Umrah' }],
             packages: [],
+            slide: 1,
+            autoplay: true
         }
     },
     methods: {

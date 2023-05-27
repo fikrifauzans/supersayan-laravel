@@ -40,6 +40,7 @@ import CarouselCms from '../components/system/CarouselCms.vue'
 import ParagraphCms from '../components/system/ParagraphCms.vue'
 import CardCms from '../components/system/CardCms.vue'
 import CmsLogo from '../components/system/CmsLogo.vue'
+import CmsFooter from '../components/system/CmsFooter.vue'
 
 
 
@@ -89,6 +90,7 @@ export default boot(async ({
   app.component('cms-paragraph', ParagraphCms)
   app.component('cms-card', CardCms)
   app.component('cms-logo', CmsLogo)
+  app.component('cms-footer', CmsFooter)
 
   
 
