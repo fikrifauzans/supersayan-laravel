@@ -47,7 +47,7 @@ trait FileSystem
         if ($reference_id != "null")  $this->dataFile['reference_id'] = $reference_id;
         if ($description  != "null")  $this->dataFile['description']  = $description;
         if ($description  != "null")  $this->dataFile['reference_table']  = $reference_table;
-
+        // dd($description);
         $val = Files::create($this->dataFile);
         return $val;
     }
@@ -56,32 +56,38 @@ trait FileSystem
 
     public function updateFile($id, $request, $field = '', $status = 'update')
     {
-        if ($request->file($field) != null) {
-            $file = Files::find($id);
-            // try {
-            // Hapus Gambar ================================================
-            // dd($file['name'] != null);
-            if ($file['name'] != null) unlink(public_path('storage/' . $file['name']));
-            // Simpan Gamba ================================================
-            $this->moveImage($request, $field);
-
-            if ($file['reference_id'] == "null") $file->reference_id = null;
-            // Ubah Info Gambar ============================================
-            $file->name      =       $this->dataFile['name'];
-            $file->directory =       $this->dataFile['directory'];
-            $file->path      =       $this->dataFile['path'];
-            $file->save();
-            return $file;
-            // } catch (\Throwable $th) {
-            // return $th;
-            // }
-        } else if ($status == "delete") {
-            $file = Files::find($id);
-            unlink(public_path('storage/' . $file['name']));
-            $file->name      =       null;
-            $file->directory =       null;
-            $file->path      =       null;
-            $file->save();
+        try {
+            if ($request->file($field) != null) {
+                $file = Files::find($id);
+                // Hapus Gambar ================================================
+                if ($file['name'] != null) unlink(public_path('storage/' . $file['name']));
+                // Simpan Gamba ================================================
+                $this->moveImage($request, $field);
+                if ($file['reference_id'] == "null") $file->reference_id = null;
+                // Ubah Info Gambar ============================================
+                $file->name             =       $this->dataFile['name'];
+                $file->directory        =       $this->dataFile['directory'];
+                $file->path             =       $this->dataFile['path'];
+                $file->description      =       $this->dataFile['description'];
+                $file->save();
+                return $file;
+            } else if ($status == "delete") {
+                $file = Files::find($id);
+                unlink(public_path('storage/' . $file['name']));
+                $file->name      =       null;
+                $file->directory =       null;
+                $file->path      =       null;
+                $file->save();
+            } else {
+                $file =  Files::find($id);
+                if ($request['description'] != null) $file->description = $request['description'];
+                if ($request['name']        != null) $file->name = $request['name'];
+                if ($request['directory']   != null) $file->directory = $request['directory'];
+                if ($request['path']        != null) $file->path = $request['path'];
+                $file->save();
+            }
+        } catch (\Throwable $th) {
+            return $th;
         }
     }
 

@@ -148,7 +148,7 @@ class Api {
     }
 
   }
-  fileHandler($file, $reference, statusFile){
+  fileHandler($file, $reference = null, statusFile){
     return true
   }
 

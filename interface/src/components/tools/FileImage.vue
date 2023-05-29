@@ -8,6 +8,8 @@
         color="negative" @click="() => {
           this.utils.hideOldValue = !this.utils.hideOldValue
           $emit('update:modelValue', null)
+          status_file = 'delete'
+          methodStatus = 'delete'
         }" />
       <q-icon name="attach_file" />
     </template>
@@ -34,21 +36,37 @@ export default {
     "reference_id",
     "module",
     "raw",
+    "fullFile",
+
   ],
-  async created() { },
+  async created() {
+
+  },
   data() {
     return {
       utils: { hideOldValue: false },
+      status_file: 'update',
+      methodStatus: null
     };
   },
   methods: {
     updateValue(val) {
-      this.$emit('update:modelValue', val)
-      if (this.full == '') this.$emit('update:modelValue', {
-        description: this.description,
-        module: this.module,
-        reference_id: this.reference_id
-      })
+      if (this.fullFile === '') {
+        let methodStatus = ''
+        if (this.oldValue == null) {
+          methodStatus = 'post'
+        } else methodStatus = 'update'
+        this.$emit('update:modelValue', {
+          description: this.description,
+          module: this.module,
+          reference_id: this.reference_id,
+          file: val,
+          status_file: this.status_file
+        })
+      } else {
+        this.$emit('update:modelValue', val)
+
+      }
     }
   },
 

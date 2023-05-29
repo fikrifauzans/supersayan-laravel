@@ -9,8 +9,8 @@
           <t-input col="6" label="desciption" v-model="model.description" />
           <t-file-image col="6" label="File" v-model="model.file" :oldValue="model.name" @deleteFile="() => {
             model.status_file = 'delete'
-          }" />
-
+          }"  />
+      
         </s-form>
       </div>
     </s-drawer>

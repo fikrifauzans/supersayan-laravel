@@ -17,7 +17,7 @@
           <t-input col='4' label='path' v-model='model.path' topLabel='path' />
           <t-input col='4' label='link' v-model='model.link' topLabel='link' />
           <t-input col='4' label='sort' v-model='model.sort' topLabel='sort' />
-          <t-file-image col='4' label="image" v-model="model.file" />
+          <t-file-image col='4' label="image" v-model="model.file" fullFile />
           {{ model.file }}
           <t-text-editor col='12' label='remark' type='textarea' v-model='model.remark' />
           <t-text-editor col='12' label='details' type='textarea' v-model='model.details' />
@@ -88,6 +88,7 @@ export default {
     },
     postData(model) {
       let endpoint = this.Meta.module
+      this.$api.fileHandler(model.file, null, model.file.status_file)
       this.$api.post(endpoint, model, (data, status, message, full) => {
         if (status == 200) {
           this.$Handle.successMessage(message)
@@ -98,8 +99,7 @@ export default {
     },
     back() {
       if (this.useModal == true) this.$emit('closeModal')
-      else
-        return this.$router.push({ name: Meta.module, query: { ...this.$route.query } })
+      else return this.$router.push({ name: Meta.module, query: { ...this.$route.query } })
     },
   },
 }
