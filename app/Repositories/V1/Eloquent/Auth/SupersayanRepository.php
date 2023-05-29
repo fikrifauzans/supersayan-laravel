@@ -73,8 +73,7 @@ class SupersayanRepository extends BaseRepository
         MasterMenus::insert(
             [
                 ['name' => 'Superadmin',          'status' => 1], //1
-                ['name' => 'Siswa',               'status' => 1], //1
-                ['name' => 'Guru',                'status' => 1], //1
+
             ]
         );
 

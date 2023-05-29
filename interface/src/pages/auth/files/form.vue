@@ -1,13 +1,17 @@
 <template>
-  <s-loading :load="loading" />
-  <s-drawer @refresh="refresh" :useModal="useModal" form @submit="submit" @back="back" :Meta="Meta">
-    <div class="q-px-md">
-      <s-form class="q-px-md q-py-lg" title="Files">
-        <t-input col="4" label="desciption" required v-model="model.description" />
-        <t-file-image col="4" label="File" v-model="model.file" :oldValue="model.name" />
-      </s-form>
-    </div>
-  </s-drawer>
+  <div>
+    <s-loading :load="loading" />
+    <s-drawer @refresh="refresh" :useModal="useModal" form @submit="submit" @back="back" :Meta="Meta">
+      <div class="q-px-md">
+        <s-form class="q-px-md q-py-lg" title="Files">
+          <!-- <t-input col="6" label="path" required v-model="model.path" />
+          <t-input col="6" label="directory" required v-model="model.directory" /> -->
+          <t-input col="6" label="desciption"  v-model="model.description" />
+          <t-file-image col="6" label="File" v-model="model.file" :oldValue="model.name" />
+        </s-form>
+      </div>
+    </s-drawer>
+  </div>
 </template>
 
 <script>

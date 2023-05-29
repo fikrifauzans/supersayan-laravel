@@ -2,13 +2,14 @@
     <div :class="`col-12 col-md-${col}`">
         <div class="top-text ">{{ topText }}</div>
         <div class="title">{{ title }}</div>
-        <div class="description poppins"> {{ description }}</div>
+        <div v-if="dense === ''" class="description poppins" style="margin-top: 10px !important;"> {{ description }}</div>
+        <div v-else class="description poppins"> {{ description }}</div>
         <slot name="bottom" />
      </div>
 </template>
 <script>
 export default {
-    props: ['title', 'topText', 'description', 'col'],
+    props: ['title', 'topText', 'description', 'col' ,'dense'],
     name: 'CmsParagraph',
 }
 </script>

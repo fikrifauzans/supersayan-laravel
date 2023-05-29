@@ -65,7 +65,7 @@ class FilesController extends Controller
 
         if ($validated->fails()) return response()->json(['errors' => $validated->errors()], 422);
 
-        else return $this->response->choseLang($language)->modeMessage('create', $this->repository->getTableName())->success($this->repository->moveImage($request, 'file')->storeFile(null, 'files', $request['description']));
+        else return $this->response->choseLang($language)->modeMessage('create', $this->repository->getTableName())->success($this->repository->moveImage($request, 'file')->storeFile($request['reference_id'], $request['module'], $request['description'], $request['reference_table']));
     }
 
     public function update(Request $request,  $language, $id)

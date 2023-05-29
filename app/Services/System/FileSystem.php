@@ -43,10 +43,12 @@ trait FileSystem
         $description  = '',
         $reference_table  = '',
     ) {
-        if ($module       != null)  $this->dataFile['module']       = $module;
-        if ($reference_id != null)  $this->dataFile['reference_id'] = $reference_id;
-        if ($description  != null)  $this->dataFile['description']  = $description;
-        if ($description  != null)  $this->dataFile['reference_table']  = $reference_table;
+
+
+        if ($module       != "null")  $this->dataFile['module']       = $module;
+        if ($reference_id != "null")  $this->dataFile['reference_id'] = $reference_id;
+        if ($description  != "null")  $this->dataFile['description']  = $description;
+        if ($description  != "null")  $this->dataFile['reference_table']  = $reference_table;
 
         $val = Files::create($this->dataFile);
         return $val;

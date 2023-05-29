@@ -36,7 +36,7 @@ class Api {
   }
   setDefaultHeader() {
     this.api.defaults.headers = { 'Accept': "application/json" }
-    this.api.defaults.headers = { 'Access-Control-Allow-Origin': "*" }
+    // this.api.defaults.headers = { 'Access-Control-Allow-Origin': "*" }
     return this
   }
   setMultipartForm() {

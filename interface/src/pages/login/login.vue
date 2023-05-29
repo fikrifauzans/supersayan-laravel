@@ -4,8 +4,8 @@
     style="border-radius: 24px 24px 0 0 " @submit="login">
     <div class="col-12 justify-start row" v-if="type == 'login'">
       <div class="text-h5 text-bold col-12"></div>
-      <div class="col-12 text-center q-mb-xl text-bold text-h6">
-        Aplikasi Sekolah
+      <div class="col-12  q-mb-xl text-bold text-h6">
+        <cms-paragraph title="Hai.. Asslamualaikum " description="Silakan masukan akun anda dibawah ini." />
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Username </small>
@@ -22,8 +22,9 @@
         </q-input>
       </div>
       <div class="col-12 row q-mt-xl">
-        <q-btn label="Login" class="col-12 bg-white" size="lg" noCaps flat color="primary" type="submit"
-          @click="login" />
+        <q-btn label="Login" class="col-12 bg-white" size="lg" noCaps flat color="primary" type="submit" @click="login" 
+        style="border-radius: 12px;"
+        />
       </div>
       <div class="col-12 justify-between row q-mt-sm q-mb-lg">
         <small class="text-weight-bold"></small>
