@@ -1,26 +1,26 @@
 
-        <template>
+<template>
   <div>
     <s-loading :load='loading' />
     <s-drawer @refresh='refresh' :useModal='useModal' form @submit='submit' @back='back' :Meta='Meta'>
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Contents'>
-<t-input col='4' label='code' v-model='model.code' topLabel='code' />
-<t-currency col='4' label='parent_id' currency v-model='model.parent_id'  topLabel='parent_id' />
-<t-input col='4' label='group' v-model='model.group' topLabel='group' />
-<t-input col='4' label='name' v-model='model.name' topLabel='name' />
-<t-input col='4' label='page' v-model='model.page' topLabel='page' />
-<t-input col='4' label='device' v-model='model.device' topLabel='device' />
-<t-input col='4' label='title' v-model='model.title' topLabel='title' />
-<t-input col='4' label='subtitle' v-model='model.subtitle' topLabel='subtitle' />
-<t-input col='4' label='description' v-model='model.description' topLabel='description' />
-<t-input col='4' label='path' v-model='model.path' topLabel='path' />
-<t-input col='4' label='link' v-model='model.link' topLabel='link' />
-<t-input col='4' label='sort' v-model='model.sort' topLabel='sort' />
-<t-text-editor col='4' label='remark'  type='textarea' v-model='model.remark' />
-<t-text-editor col='4' label='details'  type='textarea' v-model='model.details' />
-<t-currency col='4' label='photo_id' currency v-model='model.photo_id'  topLabel='photo_id' />
-
+          <!-- <t-input col='4' label='code' v-model='model.code' topLabel='code' />
+          <t-currency col='4' label='parent_id' currency v-model='model.parent_id' topLabel='parent_id' /> -->
+          <t-input col='4' label='group' v-model='model.group' topLabel='group' />
+          <t-input col='4' label='name' v-model='model.name' topLabel='name' />
+          <t-input col='4' label='page' v-model='model.page' topLabel='page' />
+          <t-input col='4' label='device' v-model='model.device' topLabel='device' />
+          <t-input col='4' label='title' v-model='model.title' topLabel='title' />
+          <t-input col='4' label='subtitle' v-model='model.subtitle' topLabel='subtitle' />
+          <t-input col='4' label='description' v-model='model.description' topLabel='description' />
+          <t-input col='4' label='path' v-model='model.path' topLabel='path' />
+          <t-input col='4' label='link' v-model='model.link' topLabel='link' />
+          <t-input col='4' label='sort' v-model='model.sort' topLabel='sort' />
+          <t-file-image col='4' label="image" v-model="model.file" />
+          {{ model.file }}
+          <t-text-editor col='12' label='remark' type='textarea' v-model='model.remark' />
+          <t-text-editor col='12' label='details' type='textarea' v-model='model.details' />
         </s-form>
       </div>
     </s-drawer>

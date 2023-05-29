@@ -4,7 +4,7 @@
       {{ label }}
     </div>
     <q-editor :label="label" :model-value="modelValue" @update:modelValue="(val) => $emit('update:modelValue', val)"
-      :dense="$q.screen.lt.md"  :toolbar="[
+      :dense="$q.screen.lt.md" :toolbar="[
         [
           {
             label: $q.lang.editor.align,
@@ -79,7 +79,9 @@ export default {
   setup() {
     return {}
   },
-  props: ["modelValue", "col" ,'label'],
-  created() { },
+  props: ["modelValue", "col", 'label'],
+  created() {
+    this.$emit('update:modelValue', '')
+  },
 }
 </script>

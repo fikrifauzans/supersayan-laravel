@@ -6,8 +6,11 @@
         <s-form class="q-px-md q-py-lg" title="Files">
           <!-- <t-input col="6" label="path" required v-model="model.path" />
           <t-input col="6" label="directory" required v-model="model.directory" /> -->
-          <t-input col="6" label="desciption"  v-model="model.description" />
-          <t-file-image col="6" label="File" v-model="model.file" :oldValue="model.name" />
+          <t-input col="6" label="desciption" v-model="model.description" />
+          <t-file-image col="6" label="File" v-model="model.file" :oldValue="model.name" @deleteFile="() => {
+            model.status_file = 'delete'
+          }" />
+
         </s-form>
       </div>
     </s-drawer>
@@ -23,9 +26,7 @@ export default {
   created() {
     this.$Handle.loadingStart();
     this.Meta.model = {};
-    if (this.$route.params.id) {
-      this.param = this.$route.params.id ? this.$route.params.id : null;
-    }
+    if (this.$route.params.id) this.param = this.$route.params.id ? this.$route.params.id : null;
     if (this.id) this.param = this.id ? this.id : null;
     if (this.modal && this.modal.add === true) this.useModal = true;
     if (this.modal && this.modal.edit === true) this.useModal = true;

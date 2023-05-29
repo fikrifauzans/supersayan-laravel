@@ -43,8 +43,6 @@ trait FileSystem
         $description  = '',
         $reference_table  = '',
     ) {
-
-
         if ($module       != "null")  $this->dataFile['module']       = $module;
         if ($reference_id != "null")  $this->dataFile['reference_id'] = $reference_id;
         if ($description  != "null")  $this->dataFile['description']  = $description;
@@ -56,27 +54,34 @@ trait FileSystem
 
 
 
-    public function updateFile($id, $request, $field = '')
+    public function updateFile($id, $request, $field = '', $status = 'update')
     {
-
         if ($request->file($field) != null) {
             $file = Files::find($id);
-            try {
-                // Hapus Gambar ================================================
-                unlink($file->directory);
-                // Simpan Gamba ================================================
-                $this->moveImage($request, $field);
+            // try {
+            // Hapus Gambar ================================================
+            // dd($file['name'] != null);
+            if ($file['name'] != null) unlink(public_path('storage/' . $file['name']));
+            // Simpan Gamba ================================================
+            $this->moveImage($request, $field);
 
-                if ($file['rereference_id'] == null) $file->reference_id = '0';
-                // Ubah Info Gambar ============================================
-                $file->name      =       $this->dataFile['name'];
-                $file->directory =       $this->dataFile['directory'];
-                $file->path      =       $this->dataFile['path'];
-                $file->save();
-                return $file;
-            } catch (\Throwable $th) {
-                return $file;
-            }
+            if ($file['reference_id'] == "null") $file->reference_id = null;
+            // Ubah Info Gambar ============================================
+            $file->name      =       $this->dataFile['name'];
+            $file->directory =       $this->dataFile['directory'];
+            $file->path      =       $this->dataFile['path'];
+            $file->save();
+            return $file;
+            // } catch (\Throwable $th) {
+            // return $th;
+            // }
+        } else if ($status == "delete") {
+            $file = Files::find($id);
+            unlink(public_path('storage/' . $file['name']));
+            $file->name      =       null;
+            $file->directory =       null;
+            $file->path      =       null;
+            $file->save();
         }
     }
 
@@ -84,10 +89,12 @@ trait FileSystem
     {
         $file = $this->findId($id, true);
         try {
-            unlink($file['directory']);
+            unlink(public_path('storage/' . $file['name']));
             $file->forceDelete();
+            return true;
         } catch (\Throwable $th) {
             $file->forceDelete();
+            return true;
         }
     }
 }

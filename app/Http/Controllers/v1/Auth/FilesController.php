@@ -78,7 +78,7 @@ class FilesController extends Controller
 
         if ($validated->fails()) return response()->json(['errors' => $validated->errors()], 422);
 
-        return $this->response->choseLang($language)->modeMessage('update', $this->repository->getTableName())->success($this->repository->updateFile($id, $request, 'file'));
+        return $this->response->choseLang($language)->modeMessage('update', $this->repository->getTableName())->success($this->repository->updateFile($id, $request, 'file', $request['status_file']));
     }
 
     public function destroy($language, $id, Request $request)

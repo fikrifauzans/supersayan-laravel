@@ -16,7 +16,8 @@ export default {
     path: null,
     description: null,
     reference_id: null,
-    reference_module: null
+    reference_module: null,
+    status_file: null
   },
   //TABLE
   table: {

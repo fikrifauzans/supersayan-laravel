@@ -11,7 +11,7 @@ const system = new System()
 const api = axios.create(
   {
     // baseURL: process.env.API_BASE_URL ?? 'https://api.beytcoffeetigabelas.com' ,
-    baseURL: system.apiRoot() ,
+    baseURL: system.apiRoot(),
     timeout: system.apiTimeout(),
     transitional: {
       silentJSONParsing: true
@@ -147,6 +147,9 @@ class Api {
       })
     }
 
+  }
+  fileHandler($file, $reference, statusFile){
+    return true
   }
 
 
