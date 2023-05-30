@@ -24,6 +24,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::delete('/{id}', [ContentsController::class, 'destroy']);
                 Route::delete('/force/{id}', [ContentsController::class, 'force']);
                 Route::put('/restore/{id}', [ContentsController::class, 'restore']);
+                Route::get('/filter/group', [ContentsController::class, 'group']);
             });
         });
     });

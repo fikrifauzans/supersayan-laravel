@@ -4,6 +4,8 @@ namespace App\Repositories\V1\Eloquent\Master;
 
 use App\Models\Contents;
 use App\Repositories\V1\Eloquent\BaseRepository;
+use Illuminate\Mail\Mailables\Content;
+
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -22,6 +24,12 @@ class ContentsRepository extends BaseRepository
     public function __construct(Contents $model)
     {
     $this->model = $model;
+    }
+
+    public function getContentGroup(){
+
+        return Contents::select('group')->groupBy('group')->get();
+
     }
     
 }

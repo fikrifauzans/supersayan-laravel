@@ -6,7 +6,6 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 use App\Models\Otps;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
-use App\Repositories\V1\Interface\Auth\IUsersRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Roles;
 use App\Services\Helper\Helper;

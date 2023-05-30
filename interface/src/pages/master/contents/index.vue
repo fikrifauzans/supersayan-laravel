@@ -2,8 +2,19 @@
 <template>
   <div>
     <s-loading :load='loading' />
+
     <s-drawer wrapCard @refresh='refresh' :Meta='Meta' :filter='filter' :table='table' v-model='filter.query'
       @update:modelValue='refresh'>
+      <div class="q-pb-sm"></div>
+      <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2 "
+        style="border-radius:10px 10px 0 0">
+        <q-tab name="mails" icon="mail" label="Mails" />
+        <q-tab name="alarms" icon="alarm" label="Alarms" />
+        <q-tab name="movies" icon="movie" label="Movies" />
+        <q-tab name="photos" icon="photo" label="Photos" />
+        <q-tab name="videos" icon="slow_motion_video" label="Videos" />
+        <q-tab name="addressbook" icon="people" label="Address Book" />
+      </q-tabs>
       <q-table virtual-scroll class='q-my-sm' :rows='table.rows' :columns='table.columns' row-key='id'
         selection='multiple' v-model:selected='table.selected' v-model:pagination='table.pagination'
         :style='$Static.table.height()' :dense='$Static.table.dense()' :flat='$Static.table.flat()'
@@ -56,12 +67,17 @@ export default {
         value: false,
         query: null,
       },
+      tab: null,
+      group: []
     }
   },
   created() {
+
     this.table = this.$Handle.structureTable(
       this.table.columns(this.$Help, this.$Lang, this.Static)
     )
+
+    this.getContentsGroup()
     if (this.$route.query.trash) this.trash = JSON.parse(this.$route.query.trash)
     if (this.$route.query.search) this.trash = JSON.parse(this.$route.query.search)
     if (this.$route.query.page) this.table.pagination = { ...this.$route.query }
@@ -185,6 +201,11 @@ export default {
       this.filter.value = true
       // this.left = !this.left
     },
+    async getContentsGroup() {
+      await this.$api.get(this.Meta.module + '/filter/group', (data, status) => {
+        console.log(data);
+      }, (e) => { })
+    }
   },
 }
 </script>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\V1\Eloquent\Master;
+namespace App\Repositories\Master\V1\Eloquent;
 
 use App\Models\Contents;
 use App\Repositories\V1\Eloquent\BaseRepository;
@@ -15,13 +15,19 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 | generate in 2023-05-16T20:30                                             |
 |--------------------------------------------------------------------------|
 */
-class ContentsRepository extends BaseRepository 
+
+class ContentsRepository extends BaseRepository
 {
     protected $model;
 
     public function __construct(Contents $model)
     {
-    $this->model = $model;
+        $this->model = $model;
     }
-    
+
+
+    public function getContentGroup()
+    {
+     
+    }
 }
