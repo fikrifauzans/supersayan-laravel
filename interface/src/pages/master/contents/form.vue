@@ -17,8 +17,8 @@
           <t-input col='4' label='path' v-model='model.path' topLabel='path' />
           <t-input col='4' label='link' v-model='model.link' topLabel='link' />
           <t-input col='4' label='sort' v-model='model.sort' topLabel='sort' />
-          <t-file-image col='4' label="image" v-model="model.file" fullFile />
-          {{ model.file }}
+          <t-file-image col='4' label="image" v-model="model.photo" fullFile  />
+          {{ model.photo }}
           <t-text-editor col='12' label='remark' type='textarea' v-model='model.remark' />
           <t-text-editor col='12' label='details' type='textarea' v-model='model.details' />
         </s-form>
@@ -35,7 +35,7 @@ export default {
   props: ['modal', 'id', 'submitOnModal'],
   created() {
     this.$Handle.loadingStart()
-    this.Meta.model = {}
+    this.Meta.model = { ...Meta.model }
     if (this.$route.params.id) {
       this.param = this.$route.params.id ? this.$route.params.id : null
     }
@@ -76,7 +76,10 @@ export default {
       if (this.param !== null) await this.editData(this.param)
       else await this.postData(this.model)
     },
-    editData(id) {
+    async editData(id) {
+      let fileUploaded = await this.$api.fileHandler(this.model.photo, null, this.model.photo.method)
+      this.model.photo_id = fileUploaded.id
+
       let endpoint = this.Meta.module + '/' + id
       this.$api.put(endpoint, this.model, (data, status, message, full) => {
         if (status == 200) {
@@ -86,9 +89,11 @@ export default {
         }
       })
     },
-    postData(model) {
+    async postData(model) {
       let endpoint = this.Meta.module
-      this.$api.fileHandler(model.file, null, model.file.status_file)
+      let fileUploaded = await this.$api.fileHandler(this.model.photo, null, this.model.photo.method)
+      model.photo_id = fileUploaded.id
+      console.log(model.photo_id);
       this.$api.post(endpoint, model, (data, status, message, full) => {
         if (status == 200) {
           this.$Handle.successMessage(message)

@@ -36,7 +36,7 @@ class ContentsController extends Controller
     protected $repository;
     protected $validator;
     protected $response;
-    protected $relations = [];
+    protected $relations = ['Photo'];
                 
     public function __construct(ContentsRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {
@@ -61,7 +61,7 @@ class ContentsController extends Controller
                 
         if (Gate::denies('permission',  'contents-show' )) return $this->response->error($language, 'permission-denied');
                 
-        return $this->response->choseLang($language)->modeMessage('show', $this->repository->getTableName())->success($this->repository->findId($id, false));
+        return $this->response->choseLang($language)->modeMessage('show', $this->repository->getTableName())->success($this->repository->findId($id, false ,['Photo']));
     }
                 
     public function store(Request $request, $language)

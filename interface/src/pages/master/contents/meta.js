@@ -42,6 +42,7 @@
               details:null,
 
               photo_id:null,
+              photo:null,
 
             },
    

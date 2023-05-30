@@ -148,8 +148,27 @@ class Api {
     }
 
   }
-  fileHandler($file, $reference = null, statusFile){
-    return true
+  async fileHandler(file, reference = null, method = 'post') {
+    let fileUploaded = null
+    if (method == 'post') {
+      let fileUplad = this.Handle.loopingForm(file);
+      this.setMultipartForm();
+      await this.post('files', fileUplad,
+        async (data, status) => {
+          fileUploaded = await data
+        }, (e) => { })
+      return fileUploaded
+    } else if (method == 'update') {
+      let fileUplad = this.Handle.loopingForm(file);
+      this.setMultipartForm();
+      await this.post('files/' + file.id, fileUplad,
+        async (data, status) => {
+          fileUploaded = await data
+          console.log(fileUploaded);
+        }, (e) => { })
+      return fileUploaded
+    }
+
   }
 
 

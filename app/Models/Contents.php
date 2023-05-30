@@ -79,4 +79,10 @@ class Contents extends Model
         'photo_id',
 
     ];
+
+
+    public function Photo()
+    {
+        return $this->belongsTo(Files::class, 'photo_id', 'id')->select('path' ,'name' ,'id');
+    }
 }

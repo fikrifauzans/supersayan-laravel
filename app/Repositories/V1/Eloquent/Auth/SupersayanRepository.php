@@ -181,8 +181,6 @@ class SupersayanRepository extends BaseRepository
             ['group' => 'Awards',    'name' => 'Traver Maghfirah Awards', 'path' => null,        'sort' => null, 'title' => null, 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
             ['group' => 'Titles',    'name' => null, 'path' => null,         'sort' => null,      'title' => 'Maghfirah Travel', 'subtitle' => 'Temukan Esensi Perjalan Suci Bersama', 'description' => null, 'link' => null, 'code' => 'title-first'],
             ['group' => 'Titles',    'name' => null, 'path' => null,         'sort' => null,      'title' => 'Maghfirah Travel', 'subtitle' => 'Paket Umrah & Haji ',                 'description' => null, 'link' => null, 'code' => 'title-haji-umrah'],
-
-
             ['group' => 'Counter', 'name' => 'Jamaah Umrah', 'path' => null,  'sort' => null, 'title' => '67,065', 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
             ['group' => 'Counter', 'name' => 'Jamaah Haji', 'path' => null,  'sort' => null, 'title' => '3,151', 'subtitle' => null, 'description' => null, 'link' => null, 'code' => null],
 

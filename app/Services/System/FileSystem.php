@@ -56,39 +56,43 @@ trait FileSystem
 
     public function updateFile($id, $request, $field = '', $status = 'update')
     {
-        try {
-            if ($request->file($field) != null) {
-                $file = Files::find($id);
-                // Hapus Gambar ================================================
-                if ($file['name'] != null) unlink(public_path('storage/' . $file['name']));
-                // Simpan Gamba ================================================
-                $this->moveImage($request, $field);
-                if ($file['reference_id'] == "null") $file->reference_id = null;
-                // Ubah Info Gambar ============================================
-                $file->name             =       $this->dataFile['name'];
-                $file->directory        =       $this->dataFile['directory'];
-                $file->path             =       $this->dataFile['path'];
-                $file->description      =       $this->dataFile['description'];
-                $file->save();
-                return $file;
-            } else if ($status == "delete") {
-                $file = Files::find($id);
-                unlink(public_path('storage/' . $file['name']));
-                $file->name      =       null;
-                $file->directory =       null;
-                $file->path      =       null;
-                $file->save();
-            } else {
-                $file =  Files::find($id);
-                if ($request['description'] != null) $file->description = $request['description'];
-                if ($request['name']        != null) $file->name = $request['name'];
-                if ($request['directory']   != null) $file->directory = $request['directory'];
-                if ($request['path']        != null) $file->path = $request['path'];
-                $file->save();
-            }
-        } catch (\Throwable $th) {
-            return $th;
+        // try {
+        if ($request->file($field) != null) {
+            $file = Files::find($id);
+
+
+            // Hapus Gambar ================================================
+            $existingFile = public_path('storage/' . $file['name']);
+            if (file_exists($existingFile)) unlink($existingFile);
+            // Simpan Gamba ================================================
+            $this->moveImage($request, $field);
+            if ($file['reference_id'] == "null") $file->reference_id = null;
+            // Ubah Info Gambar ============================================
+            $file->name             =       $this->dataFile['name'] ?? null;
+            $file->directory        =       $this->dataFile['directory'] ?? null;
+            $file->path             =       $this->dataFile['path'] ?? null;
+            $file->description      =       $this->dataFile['description'] ?? null;
+            $file->save();
+            return $file;
+        } else if ($status == "delete") {
+            $file = Files::find($id);
+            $existingFile = public_path('storage/' . $file['name']);
+            if (file_exists($existingFile)) unlink($existingFile);
+            $file->name      =       null;
+            $file->directory =       null;
+            $file->path      =       null;
+            $file->save();
+        } else {
+            $file =  Files::find($id);
+            if ($request['description'] != null) $file->description = $request['description'];
+            if ($request['name']        != null) $file->name = $request['name'];
+            if ($request['directory']   != null) $file->directory = $request['directory'];
+            if ($request['path']        != null) $file->path = $request['path'];
+            $file->save();
         }
+        // } catch (\Throwable $th) {
+        //     return $th;
+        // }
     }
 
     public function forceFile($id)
