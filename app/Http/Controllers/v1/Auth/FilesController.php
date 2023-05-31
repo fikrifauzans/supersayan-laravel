@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\v1\Auth;
 
-use App\Repositories\V1\Eloquent\Auth\FilesRepository;
+use App\Repositories\v1\Eloquent\Auth\FilesRepository;
 use Illuminate\Http\Request;
 use App\Services\Helper\Helper;
 use App\Services\Handler\JsonResponse as JsonCustomResponse;
