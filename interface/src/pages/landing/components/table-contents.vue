@@ -18,6 +18,7 @@
 <script>
 export default {
     name: 'TableContents',
+    props:['group'],
     created() {
         this.getData()
     },
@@ -34,8 +35,10 @@ export default {
     },
     methods: {
         getData() {
+            let endpoint = 'contents'
+            if(this.group) endpoint += '?where=group:' + this.group
             this.$api.get(
-                'contents',
+                endpoint,
                 (data, status, message, full) => {
                     if (status == 200) {
 

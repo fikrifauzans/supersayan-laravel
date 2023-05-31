@@ -146,7 +146,8 @@
             <cms-paragraph :title="$Handle.getContent('title-partner', 'Titles', true).title"
                 :description="$Handle.getContent('title-partner', 'Titles', true).description" />
             <div class="col-12 row q-mt-xl">
-                <q-img v-for="item in $Handle.getContent('', 'Partners',)" v-show="item.photo" :key="item" :src="$System.storageUrl(item.photo.name)" style="width: 175px;" />
+                <q-img v-for="item in $Handle.getContent('', 'Partners',)" v-show="item.photo" :key="item"
+                    :src="$System.storageUrl(item.photo.name)" style="width: 175px;" />
             </div>
         </div>
         <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
@@ -161,8 +162,8 @@
                 </div>
             </div>
             <div class="col-12 row  q-mt-lg">
-                <div v-for="item in 3" :key="item" class="col-4 q-px-sm">
-                    <cms-card type="Ruang Edukasi" />
+                <div v-for="(item) in $Handle.getContent('', 'Ruang Edukasi')" :key="item"  class="col-4  q-px-sm">
+                    <cms-card  type="Ruang Edukasi" :item="item" />
                 </div>
             </div>
         </div>

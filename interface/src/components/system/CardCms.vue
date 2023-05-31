@@ -41,25 +41,25 @@
     <!-- LIST USTADZ  -->
     <q-card v-else-if="type == 'List Ustadz'" class="col-12 row" style="border-radius: 16px;">
         <div class="col-12 " style="height: 196px;">
-        <q-img  :src="$System.storageUrl(item.photo.name)" class="fit" />
+            <q-img :src="$System.storageUrl(item.photo.name)" class="fit" />
 
         </div>
         <div class="col-12 q-py-md">
             <div class="text-bold text-center col-12  q-mb-md"> {{ item.name }} </div>
-            <div class=" text-center col-12"> {{item.title}} </div>
-           
+            <div class=" text-center col-12"> {{ item.title }} </div>
+
         </div>
     </q-card>
     <!-- RUANG EDUKASI  -->
     <q-card v-else-if="type == 'Ruang Edukasi'" class="col-12 row q-mb-md" style="border-radius: 12px; height: 395px;">
-        <div class="col-12 bg-grey" style="height: 200px;"></div>
+        <div class="col-12 bg-grey" style="height: 200px;">
+            <q-img :src="$System.storageUrl(item.photo.name)" class="fit" style="border-radius:10px 10px 0 0" />
+        </div>
         <div class="col-12 q-py-md q-px-md">
-            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> Ingat 5 PASTI UMRAH dalam memilih travel
+            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{ item.name }}
             </div>
-            <div class=" text-start col-12" style="color: #616161;">Lörem ipsum hyda decilidade exoktiga. Telede beril disk
-                innan autorar i hösk
-                plagekav. </div>
-            <div class=" text-start col-12 q-mt-md">12 April 2023</div>
+            <div class=" text-start col-12" style="color: #616161;" v-html="item.details"></div>
+            <div class=" text-start col-12 q-mt-md">{{ $Help.toLocalDate(item.created_at) }}</div>
         </div>
     </q-card>
     <!-- RUANG EDUKASI  -->

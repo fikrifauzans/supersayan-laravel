@@ -3,9 +3,10 @@
         <div class="q-mb-xl">
             <cms-paragraph :topText="$Handle.getContent('title-dokumentasi-foto', 'Titles', true).name"
                 :title="$Handle.getContent('title-dokumentasi-foto', 'Titles', true).title" />
-            <TableContents>
-                <template v-slot:default>
-                    <q-img src="images/example-dokumentasi.png" />
+            <TableContents group="Dokumentasi">
+                <template v-slot:default="{ item }">
+                    
+                    <q-img :src="$System.storageUrl(item.row.photo.name)" />
                 </template>
             </TableContents>
         </div>
@@ -14,7 +15,7 @@
                 :title="$Handle.getContent('title-dokumentasi-video', 'Titles', true).title" />
             <TableContents>
                 <template v-slot:default>
-                   <cms-card type="Dokumentasi Video" />
+                    <cms-card type="Dokumentasi Video" />
                 </template>
             </TableContents>
         </div>

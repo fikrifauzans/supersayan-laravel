@@ -81,7 +81,7 @@ export default {
     },
     async submit() {
       this.$Handle.loadingStart()
-      this.model.group =  this.$route.query.tab
+      if (this.$route.query.tab != null) this.model.group = this.$route.query.tab
       if (this.param !== null) await this.editData(this.param)
       else await this.postData(this.model)
     },
