@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div class="q-px-lg">
         <!-- THIRD CONTAINER / MAIN CONTAINER  -->
         <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl' : 'q-px-md'">
             <cms-card :key="index" type="About Us" :item="$Handle.getContent('', 'About Us Content', true)" hidaButton
@@ -7,7 +7,7 @@
 
 
             <!-- VISION & MISSION  -->
-            <div class="col-12 q-mt-md">
+            <div class="col-12 row q-gutter-y-xl q-mt-sm" >
                 <q-card style="border-radius: 16px;"
                     v-for="item in [$Handle.getContent('', 'About Us - Vision', true), $Handle.getContent('', 'About Us - Mission', true)]"
                     :key="item" :class="$q.screen.gt.sm ? 'col-12 row q-px-xl q-mt-l q-py-md q-my-lg' : 'q-px-md'">

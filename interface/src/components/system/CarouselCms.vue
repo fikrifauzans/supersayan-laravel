@@ -5,7 +5,7 @@
                 class="col-12 fit" />
         </div>
         <div class="col-12 col-md-8 q-px-md  row relative-position">
-            <div class="col-12 row absolute-center justify-between  z-top">
+            <div class="col-12 row absolute-center justify-between  " style="z-index: 1;">
                 <q-btn class="bg-white" icon="navigate_before" round rounded />
                 <q-btn class="bg-white" icon="navigate_next" round rounded />
             </div>

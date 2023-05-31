@@ -83,9 +83,9 @@
         :class="$q.screen.gt.sm ? 'row col-12 q-mt-xl card-about-us' : 'row col-12 q-mt-xl card-about-us'">
         <div class="col-md-5 col-12">
             <cms-paragraph :title="item.title" />
-            <q-img class="fit" fit src="images/awards-csrtificate.png" />
+            <q-img  fit src="images/awards-csrtificate.png" />
         </div>
-        <div :class="$q.screen.gt.sm ? 'col-md-7 row  q-pa-xl items-center row' : 'col-md-7 row  q-pa-lg items-center row'">
+        <div :class="$q.screen.gt.sm ? 'col-md-7 row col-12  q-pa-xl items-center row' : 'col-md-7 col-12 row  q-pa-lg items-center row'">
             <cms-paragraph :description="item.description" col="12" />
         </div>
     </q-card>

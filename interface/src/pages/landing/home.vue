@@ -95,13 +95,13 @@
 
 
         <!-- LIST USTADZ  -->
-        <div class="col-12 row justify-center  q-mt-xl q-pt-md">
-            <div class="col-md-10  col-12 text-center ">
+        <div class="col-12 row justify-center  q-mt-xl q-pt-md ">
+            <div class="col-md-10  col-12 text-center q-px-xl ">
                 <cms-paragraph :title="$Handle.getContent('title-ustadz-list', 'Titles', true).title"
                     :description="$Handle.getContent('title-ustadz-list', 'Titles', true).subtitle" />
             </div>
-            <div class="col-12 row q-px-xl q-mt-lg">
-                <div v-for="item in $Handle.getContent('', 'Ustadz')" :key="item" class="col-3 q-px-md">
+            <div class="col-12 row q-px-lg q-mt-lg">
+                <div v-for="item in $Handle.getContent('', 'Ustadz')" :key="item" class="col-md-3 col-12 q-px-md">
                     <cms-card type="List Ustadz" :item="item" />
                 </div>
             </div>
@@ -109,24 +109,28 @@
 
         <!-- TESTIMONI CONTAINER  -->
         <div class="col-12 row justify-between q-px-xl q-mt-xl q-pt-xl">
-            <div class="col-3 row">
-                <div class="col-12 q-mb-md">
-                    <q-img src="images/comma.svg" style="width:72px" />
+            <div class="col-md-3  col-12 row">
+                <div class="col-12  q-mb-md">
+                    <q-img src="images/comma.svg" style="width:72px" fit />
                 </div>
                 <div>
                     <cms-paragraph :title="$Handle.getContent('testimoni-title', 'Titles', true).title"
                         :description="$Handle.getContent('testimoni-title', 'Titles', true).subtitle" />
                 </div>
             </div>
-            <div class="col-8  row">
+            <div class="col-md-8  col-12 row">
                 <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" transition-prev="slide-right"
                     transition-next="slide-left" @mouseenter="autoplay = false" @mouseleave="autoplay = true"
-                    class="col-12 q-pb-xl" control-color="primary" style="height: 300px;">
+                    class="col-12 q-pb-xl" control-color="primary"
+                    :style="$q.screen.gt.sm ? 'height: 300px;' : 'height:auto'">
                     <q-carousel-slide v-for="(item, index) in $Handle.getContent('', 'Testimonies')" :key="index"
-                        :name="index" class="q-px-xl">
-                        <q-card class="col-12 row fit " flat style="border: 1px solid #99C3AF;border-radius: 16px;">
-                            <div class="col-8  q-pa-xl">
-                                <div class="text-h6 text-bold q-mb-md">{{ item.name }}</div>
+                        :name="index" :class="$q.screen.gt.sm ? 'q-px-xl' : ''">
+                        <q-card :class="$q.screen.gt.sm ? 'col-12 row fit' : 'col-12 column reverse fit'" flat
+                            style="border: 1px solid #99C3AF;border-radius: 16px;">
+                            <div :class="$q.screen.gt.sm ? 'col-8  q-pa-xl' : 'col-8  q-pa-xl '">
+                                <div
+                                    :class="$q.screen.gt.sm ? 'text-h6 text-bold q-mb-md  ' : 'text-h6 text-bold q-mb-md  q-mt-xl'">
+                                    {{ item.name }}</div>
                                 <div style="font-size: 17px;">{{ item.description }}</div>
                             </div>
                             <div class="col-4">
@@ -162,8 +166,8 @@
                 </div>
             </div>
             <div class="col-12 row  q-mt-lg">
-                <div v-for="(item) in $Handle.getContent('', 'Ruang Edukasi')" :key="item"  class="col-4  q-px-sm">
-                    <cms-card  type="Ruang Edukasi" :item="item" />
+                <div v-for="(item) in $Handle.getContent('', 'Ruang Edukasi')" :key="item" class="col-md-4 col-12 q-px-sm">
+                    <cms-card type="Ruang Edukasi" :item="item" />
                 </div>
             </div>
         </div>
