@@ -36,7 +36,7 @@ class System {
   }
 
   storageUrl(suffix = ''){
-    return 'http://localhost:8090/storage/' + suffix
+    return 'https://dev.maghfirah.com/storage/' + suffix
   }
 }
 
