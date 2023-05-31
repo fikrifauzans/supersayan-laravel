@@ -36,6 +36,8 @@ class Api {
   }
   setDefaultHeader() {
     this.api.defaults.headers = { 'Accept': "application/json" }
+    this.api.defaults.headers = { 'Pragma': 'no-cache', }
+    this.api.defaults.headers = { 'Expires': '0' }
     // this.api.defaults.headers = { 'Access-Control-Allow-Origin': "*" }
     return this
   }
@@ -149,7 +151,7 @@ class Api {
 
   }
   async fileHandler(file, reference = null, method = 'post') {
-    if(!file.file) return false
+    if (!file.file) return false
     let fileUploaded = null
     if (method == 'post') {
       let fileUplad = this.Handle.loopingForm(file);
