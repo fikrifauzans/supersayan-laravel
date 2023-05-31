@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-3 col-12">
                     <div class="title-footer q-mt-md q-my-md poppins">Follow Us</div>
-                    <div class="menu-footer  poppins">Lorem ipsum dolor sit amet
+                    <div class="menu-footer  poppins">
                     </div>
                 </div>
 

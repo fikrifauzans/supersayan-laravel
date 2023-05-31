@@ -47,7 +47,7 @@ export default {
           { name: 'photo_id', label: 'Photo Id', field: 'photo_id', sortable: true, align: 'left', },
           { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
         ]
-        
+
       }
       else if (type == 'Testimonies') {
         return [
@@ -74,6 +74,20 @@ export default {
           { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
           { name: 'details', label: 'Details', field: 'details', sortable: true, align: 'left', },
           { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
+        ]
+      }
+      else if (type == 'Dokumentasi Video') {
+        return [
+          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
+          { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
+          { name: 'link', label: 'Link', field: 'link', sortable: true, align: 'left', },
+        ]
+      }
+      else if (type == 'Dokumentasi') {
+        return [
+          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
+          { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
+          { name: 'photo_id', label: 'Photo Id', field: 'photo_id', sortable: true, align: 'left', },
         ]
       }
       else {

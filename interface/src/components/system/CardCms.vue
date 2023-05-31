@@ -65,7 +65,13 @@
     <!-- RUANG EDUKASI  -->
     <q-card flat v-else-if="type == 'Dokumentasi Video'" class="col-12 row q-mb-md"
         style="border-radius: 12px; height: 305px;">
-        <div class="col-12 bg-grey" style="height: 200px; border-radius: 16px;"></div>
+        <div class="col-12 bg-grey" style="height: 200px; border-radius: 16px;">
+
+            <iframe id="ytplayer" type="text/html" class="fit" style="border-radius:16px"
+                :src="'https://www.youtube.com/embed/' + item.link"
+                frameborder="0"></iframe>
+
+        </div>
         <div class="col-12  q-px-xs ">
             <div class=" text-start col-12" style="color: #616161;">Lörem </div>
             <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> Ingat 5 PASTI UMRAH dalam memilih travel

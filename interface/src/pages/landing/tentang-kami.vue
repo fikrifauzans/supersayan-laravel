@@ -31,8 +31,8 @@
             <div class="q-mt-xl q-pt-lg">
                 <cms-paragraph :title="$Handle.getContent('top-services', 'Titles', true).title"
                     :topText="$Handle.getContent('top-services', 'Titles', true).subtitle" />
-                <q-card v-for="item in $Handle.getContent('', 'Top Service')" :key="item" class="col-12 row  q-pa-lg q-mb-md" flat
-                    style="border: 1px solid #99C3AF;border-radius: 16px;">
+                <q-card v-for="item in $Handle.getContent('', 'Top Service')" :key="item"
+                    class="col-12 row  q-pa-lg q-mb-md" flat style="border: 1px solid #99C3AF;border-radius: 16px;">
                     <div style="font-size: 17px;">{{ item.subtitle }}</div>
                 </q-card>
             </div>

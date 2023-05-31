@@ -5,7 +5,7 @@
                 :title="$Handle.getContent('title-dokumentasi-foto', 'Titles', true).title" />
             <TableContents group="Dokumentasi">
                 <template v-slot:default="{ item }">
-                    
+
                     <q-img :src="$System.storageUrl(item.row.photo.name)" />
                 </template>
             </TableContents>
@@ -13,9 +13,9 @@
         <div>
             <cms-paragraph :topText="$Handle.getContent('title-dokumentasi-video', 'Titles', true).name"
                 :title="$Handle.getContent('title-dokumentasi-video', 'Titles', true).title" />
-            <TableContents>
-                <template v-slot:default>
-                    <cms-card type="Dokumentasi Video" />
+            <TableContents group="Dokumentasi Video">
+                <template v-slot:default="{ item }">
+                    <cms-card type="Dokumentasi Video" :item="item.row" />
                 </template>
             </TableContents>
         </div>
