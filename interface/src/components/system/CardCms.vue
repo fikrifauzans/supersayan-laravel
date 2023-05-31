@@ -40,10 +40,14 @@
     </q-card>
     <!-- LIST USTADZ  -->
     <q-card v-else-if="type == 'List Ustadz'" class="col-12 row" style="border-radius: 16px;">
-        <div class="col-12 bg-grey" style="height: 196px;"></div>
+        <div class="col-12 " style="height: 196px;">
+        <q-img  :src="$System.storageUrl(item.photo.name)" class="fit" />
+
+        </div>
         <div class="col-12 q-py-md">
-            <div class="text-bold text-center col-12  q-mb-md"> Name </div>
-            <div class=" text-center col-12"> Jamatannya Apa </div>
+            <div class="text-bold text-center col-12  q-mb-md"> {{ item.name }} </div>
+            <div class=" text-center col-12"> {{item.title}} </div>
+           
         </div>
     </q-card>
     <!-- RUANG EDUKASI  -->
@@ -72,7 +76,7 @@
     <q-card v-else-if="type == 'Awards'" flat
         :class="$q.screen.gt.sm ? 'row col-12 q-mt-xl card-about-us' : 'row col-12 q-mt-xl card-about-us'">
         <div class="col-md-5 col-12">
-            <cms-paragraph :title="item.title"  />
+            <cms-paragraph :title="item.title" />
             <q-img class="fit" fit src="images/awards-csrtificate.png" />
         </div>
         <div :class="$q.screen.gt.sm ? 'col-md-7 row  q-pa-xl items-center row' : 'col-md-7 row  q-pa-lg items-center row'">
@@ -83,7 +87,7 @@
 <script>
 export default {
     name: 'CardProducst',
-    props: ['type', 'item', 'hidaButton', 'topText'],
+    props: ['type', 'item', 'hidaButton', 'topText', 'image'],
 }
 </script>
 <style>

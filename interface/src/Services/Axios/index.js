@@ -149,6 +149,7 @@ class Api {
 
   }
   async fileHandler(file, reference = null, method = 'post') {
+    if(!file.file) return false
     let fileUploaded = null
     if (method == 'post') {
       let fileUplad = this.Handle.loopingForm(file);

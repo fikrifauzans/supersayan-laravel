@@ -101,8 +101,8 @@
                     :description="$Handle.getContent('title-ustadz-list', 'Titles', true).subtitle" />
             </div>
             <div class="col-12 row q-px-xl q-mt-lg">
-                <div v-for="item in 4" :key="item" class="col-3 q-px-md">
-                    <cms-card type="List Ustadz" />
+                <div v-for="item in $Handle.getContent('', 'Ustadz')" :key="item" class="col-3 q-px-md">
+                    <cms-card type="List Ustadz" :item="item" />
                 </div>
             </div>
         </div>
@@ -122,18 +122,18 @@
                 <q-carousel animated v-model="slide" navigation infinite :autoplay="autoplay" transition-prev="slide-right"
                     transition-next="slide-left" @mouseenter="autoplay = false" @mouseleave="autoplay = true"
                     class="col-12 q-pb-xl" control-color="primary" style="height: 300px;">
-                    <q-carousel-slide v-for="item in 4" :key="item" :name="item" class="q-px-xl">
-                        <q-card class="col-12 row fit q-pa-lg" flat style="border: 1px solid #99C3AF;border-radius: 16px;">
-                            <div class="col-8 ">
-                                <div class="text-h6 text-bold q-mb-md">Name</div>
-                                <div style="font-size: 17px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
-                                    quas suscipit officiis
-                                    tempore rerum tempora odit est cupiditate provident animi, ipsum, dignissimos hic
-                                    aliquam
-                                    maxime architecto optio esse iste. Voluptate.</div>
+                    <q-carousel-slide v-for="(item, index) in $Handle.getContent('', 'Testimonies')" :key="index"
+                        :name="index" class="q-px-xl">
+                        <q-card class="col-12 row fit " flat style="border: 1px solid #99C3AF;border-radius: 16px;">
+                            <div class="col-8  q-pa-xl">
+                                <div class="text-h6 text-bold q-mb-md">{{ item.name }}</div>
+                                <div style="font-size: 17px;">{{ item.description }}</div>
                             </div>
                             <div class="col-4">
-                                <div></div>
+                                <div style="height:218px ; ">
+                                    <q-img :src="$System.storageUrl(item.photo.name)" class="fit"
+                                        style="border-radius:0px 16px 16px 0" />
+                                </div>
                             </div>
                         </q-card>
                     </q-carousel-slide>
@@ -146,7 +146,7 @@
             <cms-paragraph :title="$Handle.getContent('title-partner', 'Titles', true).title"
                 :description="$Handle.getContent('title-partner', 'Titles', true).description" />
             <div class="col-12 row q-mt-xl">
-                <q-img src="images/garuda-indonesia.png" style="width: 175px;" />
+                <q-img v-for="item in $Handle.getContent('', 'Partners',)" v-show="item.photo" :key="item" :src="$System.storageUrl(item.photo.name)" style="width: 175px;" />
             </div>
         </div>
         <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
@@ -179,7 +179,7 @@ export default {
             buttonCategory: 'Haji',
             optionCategory: [{ name: 'Haji' }, { name: 'Umrah' }],
             packages: [],
-            slide: 1,
+            slide: 0,
             autoplay: true
         }
     },

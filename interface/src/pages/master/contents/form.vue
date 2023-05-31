@@ -6,7 +6,6 @@
       <div>
         <s-form class='q-px-md q-py-lg' title='Form Contents'>
           <div v-for="item in allowForm" :key="item" class="col-12 row">
-
             <t-input v-if="item.field == 'group'" col='12' :label='item.label' v-model='model.group' topLabel='group' />
             <t-input v-if="item.field == 'name'" col='12' :label='item.label' v-model='model.name' topLabel='name' />
             <t-input v-if="item.field == 'page'" col='12' :label='item.label' v-model='model.page' topLabel='page' />
@@ -15,13 +14,13 @@
             <t-input v-if="item.field == 'title'" col='12' :label='item.label' v-model='model.title' topLabel='title' />
             <t-input v-if="item.field == 'subtitle'" col='12' :label='item.label' v-model='model.subtitle'
               topLabel='subtitle' />
-            <t-input v-if="item.field == 'description'" col='12' :label='item.label' v-model='model.description'
-              topLabel='description' />
             <t-input v-if="item.field == 'path'" col='12' :label='item.label' v-model='model.path' topLabel='path' />
             <t-input v-if="item.field == 'link'" col='12' :label='item.label' v-model='model.link' topLabel='link' />
             <t-input v-if="item.field == 'sort'" col='12' :label='item.label' v-model='model.sort' topLabel='sort' />
             <t-file-image v-if="item.field == 'photo_id'" col='12' :label='item.label' v-model="model.photo" fullFile />
             <!-- {{ model.photo }} -->
+            <t-input v-if="item.field == 'description'" col='12' :label='item.label' v-model='model.description'
+              topLabel='description' type="textarea" />
             <t-text-editor v-if="item.field == 'remark'" col='12' :label='item.label' type='textarea'
               v-model='model.remark' />
             <t-text-editor v-if="item.field == 'details'" col='12' :label='item.label' type='textarea'
@@ -82,6 +81,7 @@ export default {
     },
     async submit() {
       this.$Handle.loadingStart()
+      this.model.group =  this.$route.query.tab
       if (this.param !== null) await this.editData(this.param)
       else await this.postData(this.model)
     },

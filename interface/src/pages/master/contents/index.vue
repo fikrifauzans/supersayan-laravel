@@ -67,12 +67,13 @@ export default {
     }
   },
   created() {
-
+console.log(this.$route.query.tab);
     this.table = this.$Handle.structureTable(
       this.table.columns(this.$route.query.tab)
     )
 
     this.getContentsGroup()
+    if (this.$route.query.tab) this.tab = this.$route.query.tab
     if (this.$route.query.trash) this.trash = JSON.parse(this.$route.query.trash)
     if (this.$route.query.search) this.trash = JSON.parse(this.$route.query.search)
     if (this.$route.query.page) this.table.pagination = { ...this.$route.query }
@@ -87,7 +88,7 @@ export default {
       if (props) this.table.pagination = props.pagination
       let { page, rowsPerPage, sortBy, descending } = { ...this.table.pagination }
       let endpoint = this.Meta.module + '?table='
-      if(this.tab) endpoint += '&where=group:' + this.tab
+      if (this.tab) endpoint += '&where=group:' + this.tab
       endpoint += '&like=' + this.$Help.transformQuery(this.filter.query)
       endpoint += this.trash ? '&trash=true' : ''
       endpoint += '&page=' + page
@@ -107,6 +108,7 @@ export default {
             this.table.pagination.page = data.current_page
             this.table.pagination.rowsPerPage = data.per_page
             this.loading = false
+            this.table.columns =  this.Meta.table.columns(this.tab)
           }
         },
         (e) => { }
@@ -114,6 +116,9 @@ export default {
       this.$router.replace({
         query: { ...this.table.pagination, seach: this.table.search, trash: this.trash, tab: this.tab },
       })
+      // this.table = this.$Handle.structureTable(
+      //   this.table.columns(this.$route.query.tab)
+      // )
     },
     async daleteData() {
       this.loading = true
