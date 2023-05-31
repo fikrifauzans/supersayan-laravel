@@ -34,6 +34,10 @@ class System {
   apiUms() {
     return 'https://api.ums.dutabaitullah.com/api/v1/en/'
   }
+
+  storageUrl(suffix = ''){
+    return 'http://localhost:8080/storage/' + suffix
+  }
 }
 
 export default System

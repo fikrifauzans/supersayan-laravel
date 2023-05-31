@@ -149,8 +149,6 @@
                 <q-img src="images/garuda-indonesia.png" style="width: 175px;" />
             </div>
         </div>
-
-
         <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
             <div class="row col-12 justify-between items-center">
                 <div>
@@ -168,12 +166,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
 </template>
 <script>

@@ -2,18 +2,13 @@
 <template>
   <div>
     <s-loading :load='loading' />
-
     <s-drawer wrapCard @refresh='refresh' :Meta='Meta' :filter='filter' :table='table' v-model='filter.query'
       @update:modelValue='refresh'>
       <div class="q-pb-sm"></div>
-      <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2 "
+      <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
         style="border-radius:10px 10px 0 0">
-        <q-tab name="mails" icon="mail" label="Mails" />
-        <q-tab name="alarms" icon="alarm" label="Alarms" />
-        <q-tab name="movies" icon="movie" label="Movies" />
-        <q-tab name="photos" icon="photo" label="Photos" />
-        <q-tab name="videos" icon="slow_motion_video" label="Videos" />
-        <q-tab name="addressbook" icon="people" label="Address Book" />
+        <q-tab label="All" :name="null" noCaps @click="getData()" />
+        <q-tab v-for="item in group" :key="item" :name="item.group" :label="item.group" noCaps @click="getData()" />
       </q-tabs>
       <q-table virtual-scroll class='q-my-sm' :rows='table.rows' :columns='table.columns' row-key='id'
         selection='multiple' v-model:selected='table.selected' v-model:pagination='table.pagination'
@@ -74,7 +69,7 @@ export default {
   created() {
 
     this.table = this.$Handle.structureTable(
-      this.table.columns(this.$Help, this.$Lang, this.Static)
+      this.table.columns(this.$route.query.tab)
     )
 
     this.getContentsGroup()
@@ -92,6 +87,7 @@ export default {
       if (props) this.table.pagination = props.pagination
       let { page, rowsPerPage, sortBy, descending } = { ...this.table.pagination }
       let endpoint = this.Meta.module + '?table='
+      if(this.tab) endpoint += '&where=group:' + this.tab
       endpoint += '&like=' + this.$Help.transformQuery(this.filter.query)
       endpoint += this.trash ? '&trash=true' : ''
       endpoint += '&page=' + page
@@ -116,7 +112,7 @@ export default {
         (e) => { }
       )
       this.$router.replace({
-        query: { ...this.table.pagination, seach: this.table.search, trash: this.trash },
+        query: { ...this.table.pagination, seach: this.table.search, trash: this.trash, tab: this.tab },
       })
     },
     async daleteData() {
@@ -203,7 +199,9 @@ export default {
     },
     async getContentsGroup() {
       await this.$api.get(this.Meta.module + '/filter/group', (data, status) => {
-        console.log(data);
+        if (status == 200) {
+          this.group = data
+        }
       }, (e) => { })
     }
   },

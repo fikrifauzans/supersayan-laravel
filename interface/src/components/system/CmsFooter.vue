@@ -14,32 +14,36 @@
             </div>
 
         </div>
-        <div class="col-12 row  q-px-xl bg-white q-pt-xl">
+        <div class="col-12 row  q-px-xl bg-white q-pt-xl q-pb-xl">
             <div class="col-md-4 col-12">
                 <cms-logo width="200" class="q-pb-md" />
 
                 <div class="title-footer q-mt-md q-my-md poppins">Maghfirah Travel</div>
-                <div class="menu-footer  poppins">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem
+                <div class="menu-footer  poppins">Perkantoran Mitra Matraman Blok A1 No. 25-26, Jl. Matraman Raya No. 148
+                    Jakarta 13150
                 </div>
             </div>
             <div class="col-md-8 col-12 row">
                 <div class="col-3">
-                    <div class="title-footer q-mt-md q-my-md poppins">Maghfirah Travel</div>
-                    <div class="menu-footer  poppins">Lorem ipsum dolor sit amet
-                    </div>
+                    <div class="title-footer q-mt-md q-my-md poppins">Company</div>
+                    <div class="menu-footer  poppins">Ruang Edukasi</div>
+                    <div class="menu-footer  poppins">Duta Baitullah</div>
+                    <div class="menu-footer  poppins">Cabang</div>
+                    <div class="menu-footer  poppins">Karir</div>
                 </div>
-                <div class="col-3">
-                    <div class="title-footer q-mt-md q-my-md poppins">Maghfirah Travel</div>
-                    <div class="menu-footer  poppins">Lorem ipsum dolor sit amet
-                    </div>
+                <div class="col-md-3 col-12">
+                    <div class="title-footer q-mt-md q-my-md poppins">Resource</div>
+                    <div class="menu-footer  poppins">Syarat Dan Ketentuan</div>
+                    <div class="menu-footer  poppins">Bantuan</div>
+                    <div class="menu-footer  poppins">FAQ</div>
                 </div>
-                <div class="col-3">
-                    <div class="title-footer q-mt-md q-my-md poppins">Maghfirah Travel</div>
-                    <div class="menu-footer  poppins">Lorem ipsum dolor sit amet
-                    </div>
+                <div class="col-md-3 col-12">
+                    <div class="title-footer q-mt-md q-my-md poppins">Contact</div>
+                    <div class="menu-footer  poppins">travel@maghfirah.com</div>
+                    <div class="menu-footer  poppins">08111144633 (Whatsapp)</div>
                 </div>
-                <div class="col-3">
-                    <div class="title-footer q-mt-md q-my-md poppins">Maghfirah Travel</div>
+                <div class="col-md-3 col-12">
+                    <div class="title-footer q-mt-md q-my-md poppins">Follow Us</div>
                     <div class="menu-footer  poppins">Lorem ipsum dolor sit amet
                     </div>
                 </div>
