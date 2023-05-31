@@ -160,9 +160,9 @@ module.exports = configure(function (ctx) {
 
 
       manifest: {
-        name: `Supersayan Basecode`,
-        short_name: `Supersayan Basecode`,
-        description: `basecode by fikrifauzan`,
+        name: `Travel Maghfirah`,
+        short_name: `Travel Maghfirah`,
+        description: `travel umrah maghfirah`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
