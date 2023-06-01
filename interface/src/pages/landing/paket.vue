@@ -1,5 +1,5 @@
 <template >
-    <div v-if="id == null" class="col-12 row q-mt-xl q-px-xl">
+    <div v-if="id == null" :class="$q.screen.gt.sm ? 'col-12 row q-mt-xl q-px-xl' :'col-12 row q-mt-xl q-px-md'">
         <div class="row col-12 justify-between">
             <div>
                 <cms-paragraph :title="$Handle.getContent('title-haji-umrah', 'Titles', true).title"
@@ -9,7 +9,7 @@
                 <t-input label="Cari" rIcon="search" />
             </div>
         </div>
-        <div class=" col-12  q-gutter-md">
+        <div :class="$q.screen.gt.sm ? 'col-12  q-gutter-md' : ''">
             <q-btn v-for="(item) in optionCategory" :key="item" :label="item.name" unelevated
                 style="box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12);"
                 :class="buttonCategory == item.name ? 'default-button text-bold q-px-lg' : 'default-button bg-white text-grey text-bold q-px-lg'"
@@ -26,65 +26,79 @@
             :separator='$Static.table.separator()' grid>
             <template v-slot:item="props">
                 <div class="q-pa-lg col-xs-12 col-sm-6 col-md-4">
-                    <cms-card type="Product" :item="props.row" @btnClick="(idp) => id = idp" />
+                    <cms-card type="Product" :item="props.row" @btnClick="(idp) => {
+                        id = idp
+                        getData()
+                    }" />
                 </div>
             </template>
         </q-table>
     </div>
-    <div v-else class="q-px-xl">
-        <div class="col-12 row justify-center relative-position     q-mt-xl">
-            <div v-if="$q.screen.lt.sm" class="col-12 justify-center absolute row" :style="`background-image: url('${packageDetail.photo.path}');  background-repeat: no-repeat;  background-size: cover;
+    <div v-else :class="$q.screen.gt.sm ? 'q-px-xl' : 'q-px-md'" v-show="packageDetail">
+        <q-btn color="primary" label="Kembali" class="q-mt-lg" unelevated style="border-radius: 6px;" noCaps size="md"
+            @click="() => {
+                id = null
+                $router.push({ name: 'paket' })
+                getData()
+            }" />
+        <div v-if="packageDetail">
+            <div :class="$q.screen.gt.sm ? 'col-12 row justify-center relative-position     q-mt-xl' :'col-12 row justify-center relative-position     q-mt-sm'">
+                <div v-if="$q.screen.lt.sm" class="col-12 justify-center absolute row" :style="`background-image: url('${packageDetail.photo.path}');  background-repeat: no-repeat;  background-size: cover;
           filter: blur(8px);
         `">
-                <q-img class="col-4 " :src="packageDetail.photo.path" />
-            </div>
-            <q-img class="col-md-4 col-12 " :src="packageDetail.photo.path" />
-            <div class="col-12  q-mt-lg">
-                <cms-paragraph :title="packageDetail.name" :topText="'Jumlah Quota ' + packageDetail.quota" />
-                <q-card class="q-pa-md">
-                    <div class="text-bold text-h6">Deskripsi Paket</div>
-                    <div v-if="packageDetail.description !== 'null'" v-html="packageDetail.description">
-                    </div>
-                </q-card>
-                <div class="col-12 row text-bold q-mt-md q-px-md text-h6">
-                    Pilih Paket
+                    <q-img class="col-4 " :src="packageDetail.photo.path" />
                 </div>
-                <div class="col-12 row q-mt-md">
-                    <div v-for="item in packageDetail.opsi_paket" :key="item" class="col-md-4 col-12">
-                        <q-card class="q-pa-lg">
-                            <div class="text-bold text-h6">{{ item.name }}</div>
-                            <div class="col-12 ">
-                                <div>
-                                    <div class="text-bold text-grey q-mt-md">Dewasa</div>
-                                    <div class="text-bold q-mt-xs">Rp. {{ $Help.transformMoney(item.parent_price) }}</div>
-                                </div>
-                                <div>
-                                    <div class="text-bold text-grey q-mt-md">Anak</div>
-                                    <div class="text-bold q-mt-xs">Rp. {{ $Help.transformMoney(item.child_price) }}</div>
-                                </div>
-                                <div class="col-12 q-mt-md">
-                                    <q-btn color="primary" label="Booking" class="col-12 fit" unelevated
-                                        style="border-radius: 6px;" noCaps size="md" />
-                                </div>
-                            </div>
-                        </q-card>
+                <q-img class="col-md-4 col-12 " :src="packageDetail.photo.path" />
+                <div class="col-12  q-mt-lg">
+                    <cms-paragraph :title="packageDetail.name" :topText="'Jumlah Quota ' + packageDetail.quota" />
+                    <q-card class="q-pa-md">
+                        <div class="text-bold text-h6">Deskripsi Paket</div>
+                        <div v-if="packageDetail.description !== 'null'" v-html="packageDetail.description">
+                        </div>
+                    </q-card>
+                    <div class="col-12 row text-bold q-mt-md q-px-md text-h6">
+                        Pilih Paket
                     </div>
-                </div>
-                <div class="col-12 row q-mt-md">
-                    <div class=" col-12">
-                        <q-card class="q-pa-lg">
-                            <div class="text-bold text-h6 q-mb-md">Detail Paket Umrah</div>
-                            <div class="q-mb-md" v-for="item in packageDetail.layanan_utama" :key="item"> 
-                                <div class="q-mb-sm">{{item.name}}</div>
-                                <q-separator />
-                            </div>
-                        </q-card>
+                    <div class="col-12 row q-mt-md">
+                        <div v-for="item in packageDetail.opsi_paket" :key="item" class="col-md-4 col-12">
+                            <q-card class="q-pa-lg">
+                                <div class="text-bold text-h6">{{ item.name }}</div>
+                                <div class="col-12 ">
+                                    <div>
+                                        <div class="text-bold text-grey q-mt-md">Dewasa</div>
+                                        <div class="text-bold q-mt-xs">Rp. {{ $Help.transformMoney(item.parent_price) }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-bold text-grey q-mt-md">Anak</div>
+                                        <div class="text-bold q-mt-xs">Rp. {{ $Help.transformMoney(item.child_price) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 q-mt-md">
+                                        <q-btn color="primary" label="Booking" class="col-12 fit" unelevated
+                                            style="border-radius: 6px;" noCaps size="md" />
+                                    </div>
+                                </div>
+                            </q-card>
+                        </div>
                     </div>
+                    <div class="col-12 row q-mt-md">
+                        <div class=" col-12">
+                            <q-card class="q-pa-lg">
+                                <div class="text-bold text-h6 q-mb-md">Detail Paket Umrah</div>
+                                <div class="q-mb-md" v-for="item in packageDetail.layanan_utama" :key="item">
+                                    <div class="q-mb-sm">{{ item.name }}</div>
+                                    <q-separator />
+                                </div>
+                            </q-card>
+                        </div>
+                    </div>
+                    <!-- {{ packageDetail }} -->
                 </div>
-                <!-- {{ packageDetail }} -->
-            </div>
 
+            </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -108,7 +122,7 @@ export default {
                 rows: [],
                 pagination: []
             },
-            id: 2,
+            id: null,
             packageDetail: null
         }
     },

@@ -1,5 +1,5 @@
 <template >
-    <div class="q-px-lg">
+    <div :class="$q.screen.gt.sm ? 'q-px-lg' : ''">
         <!-- THIRD CONTAINER / MAIN CONTAINER  -->
         <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl' : 'q-px-md'">
             <cms-card :key="index" type="About Us" :item="$Handle.getContent('', 'About Us Content', true)" hidaButton

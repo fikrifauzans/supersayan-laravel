@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 q-px-xl q-mt-xl">
+    <div :class="$q.screen.gt.sm ? 'col-12 q-px-xl q-mt-xl' : 'col-12 q-px-md q-mt-xl'">
         <div class="q-mb-xl">
             <cms-paragraph :topText="$Handle.getContent('title-dokumentasi-foto', 'Titles', true).name"
                 :title="$Handle.getContent('title-dokumentasi-foto', 'Titles', true).title" />

@@ -18,8 +18,7 @@
                 <div>
                     <q-btn unelevated icon-right="chevron_right" size="md" noCaps class="dafault-button"
                         label="Pelajari Selengkapnya" color="primary" style="border-radius: 8px;"
-                        @click="$emit('btnClick' , item.id)"
-                        />
+                        @click="$emit('btnClick', item.id)" />
                 </div>
             </div>
         </div>
@@ -43,7 +42,7 @@
     <!-- LIST USTADZ  -->
     <q-card v-else-if="type == 'List Ustadz'" class="col-12 row" style="border-radius: 16px;">
         <div class="col-12 " style="height: 196px;">
-            <q-img :src="$System.storageUrl(item.photo.name)" class="fit" />
+            <q-img :src="$System.storageUrl(item.photo.name)" class="fit"  style=" border-radius: 16px 16px 0 0;"  />
 
         </div>
         <div class="col-12 q-py-md">
@@ -54,6 +53,7 @@
     </q-card>
     <!-- RUANG EDUKASI  -->
     <q-card v-else-if="type == 'Ruang Edukasi'" class="col-12 row q-mb-md" style="border-radius: 12px; height: 395px;">
+       
         <div class="col-12 bg-grey" style="height: 200px;">
             <q-img :src="$System.storageUrl(item.photo.name)" class="fit" style="border-radius:10px 10px 0 0" />
         </div>
@@ -65,8 +65,7 @@
                 <div class=" text-start ">{{ $Help.toLocalDate(item.created_at) }}</div>
                 <div>
                     <q-btn unelevated icon-right="chevron_right" size="md" noCaps class="dafault-button" label="Baca Atikel"
-                        color="primary" style="border-radius: 8px;"
-                        @click="$router.push({ name: 'ruang-edukasi-detail', params: { id: item.id } })" />
+                        color="primary" style="border-radius: 8px;" @click="$emit('btnClick', item.id)" />
                 </div>
             </div>
 
@@ -82,8 +81,8 @@
 
         </div>
         <div class="col-12  q-px-xs ">
-            <div class=" text-start col-12" style="color: #616161;">Lörem </div>
-            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> Ingat 5 PASTI UMRAH dalam memilih travel
+            <!-- <div class=" text-start col-12" style="color: #616161;">{{item}} </div> -->
+            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{item.name}}
             </div>
             <div class=" text-start col-12 q-mt-md">12 April 2023</div>
         </div>

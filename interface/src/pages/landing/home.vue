@@ -80,7 +80,7 @@
 
 
         <!-- ABOUNT US CONTENT  -->
-        <div class="col-12 row q-mt-sm q-px-xl">
+        <div :class="$q.screen.gt.sm ? 'col-12 row q-mt-sm q-px-xl' : 'col-12 row q-mt-sm q-px-lg'">
             <div class="col-md-6 col-12">
                 <q-img src="images/about-us.webp" fit class="fit" />
             </div>
@@ -96,11 +96,12 @@
 
         <!-- LIST USTADZ  -->
         <div class="col-12 row justify-center  q-mt-xl q-pt-md ">
-            <div class="col-md-10  col-12 text-center q-px-xl ">
+            <div
+                :class="$q.screen.gt.sm ? 'col-md-10  col-12 text-center q-px-xl' : 'col-md-10  col-12 text-center q-px-lg'">
                 <cms-paragraph :title="$Handle.getContent('title-ustadz-list', 'Titles', true).title"
                     :description="$Handle.getContent('title-ustadz-list', 'Titles', true).subtitle" />
             </div>
-            <div class="col-12 row q-px-lg q-mt-lg">
+            <div :class="$q.screen.gt.sm ? 'col-12 row q-px-lg q-mt-lg' : 'col-12 row q-px-sm q-mt-lg'">
                 <div v-for="item in $Handle.getContent('', 'Ustadz')" :key="item" class="col-md-3 col-12 q-px-md">
                     <cms-card type="List Ustadz" :item="item" />
                 </div>
@@ -108,8 +109,9 @@
         </div>
 
         <!-- TESTIMONI CONTAINER  -->
-        <div class="col-12 row justify-between q-px-xl q-mt-xl q-pt-xl">
-            <div class="col-md-3  col-12 row">
+        <div
+            :class="$q.screen.gt.sm ? 'col-12 row justify-between q-px-xl q-mt-xl q-pt-xl' : 'col-12 row justify-between q-px-sm q-mt-xl q-pt-xl'">
+            <div class="col-md-3  col-12 row q-px-lg">
                 <div class="col-12  q-mb-md">
                     <q-img src="images/comma.svg" style="width:72px" fit />
                 </div>
@@ -136,7 +138,7 @@
                             <div class="col-4">
                                 <div style="height:218px ; ">
                                     <q-img :src="$System.storageUrl(item.photo.name)" class="fit"
-                                        style="border-radius:0px 16px 16px 0" />
+                                        :style="$q.screen.gt.sm ? 'border-radius:0px 16px 16px 0' : 'border-radius:16px 16px 0px 0'" />
                                 </div>
                             </div>
                         </q-card>
@@ -146,15 +148,16 @@
         </div>
 
         <!-- PARTNERSS  -->
-        <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
+        <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl q-mt-xl q-pt-xl' : 'col-12 row q-px-lg q-mt-xl q-pt-xl'">
             <cms-paragraph :title="$Handle.getContent('title-partner', 'Titles', true).title"
                 :description="$Handle.getContent('title-partner', 'Titles', true).description" />
-            <div class="col-12 row q-mt-xl">
+            <div class="col-12 row q-mt-xl justify-center q-gutter-y-xl">
                 <q-img v-for="item in $Handle.getContent('', 'Partners',)" v-show="item.photo" :key="item"
-                    :src="$System.storageUrl(item.photo.name)" style="width: 175px;" />
+                    :src="$System.storageUrl(item.photo.name)" style="width: 150px;" />
+
             </div>
         </div>
-        <div class="col-12 row q-px-xl q-mt-xl q-pt-xl">
+        <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl q-mt-xl q-pt-xl' : 'col-12 row q-px-md q-mt-xl q-pt-xl'">
             <div class="row col-12 justify-between items-center">
                 <div>
                     <cms-paragraph :title="$Handle.getContent('title-ruang-edukasi', 'Titles', true).title"
