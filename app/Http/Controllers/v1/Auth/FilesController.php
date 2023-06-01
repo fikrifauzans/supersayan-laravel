@@ -8,7 +8,7 @@ use App\Services\Helper\Helper;
 use App\Services\Handler\JsonResponse as JsonCustomResponse;
 use App\Services\Validator\CustomValidator;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Controllers\V1\Auth\Controller;
+use App\Http\Controllers\v1\Auth\Controller;
 
 // use App\User;
 

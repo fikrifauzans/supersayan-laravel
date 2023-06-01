@@ -17,7 +17,9 @@
                 </div>
                 <div>
                     <q-btn unelevated icon-right="chevron_right" size="md" noCaps class="dafault-button"
-                        label="Pelajari Selengkapnya" color="primary" style="border-radius: 8px;" />
+                        label="Pelajari Selengkapnya" color="primary" style="border-radius: 8px;"
+                        @click="$emit('btnClick' , item.id)"
+                        />
                 </div>
             </div>
         </div>
@@ -59,7 +61,15 @@
             <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{ item.name }}
             </div>
             <div class=" text-start col-12" style="color: #616161;" v-html="item.details"></div>
-            <div class=" text-start col-12 q-mt-md">{{ $Help.toLocalDate(item.created_at) }}</div>
+            <div class="row justify-between items-center q-mt-lg">
+                <div class=" text-start ">{{ $Help.toLocalDate(item.created_at) }}</div>
+                <div>
+                    <q-btn unelevated icon-right="chevron_right" size="md" noCaps class="dafault-button" label="Baca Atikel"
+                        color="primary" style="border-radius: 8px;"
+                        @click="$router.push({ name: 'ruang-edukasi-detail', params: { id: item.id } })" />
+                </div>
+            </div>
+
         </div>
     </q-card>
     <!-- RUANG EDUKASI  -->
@@ -68,8 +78,7 @@
         <div class="col-12 bg-grey" style="height: 200px; border-radius: 16px;">
 
             <iframe id="ytplayer" type="text/html" class="fit" style="border-radius:16px"
-                :src="'https://www.youtube.com/embed/' + item.link"
-                frameborder="0"></iframe>
+                :src="'https://www.youtube.com/embed/' + item.link" frameborder="0"></iframe>
 
         </div>
         <div class="col-12  q-px-xs ">
@@ -83,9 +92,10 @@
         :class="$q.screen.gt.sm ? 'row col-12 q-mt-xl card-about-us' : 'row col-12 q-mt-xl card-about-us'">
         <div class="col-md-5 col-12">
             <cms-paragraph :title="item.title" />
-            <q-img  fit src="images/awards-csrtificate.png" />
+            <q-img fit src="images/awards-csrtificate.png" />
         </div>
-        <div :class="$q.screen.gt.sm ? 'col-md-7 row col-12  q-pa-xl items-center row' : 'col-md-7 col-12 row  q-pa-lg items-center row'">
+        <div
+            :class="$q.screen.gt.sm ? 'col-md-7 row col-12  q-pa-xl items-center row' : 'col-md-7 col-12 row  q-pa-lg items-center row'">
             <cms-paragraph :description="item.description" col="12" />
         </div>
     </q-card>

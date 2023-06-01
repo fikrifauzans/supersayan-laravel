@@ -1,5 +1,5 @@
 <template >
-    <div class="col-12 row q-mt-xl q-px-xl">
+    <div v-if="id == null" class="col-12 row q-mt-xl q-px-xl">
         <div class="row col-12 justify-between">
             <div>
                 <cms-paragraph :title="$Handle.getContent('title-haji-umrah', 'Titles', true).title"
@@ -8,7 +8,6 @@
             <div>
                 <t-input label="Cari" rIcon="search" />
             </div>
-
         </div>
         <div class=" col-12  q-gutter-md">
             <q-btn v-for="(item) in optionCategory" :key="item" :label="item.name" unelevated
@@ -27,14 +26,35 @@
             :separator='$Static.table.separator()' grid>
             <template v-slot:item="props">
                 <div class="q-pa-lg col-xs-12 col-sm-6 col-md-4">
-                    <cms-card type="Product" :item="props.row" />
+                    <cms-card type="Product" :item="props.row" @btnClick="(idp) => id = idp" />
                 </div>
             </template>
-
         </q-table>
+    </div>
+    <div v-else class="q-px-xl">
+        <div class="col-12 row justify-center relative-position     q-mt-xl">
+            <div class="col-12 justify-center absolute row" :style="`background-image: url('${packageDetail.photo.path}');  background-repeat: no-repeat;  background-size: cover;
+          filter: blur(8px);
+        `">
+                <q-img class="col-4 " :src="packageDetail.photo.path" />
 
+            </div>
+            <q-img class="col-4 " :src="packageDetail.photo.path" />
+            <div class="col-12  q-mt-lg">
+                <cms-paragraph :title="packageDetail.name" :topText="'Jumlah Quota ' + packageDetail.quota" />
+                <q-card class="q-pa-md">
+                    <div class="text-bold">Deskripsi Paket</div>
+                    <div v-if="packageDetail.description !== 'null'" v-html="packageDetail.description">
 
+                    </div>
+                </q-card>
+                <div class="col-12 row text-bold q-mt-md q-px-md">
+                    Pilih Paket
+                </div>
+                {{ packageDetail }}
+            </div>
 
+        </div>
     </div>
 </template>
 <script>
@@ -57,17 +77,23 @@ export default {
                 ],
                 rows: [],
                 pagination: []
-            }
+            },
+            id: 3,
+            packageDetail: null
         }
     },
     methods: {
         getData() {
+            let endpoint = 'public/packages?table=&'
+            endpoint += 'like=Category-name:' + this.buttonCategory
+            if (this.id != null) endpoint += '&where=id:' + this.id
             this.$api.get(
-                this.$System.apiUms() + 'public/packages?table=&like=Category-name:' + this.buttonCategory,
+                this.$System.apiUms() + endpoint,
                 (data, status, message, full) => {
                     if (status == 200) {
                         this.packages = data.data
                         this.table.rows = data.data
+                        if (this.id) this.packageDetail = data.data[0] ?? null
 
                     }
                 }, (e) => { }, true)

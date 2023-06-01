@@ -11,7 +11,7 @@ export default {
     name: 'CmsMenu',
     methods: {
         checkRoute(menuName) {
-            console.log(this.$route.name == menuName);
+            // console.log(this.$route.name == menuName);
             if (this.$route.name == menuName) return true
         }
     },
