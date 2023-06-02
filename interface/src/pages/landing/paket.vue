@@ -1,5 +1,5 @@
 <template >
-    <div v-if="id == null" :class="$q.screen.gt.sm ? 'col-12 row q-mt-xl q-px-xl' :'col-12 row q-mt-xl q-px-md'">
+    <div v-if="id == null" :class="$q.screen.gt.sm ? 'col-12 row q-mt-xl q-px-xl' : 'col-12 row q-mt-xl q-px-md'">
         <div class="row col-12 justify-between">
             <div>
                 <cms-paragraph :title="$Handle.getContent('title-haji-umrah', 'Titles', true).title"
@@ -42,7 +42,12 @@
                 getData()
             }" />
         <div v-if="packageDetail">
-            <div :class="$q.screen.gt.sm ? 'col-12 row justify-center relative-position     q-mt-xl' :'col-12 row justify-center relative-position     q-mt-sm'">
+            <q-drawer v-model="rightDrawerOpen" bordered side="right">
+                <DataCart :data="cart" @validate="validateTransaction" />
+            </q-drawer>
+
+            <div
+                :class="$q.screen.gt.sm ? 'col-12 row justify-center relative-position     q-mt-xl' : 'col-12 row justify-center relative-position     q-mt-sm'">
                 <div v-if="$q.screen.lt.sm" class="col-12 justify-center absolute row" :style="`background-image: url('${packageDetail.photo.path}');  background-repeat: no-repeat;  background-size: cover;
           filter: blur(8px);
         `">
@@ -76,7 +81,7 @@
                                     </div>
                                     <div class="col-12 q-mt-md">
                                         <q-btn color="primary" label="Booking" class="col-12 fit" unelevated
-                                            style="border-radius: 6px;" noCaps size="md" />
+                                            style="border-radius: 6px;" noCaps size="md" @click="setPackage(item)" />
                                     </div>
                                 </div>
                             </q-card>
@@ -97,14 +102,25 @@
                 </div>
 
             </div>
+            <TransacionModal v-model="modal" :packageDetail="packageDetail" @addToCart="addToCart" :opt="opt" />
+            <ValidatorModal v-model="utils.validator" @validated="purchase" />
         </div>
 
     </div>
 </template>
 <script>
+import TransacionModal from "./components/transaction-modal.vue";
+import ValidatorModal from "./components/validator.vue";
+import DataCart from "./components/data-cart.vue";
 export default {
     name: 'IndexHome',
+    components: {
+        TransacionModal,
+        DataCart,
+        ValidatorModal,
+    },
     created() {
+        if (this.$route.query.id) this.id = this.$route.query.id
         this.getData()
     },
     data() {
@@ -122,8 +138,16 @@ export default {
                 rows: [],
                 pagination: []
             },
-            id: null,
-            packageDetail: null
+            id: 2,
+            packageDetail: null,
+            rightDrawerOpen: true,
+            modal: false,
+            opt: null,
+            utils: {
+                opt: null,
+                validator: false,
+            },
+            cart: [],
         }
     },
     methods: {
@@ -142,6 +166,45 @@ export default {
                     }
                 }, (e) => { }, true)
 
+        },
+        setPackage(opt) {
+            this.opt = opt;
+            this.modal = true;
+        },
+        addToCart(data) {
+            this.cart.push(data);
+        },
+        validateTransaction() {
+            this.utils.validator = true;
+        },
+        purchase() {
+            const user = this.$Handle.getLS("_user");
+            let dataModel = {
+                user_id: user.id,
+                package_id: this.id,
+                booking_no: null,
+                status: null,
+                transactions: this.cart,
+            };
+            console.log(dataModel);
+            // let endpoint = "booking-packages";
+            // this.$api.post(
+            //     endpoint,
+            //     dataModel,
+            //     (data, status) => {
+            //         this.$Handle.loadingStop();
+            //         if (status < 400) {
+            //             this.$router.push({
+            //                 name: "cms-jamaah-transaction-tahapan",
+            //                 params: { id: data.id },
+            //                 query: { status: "new" },
+            //             });
+            //         }
+            //     },
+            //     (error) => {
+            //         this.$Handle.errorMessage(error.message);
+            //     }
+            // );
         },
     },
 }

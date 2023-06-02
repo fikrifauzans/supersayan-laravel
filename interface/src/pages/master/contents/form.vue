@@ -18,7 +18,6 @@
             <t-input v-if="item.field == 'link'" col='12' :label='item.label' v-model='model.link' topLabel='link' />
             <t-input v-if="item.field == 'sort'" col='12' :label='item.label' v-model='model.sort' topLabel='sort' />
             <t-file-image v-if="item.field == 'photo_id'" col='12' :label='item.label' v-model="model.photo" fullFile />
-            <!-- {{ model.photo }} -->
             <t-input v-if="item.field == 'description'" col='12' :label='item.label' v-model='model.description'
               topLabel='description' type="textarea" />
             <t-text-editor v-if="item.field == 'remark'" col='12' :label='item.label' type='textarea'

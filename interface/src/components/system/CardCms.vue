@@ -29,12 +29,12 @@
         <div class="col-md-5 col-12">
             <q-img class="fit" fit src="images/card-about-us.webp" />
         </div>
-        <div :class="$q.screen.gt.sm ? 'col-md-7 row  q-pa-xl items-center row' : 'col-md-7 row  q-pa-lg items-center row'">
+        <div :class="$q.screen.gt.sm ? 'col-md-7 row  q-pa-xl items-start row' : 'col-md-7 row  q-pa-lg items-center row'">
             <cms-paragraph :title="item.title" :description="item.description" col="12" :topText="topText">
                 <template v-slot:bottom>
                     <q-btn v-if="hidaButton !== ''" unelevated :size="$q.screen.gt.sm ? 'lg' : 'md'" noCaps
                         class="dafault-button q-mt-lg" label="Lihat Selengkapnya" color="primary"
-                        style="border-radius: 8px;" />
+                        style="border-radius: 8px;" @click="$emit('btnClick')" />
                 </template>
             </cms-paragraph>
         </div>

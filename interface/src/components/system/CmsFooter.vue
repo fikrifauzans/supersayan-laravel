@@ -42,11 +42,11 @@
                     <div class="menu-footer  poppins">travel@maghfirah.com</div>
                     <div class="menu-footer  poppins">08111144633 (Whatsapp)</div>
                 </div>
-                <div class="col-md-3 col-12">
+                <!-- <div class="col-md-3 col-12">
                     <div class="title-footer q-mt-md q-my-md poppins">Follow Us</div>
                     <div class="menu-footer  poppins">
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

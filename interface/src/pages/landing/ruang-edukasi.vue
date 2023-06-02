@@ -1,6 +1,6 @@
 
 <template>
-    <div :class="$q.screen.gt.sm ? 'col-12 q-px-xl q-mt-xl'  : 'col-12 q-px-md q-mt-xl'">
+    <div :class="$q.screen.gt.sm ? 'col-12 q-px-xl q-mt-xl' : 'col-12 q-px-md q-mt-xl'">
         <div v-if="id">
             <q-btn color="primary" label="Kembali" class="q-mb-lg" unelevated style="border-radius: 6px;" noCaps size="md"
                 @click="() => {
@@ -36,6 +36,9 @@ import TableContents from './components/table-contents.vue'
 export default {
     name: "DokumentasiPage",
     components: { TableContents },
+    created() {
+        if (this.$route.query.id) this.id = this.$route.query.id
+    },
     data() {
         return {
             type: 'detail',

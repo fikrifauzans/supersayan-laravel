@@ -1,6 +1,8 @@
 <template>
   <q-layout view="lHr lpR lfr" v-if="content">
-    <cms-navbar @clickLeftMenu="rightDrawerOpen = !rightDrawerOpen" />
+    <cms-navbar @clickLeftMenu="rightDrawerOpen = !rightDrawerOpen" >
+      <slot name="right" />
+    </cms-navbar>
     <q-drawer v-model="leftDrawerOpen" side="left" style="z-index: 10000 !important;">
       <!-- drawer content -->
     </q-drawer>
@@ -11,6 +13,7 @@
         <cms-logo width="200" />
         <q-separator class="q-mt-xl" />
         <cms-menu column :data="$Handle.getContent('', 'Menu')" />
+     
       </div>
     </q-drawer>
 
@@ -26,14 +29,9 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-
 export default {
-
   created() {
     if (this.getContents()) this.$router.push({ path: '/home' })
-
-
 
   },
   data() {

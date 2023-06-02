@@ -11,6 +11,7 @@ export default {
   name: "MainLayouts",
   created() {
     this.authCheck()
+   
   },
   methods: {
     authCheck() {

@@ -73,6 +73,13 @@ class Static {
     { label: 'sabtu', value: 6 },
     { label: 'minggu', value: 7 },
   ]
+   genderList() {
+    return [
+      { val: 1, label: 'Laki Laki' },
+      { val: 2, label: 'Perempuan' },
+    ]
+  }
+
 
 
 }

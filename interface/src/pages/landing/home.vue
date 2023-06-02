@@ -22,7 +22,7 @@
                 <cms-paragraph col='12' :title="$Handle.getContent('title-haji-umrah', 'Titles', true).title"
                     :topText="$Handle.getContent('title-haji-umrah', 'Titles', true).subtitle" />
                 <q-btn label="Lihat Semua" color="secondary" class="text-bold default-button q-mt-sm poppins q-mb-md" noCaps
-                    unelevated />
+                    unelevated @click="$router.push({ name: 'paket' })" />
                 <q-card v-for="(item, index) in $Handle.getContent('', 'Counter')" :key="index" style="border-radius: 12px;"
                     class="text-dark col-12 q-mt-md q-pa-md">
                     <div class="text-h5 text-bold q-mb-xs">{{ item.title }}</div>
@@ -45,7 +45,7 @@
                     class="bg-secondary default-button q-mt-md col-12 ">
                     <div class="row no-wrap q-pa-md q-gutter-md col-12">
                         <cms-card v-for="(item, index) in packages" :key="index" type="Product" style="width:350px"
-                            :item="item" />
+                            :item="item" @btnClick="(id) => $router.push({ name: 'paket', query: { id: id } })" />
                     </div>
                 </q-scroll-area>
             </div>
@@ -56,7 +56,8 @@
 
         <!-- THIRD CONTAINER / MAIN CONTAINER  -->
         <div :class="$q.screen.gt.sm ? 'col-12 row q-px-xl' : 'q-px-md'">
-            <cms-card :key="index" type="About Us" :item="$Handle.getContent('', 'About Us Summary', true)" />
+            <cms-card :key="index" type="About Us" :item="$Handle.getContent('', 'About Us Summary', true)"
+                @btnClick="() => $router.push({ name: 'tentang-kami' })" />
         </div>
 
 
@@ -165,12 +166,14 @@
                 </div>
                 <div>
                     <q-btn unelevated :size="$q.screen.gt.sm ? 'md' : 'md'" noCaps class="dafault-button q-mt-lg q-mr-md"
-                        label="Lihat Semua" color="primary" style="border-radius: 8px;" />
+                        label="Lihat Semua" color="primary" style="border-radius: 8px;"
+                        @click="$router.push({ name: 'ruang-edukasi' })" />
                 </div>
             </div>
             <div class="col-12 row  q-mt-lg">
                 <div v-for="(item) in $Handle.getContent('', 'Ruang Edukasi')" :key="item" class="col-md-4 col-12 q-px-sm">
-                    <cms-card type="Ruang Edukasi" :item="item" />
+                    <cms-card type="Ruang Edukasi" :item="item"
+                        @btnClick="(ids) => $router.push({ name: 'ruang-edukasi', query: { id: ids } })" />
                 </div>
             </div>
         </div>
@@ -198,7 +201,7 @@ export default {
                 (data, status, message, full) => {
                     if (status == 200) {
                         this.packages = data.data
-                        console.log(this.packages)
+
                     }
                 }, (e) => { }, true)
 
