@@ -103,7 +103,13 @@
 
             </div>
             <TransacionModal v-model="modal" :packageDetail="packageDetail" @addToCart="addToCart" :opt="opt" />
-            <ValidatorModal v-model="utils.validator" @validated="purchase" />
+            <ValidatorModal v-model="utils.validator" @validated="purchase">
+                <div class="col-12 row ">
+                    <t-input v-model="model.name" label="Name" col="6" />
+                    <t-input v-model="model.username" label="Phone" col="6" />
+                </div>
+
+            </ValidatorModal>
         </div>
 
     </div>
@@ -148,6 +154,10 @@ export default {
                 validator: false,
             },
             cart: [],
+            model: {
+                name: null,
+                username: null
+            }
         }
     },
     methods: {
@@ -186,7 +196,17 @@ export default {
                 status: null,
                 transactions: this.cart,
             };
-            console.log(dataModel);
+            let newUser = this.model
+            let endpoint = this.$System.apiUms()
+            endpoint += 'common/register'
+
+            this.$api.post(endpoint, newUser, (data, status) => {
+                console.log(data);
+            }, (e) => { }, true)
+
+
+
+
             // let endpoint = "booking-packages";
             // this.$api.post(
             //     endpoint,
