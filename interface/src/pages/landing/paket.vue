@@ -43,7 +43,7 @@
             }" />
         <div v-if="packageDetail">
             <q-drawer v-model="rightDrawerOpen" bordered side="right">
-                <DataCart :data="cart" @validate="validateTransaction" />
+                <DataCart :data="cart" @validate="validateTransaction" @deleteBtn="(index) => cart.splice(index ,1)" />
             </q-drawer>
 
             <div
@@ -98,11 +98,10 @@
                             </q-card>
                         </div>
                     </div>
-                    <!-- {{ packageDetail }} -->
                 </div>
 
             </div>
-            <TransacionModal v-model="modal" :packageDetail="packageDetail" @addToCart="addToCart" :opt="opt" />
+            <TransacionModal v-model="modal" :packageDetail="packageDetail" @addToCart="addToCart" :opt="opt"  />
             <ValidatorModal v-model="utils.validator" @validated="purchase">
                 <div class="col-12 row ">
                     <t-input v-model="model.name" label="Name" col="6" />
@@ -110,6 +109,7 @@
                 </div>
 
             </ValidatorModal>
+            <SuccessModal v-model="utils.success" />
         </div>
 
     </div>
@@ -117,13 +117,16 @@
 <script>
 import TransacionModal from "./components/transaction-modal.vue";
 import ValidatorModal from "./components/validator.vue";
+import SuccessModal from "./components/success-modal.vue";
 import DataCart from "./components/data-cart.vue";
+import axios from "axios";
 export default {
     name: 'IndexHome',
     components: {
         TransacionModal,
         DataCart,
         ValidatorModal,
+        SuccessModal,
     },
     created() {
         if (this.$route.query.id) this.id = this.$route.query.id
@@ -144,7 +147,7 @@ export default {
                 rows: [],
                 pagination: []
             },
-            id: 2,
+            id: null,
             packageDetail: null,
             rightDrawerOpen: true,
             modal: false,
@@ -152,19 +155,21 @@ export default {
             utils: {
                 opt: null,
                 validator: false,
+                success: false
             },
             cart: [],
             model: {
                 name: null,
                 username: null
-            }
+            },
+            axios
         }
     },
     methods: {
         getData() {
             let endpoint = 'public/packages?table=&'
-            endpoint += 'like=Category-name:' + this.buttonCategory
             if (this.id != null) endpoint += '&where=id:' + this.id
+            else endpoint += 'like=Category-name:' + this.buttonCategory
             this.$api.get(
                 this.$System.apiUms() + endpoint,
                 (data, status, message, full) => {
@@ -188,21 +193,24 @@ export default {
             this.utils.validator = true;
         },
         purchase() {
-            const user = this.$Handle.getLS("_user");
-            let dataModel = {
-                user_id: user.id,
-                package_id: this.id,
-                booking_no: null,
-                status: null,
-                transactions: this.cart,
-            };
+            this.$Handle.loadingStart()
+
             let newUser = this.model
             let endpoint = this.$System.apiUms()
             endpoint += 'common/register'
 
             this.$api.post(endpoint, newUser, (data, status) => {
-                console.log(data);
-            }, (e) => { }, true)
+                let dataModel = { user_id: data.users.id, package_id: this.id, transactions: this.cart };
+                const instance = axios.create({ baseURL: this.$System.apiUms() });
+                instance.defaults.headers.common['Authorization'] = 'Bearer ' + data.access_token;
+                instance.defaults.headers.post['Content-Type'] = 'application/json'
+                instance.defaults.timeout = 10000;
+                instance.post('/booking-packages', dataModel)
+                    .then((response) => {
+                        this.utils.success = true
+                        this.$Handle.loadingStop()
+                    })
+            }, (e) => false, true)
 
 
 

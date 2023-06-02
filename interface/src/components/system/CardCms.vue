@@ -42,7 +42,7 @@
     <!-- LIST USTADZ  -->
     <q-card v-else-if="type == 'List Ustadz'" class="col-12 row" style="border-radius: 16px;">
         <div class="col-12 " style="height: 196px;">
-            <q-img :src="$System.storageUrl(item.photo.name)" class="fit"  style=" border-radius: 16px 16px 0 0;"  />
+            <q-img :src="$System.storageUrl(item.photo.name)" class="fit" style=" border-radius: 16px 16px 0 0;" />
 
         </div>
         <div class="col-12 q-py-md">
@@ -53,14 +53,19 @@
     </q-card>
     <!-- RUANG EDUKASI  -->
     <q-card v-else-if="type == 'Ruang Edukasi'" class="col-12 row q-mb-md" style="border-radius: 12px; height: 395px;">
-       
+
         <div class="col-12 bg-grey" style="height: 200px;">
             <q-img :src="$System.storageUrl(item.photo.name)" class="fit" style="border-radius:10px 10px 0 0" />
         </div>
         <div class="col-12 q-py-md q-px-md">
             <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{ item.name }}
             </div>
-            <div class=" text-start col-12" style="color: #616161;" v-html="item.details"></div>
+            <div>
+                <span class=" text-start col-12" style="color: #616161;" v-html="item.details.substring(0, 90)"></span>
+                <span class="cursor-pointer" @click="$emit('btnClick', item.id)">
+                    ... Baca Selengkapny
+                </span>
+            </div>
             <div class="row justify-between items-center q-mt-lg">
                 <div class=" text-start ">{{ $Help.toLocalDate(item.created_at) }}</div>
                 <div>
@@ -82,7 +87,7 @@
         </div>
         <div class="col-12  q-px-xs ">
             <!-- <div class=" text-start col-12" style="color: #616161;">{{item}} </div> -->
-            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{item.name}}
+            <div class="text-bold  col-12  q-mb-md" style="font-size: 17px;"> {{ item.name }}
             </div>
             <div class=" text-start col-12 q-mt-md">12 April 2023</div>
         </div>

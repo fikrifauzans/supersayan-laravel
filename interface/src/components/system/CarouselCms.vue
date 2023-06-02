@@ -1,32 +1,28 @@
 <template>
-    <div class=" col-12 row q-pt-lg row justify-center">
-        <div class="col-md-2 q-pt-lg" v-if="$q.screen.gt.sm">
-            <q-img src="images/carousel.webp" style="height: 180px; border-radius: 0 20px 20px 0; opacity: 0.5;"
-                class="col-12 fit" />
-        </div>
-        <div class="col-12 col-md-8 q-px-md  row relative-position">
-            <div class="col-12 row absolute-center justify-between  " style="z-index: 1;">
-                <q-btn class="bg-white" icon="navigate_before" round rounded />
-                <q-btn class="bg-white" icon="navigate_next" round rounded />
-            </div>
-            <q-img src="images/carousel.webp" style="height: 200px;" class="col-12 fit" />
-        </div>
-        <div class="col-md-2 q-pt-lg" v-if="$q.screen.gt.sm">
-            <q-img src="images/carousel.webp" style="height: 200px;opacity: 0.5;" class="col-12 fit" />
-        </div>
-    </div>
+  <div class="q-pa-md col-12">
+
+    <q-carousel animated v-model="slide" arrows navigation infinite v-if="data" :style="$q.screen.lt.md ? 'height:220px' : 'height:500px'">
+      <q-carousel-slide v-for="(item, index) in data" v-show="item && item.photo" :key="item" style="border-radius:16px"
+        :name="index" >
+        <q-img class="fit" fit :src="$System.storageUrl(item.photo.name)" :style="$q.screen.lt.md ? 'height:100px' : ''" />
+      </q-carousel-slide>
+    </q-carousel>
+    <!-- {{ data[0] }} -->
+  </div>
 </template>
   
 <script>
 import { ref } from 'vue'
 
 export default {
-    setup() {
-        return {
-            slide: ref(1),
-            autoplay: ref(true)
-        }
+  name: 'CarouselCms',
+  props: ['data'],
+
+  setup() {
+    return {
+      slide: ref(1)
     }
+  }
 }
 </script>
   

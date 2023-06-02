@@ -137,6 +137,7 @@ class Api {
           callback(data, status, message, raw_response)
         }
       ).catch((e) => {
+        console.log(e);
         if (e.response.status == 403) {
           // Kalo Permission Denied
           const u = '/403';

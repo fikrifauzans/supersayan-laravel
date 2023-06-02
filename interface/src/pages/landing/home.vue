@@ -2,17 +2,21 @@
     <div class="col-12 row">
 
         <!-- FIRST CONTAINER  -->
+
         <div class="col-12 row">
-            <cms-carousel :class="$q.screen.gt.sm ? 'q-mt-xl' : 'q-mt-md'" />
+            <cms-carousel v-if="$Handle.getContent('', 'Carousel')" :class="$q.screen.gt.sm ? 'q-mt-xl' : 'q-mt-md'" :data="$Handle.getContent('', 'Carousel')" />
             <cms-paragraph :class="$q.screen.gt.sm ? 'q-pa-xl' : 'q-px-lg q-mt-xl'" col='6'
                 :title="$Handle.getContent('title-first', 'Titles', true).title"
                 :topText="$Handle.getContent('title-first', 'Titles', true).subtitle" />
             <div
-                :class="$q.screen.gt.sm ? 'q-pa-xl col-12 col-md-6 row justify-center' : 'q-px-lg q-mt-md col-12 col-md-6 row justify-start q-pb-lg'">
+                :class="$q.screen.gt.sm ? 'q-pa-xl col-12 col-md-6 row justify-end items-center' : 'q-px-lg q-mt-md col-12 col-md-6 row justify-start q-pb-lg'">
                 <q-img src="images/award1.png" style="width: 150px;" fit />
-                <q-img src="images/award2.png" style="width: 150px;" fit />
+                <q-img src="images/award2.png" style="width: 200px;height: 50px;"  />
             </div>
         </div>
+        <!-- {{$Handle.getContent('', 'Carousel')}} -->
+
+
 
 
         <!-- SECOND CONTAINER  -->

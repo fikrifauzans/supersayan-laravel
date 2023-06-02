@@ -5,17 +5,17 @@
     <s-drawer wrapCard @refresh='refresh' :Meta='Meta' :filter='filter' :table='table' v-model='filter.query'
       @update:modelValue='refresh'>
       <div class="q-pb-sm"></div>
-
-      <q-tabs  v-if="$Handle.getLS('role').slug != 'admin'" v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
+      <q-tabs v-if="$Handle.getLS('role').slug === 'admin'" v-model="tab" inline-label outside-arrows mobile-arrows
+        class="bg-primary text-white shadow-2" style="border-radius:10px 10px 0 0">
+        <q-tab label="All" :name="null" noCaps @click="getData()" />
+        <q-tab v-for="item in Meta.group" :key="item" :name="item" :label="item" noCaps @click="getData()" />
+      </q-tabs>
+      <q-tabs v-else v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
         style="border-radius:10px 10px 0 0">
         <q-tab label="All" :name="null" noCaps @click="getData()" />
         <q-tab v-for="item in group" :key="item" :name="item.group" :label="item.group" noCaps @click="getData()" />
       </q-tabs>
-      <q-tabs  v-else v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
-        style="border-radius:10px 10px 0 0">
-        <!-- <q-tab label="All" :name="null" noCaps @click="getData()" /> -->
-        <q-tab v-for="item in Meta.group" :key="item" :name="item" :label="item" noCaps @click="getData()" />
-      </q-tabs>
+
       <q-table virtual-scroll class='q-my-sm' :rows='table.rows' :columns='table.columns' row-key='id'
         selection='multiple' v-model:selected='table.selected' v-model:pagination='table.pagination'
         :style='$Static.table.height()' :dense='$Static.table.dense()' :flat='$Static.table.flat()'
@@ -31,6 +31,12 @@
         <template v-slot:body-cell-id='props'>
           <q-td v-if='trash == true'> </q-td>
           <s-table-option v-else @show='detail(props.key)' @edit='edit(props.key)' :Meta='Meta' />
+        </template>
+        <template v-slot:body-cell-photo_id="props">
+          <q-td>
+            <q-img v-if="props && props.row && props.row.photo && props.row.photo.path" :src="$System.storageUrl(props.row.photo.name)"
+              style="width:100px;height: 100px;" />
+          </q-td>
         </template>
       </q-table>
 

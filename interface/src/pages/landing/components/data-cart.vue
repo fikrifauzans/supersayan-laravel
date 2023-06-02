@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <q-scroll-area style="height: calc(100vh - 130px)" >
+    <q-scroll-area style="height: calc(100vh - 130px)">
       <div class="col-12 row q-pa-md row">
         <div class="row">
           <div class="text-bold">Detail Pesanan</div>
@@ -57,7 +57,7 @@
                     </div>
                   </div>
                   <div class="col-12 row justify-end q-mt-md">
-                    <q-btn color="negative" icon="delete" size="sm" outline />
+                    <q-btn color="negative" icon="delete" size="sm" outline @click="$emit('deleteBtn' , index)" />
                     <!-- <q-btn color="info" icon="edit" label="edit" size="sm" class="q-ml-sm" /> -->
                   </div>
                 </div>
