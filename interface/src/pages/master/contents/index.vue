@@ -16,7 +16,7 @@
         <q-tab v-for="item in group" :key="item" :name="item.group" :label="item.group" noCaps @click="getData()" />
       </q-tabs>
 
-      <q-table virtual-scroll class='q-my-sm' :rows='table.rows' :columns='table.columns' row-key='id'
+      <q-table wrap-cells="true" virtual-scroll class='q-my-sm' :rows='table.rows' :columns='table.columns' row-key='id'
         selection='multiple' v-model:selected='table.selected' v-model:pagination='table.pagination'
         :style='$Static.table.height()' :dense='$Static.table.dense()' :flat='$Static.table.flat()'
         :color='$Static.table.color()' :rows-per-page-label='$Static.table.rowPerPageLabel()'
@@ -36,6 +36,11 @@
           <q-td>
             <q-img v-if="props && props.row && props.row.photo && props.row.photo.path" :src="$System.storageUrl(props.row.photo.name)"
               style="width:100px;height: 100px;" />
+          </q-td>
+        </template>
+        <template v-slot:body-cell-detauils="props">
+          <q-td>
+          {{ props.row.details }}
           </q-td>
         </template>
       </q-table>

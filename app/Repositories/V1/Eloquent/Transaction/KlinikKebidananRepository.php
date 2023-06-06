@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+namespace App\Repositories\V1\Eloquent\Transaction;
+
+use App\Models\KlinikKebidanan;
+use App\Repositories\V1\Eloquent\BaseRepository;
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -13,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 | generate in 2023-06-06T16:57                                             |
 |--------------------------------------------------------------------------|
 */
-include 'v1/cms.php';
-include 'v1/generator.php';
+class KlinikKebidananRepository extends BaseRepository 
+{
+    protected $model;
+
+    public function __construct(KlinikKebidanan $model)
+    {
+    $this->model = $model;
+    }
+    
+}

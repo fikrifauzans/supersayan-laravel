@@ -10,6 +10,8 @@ use App\Http\Controllers\v1\Auth\MasterMenusController;
 use App\Http\Controllers\v1\Auth\PermissionsAccessController;
 use App\Http\Controllers\v1\Auth\PermissionsController;
 use App\Http\Controllers\v1\Auth\FilesController;
+use App\Http\Controllers\v1\Master\ContentsController;
+
 
 use App\Http\Controllers\InitController;
 use App\Http\Controllers\v1\DashboardController;
@@ -122,6 +124,17 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::delete('/{id}', [CategoriesController::class, 'destroy']);
                 Route::delete('/force/{id}', [CategoriesController::class, 'force']);
                 Route::put('/restore/{id}', [CategoriesController::class, 'restore']);
+            });
+
+            Route::group(['prefix' => 'contents'], function () {
+                Route::get('/', [ContentsController::class, 'index']);
+                Route::get('/{id}', [ContentsController::class, 'show']);
+                Route::post('/', [ContentsController::class, 'store']);
+                Route::put('/{id}', [ContentsController::class, 'update']);
+                Route::delete('/{id}', [ContentsController::class, 'destroy']);
+                Route::delete('/force/{id}', [ContentsController::class, 'force']);
+                Route::put('/restore/{id}', [ContentsController::class, 'restore']);
+                Route::get('/filter/group', [ContentsController::class, 'group']);
             });
         });
     });

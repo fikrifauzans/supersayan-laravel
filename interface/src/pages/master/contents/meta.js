@@ -33,63 +33,23 @@ export default {
   },
   table: {
     columns: (type) => {
-      if (type == 'Ustadz') {
+   
+      if (type == 'Informasi Kehamilan') {
         return [
           { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
           { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
           { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          { name: 'title', label: 'Alumni', field: 'title', sortable: true, align: 'left', },
-          // { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
+          { name: 'details', label: 'Detail', field: 'details', sortable: true, align: 'left', },
+
         ]
-      } else if (type == 'Carousel') {
+      } else if (type == 'Edukasi') {
         return [
           { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
           { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          // { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          // { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
+          { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
+          { name: 'details', label: 'Detail', field: 'details', sortable: true, align: 'left', },
         ]
 
-      }
-      else if (type == 'Testimonies') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
-          { name: 'description', label: 'Description', field: 'description', sortable: true, align: 'left', },
-        ]
-      }
-      else if (type == 'Partners') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          // { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          // { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
-          // { name: 'description', label: 'Description', field: 'description', sortable: true, align: 'left', },
-        ]
-      }
-      else if (type == 'Ruang Edukasi') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
-          { name: 'details', label: 'Details', field: 'details', sortable: true, align: 'left', },
-          { name: 'sort', label: 'Sort', field: 'sort', sortable: true, align: 'left', },
-        ]
-      }
-      else if (type == 'Dokumentasi Video') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
-          { name: 'link', label: 'Link', field: 'link', sortable: true, align: 'left', },
-        ]
-      }
-      else if (type == 'Dokumentasi') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Title', field: 'name', sortable: true, align: 'left', },
-        ]
       }
       else {
         return [
