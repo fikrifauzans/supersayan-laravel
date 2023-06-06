@@ -6,7 +6,7 @@ import generator from './generator/generator'
 
 const routes = [
 
-  { path: '/', component: () => import('layouts/LandingPage.vue'), children: [...landing] },
+  // { path: '/', component: () => import('layouts/LandingPage.vue'), children: [...landing] },
   {
     path: '/management',
     component: () => import('layouts/MainLayout.vue'),

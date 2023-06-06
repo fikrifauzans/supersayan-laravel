@@ -1,19 +1,24 @@
 
 <template>
   <q-form class="text-h6 col-12 items-center row justify-center bg-primary q-py-xl q-px-md text-white"
-    style="border-radius: 24px 24px 0 0 " @submit="login">
+     @submit="login">
     <div class="col-12 justify-start row" v-if="type == 'login'">
       <div class="text-h5 text-bold col-12"></div>
       <div class="col-12  q-mb-xl text-bold text-h6">
-        <cms-paragraph title="Hai.. Asslamualaikum " description="Silakan masukan akun anda dibawah ini." />
+        <div class="text-h6 text-bold text-center">
+          SELAMAT DATANG DI PREGLEARN
+        </div>
+        <div class="text text-h6 text-bold text-center">
+          PREGNANCY LEARNING
+        </div>
       </div>
       <div class="col-12">
-        <small class="col-12 text-weight-light">Username </small>
+        <small class="col-12 ">Username </small>
         <q-input outlined class="col-12" color="primary" bg-color="white" v-model="dataModel.username"
-          placeholder="08123456789" style="border-radius: 24px !important" />
+          placeholder="username" style="border-radius: 24px !important" />
       </div>
       <div class="col-12">
-        <small class="col-12 text-weight-light">Password </small>
+        <small class="col-12 ">Password </small>
         <q-input outlined class="col-12" color="primary" bg-color="white" v-model="dataModel.password"
           :type="isPwd ? 'password' : 'text'" placeholder="Password">
           <template v-slot:append>
@@ -22,9 +27,8 @@
         </q-input>
       </div>
       <div class="col-12 row q-mt-xl">
-        <q-btn label="Login" class="col-12 bg-white" size="lg" noCaps flat color="primary" type="submit" @click="login" 
-        style="border-radius: 12px;"
-        />
+        <q-btn label="Login" class="col-12 bg-white" size="lg" noCaps flat color="primary" type="submit" @click="login"
+          style="border-radius: 12px;" />
       </div>
       <div class="col-12 justify-between row q-mt-sm q-mb-lg">
         <small class="text-weight-bold"></small>

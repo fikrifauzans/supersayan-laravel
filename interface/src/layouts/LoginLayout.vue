@@ -6,13 +6,18 @@
     <div v-if="$q.screen.gt.sm" class="col-md-5 col-12 row justify-center bg-primary">
       <router-view />
     </div>
-    <div class="col-md-7 relative-position">
-      <q-img src="images/login-background.webp" cover class="absolute-center fit" />
-      <span class="text-primary absolute-bottom text-center">
-      </span>
-      <q-img src="images/magfirah-login-text.png" style="width: 50%; right: 150px; bottom: 60px"
-        class="absolute-bottom q-mx-auto" />
+    <div v-if="$q.screen.gt.sm" class="col-md-7 relative-position bg-secondary">
+      <div class="fit row justify-center items-center relative-position">
+        <q-img src="~assets/images/icon.png" style="width: 400px;" />
+        <div class="col-8 text-primary">
+          Aplikasi ini dibuat untuk membantu kamu dalam
+          mengembangkan kompetensi dan keterampilan yang
+          diperlukan dalam praktik klinis pada stase kehamilan
+        </div>
+      </div>
     </div>
+
+
   </div>
 </template>
 <script>
