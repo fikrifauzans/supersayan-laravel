@@ -7,7 +7,6 @@
         <s-form class='q-px-md q-py-lg' title='Form Klinik Kebidanan'>
           <t-input col='12' label='name' v-model='model.name' topLabel='name' />
           <t-text-editor col='12' label='description' type='textarea' v-model='model.description' />
-
         </s-form>
       </div>
     </s-drawer>

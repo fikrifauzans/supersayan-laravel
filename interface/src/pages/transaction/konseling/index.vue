@@ -20,6 +20,12 @@
                 <q-td v-if='trash == true'> </q-td>
                 <s-table-option v-else @show='detail(props.key)' @edit='edit(props.key)' :Meta='Meta' />
               </template>
+              <template v-slot:body-cell-description="props">
+          <q-td>
+            <div v-html="props.row.description">
+            </div>
+          </q-td>
+        </template>
             </q-table>
       
             <t-modal v-model='modal' @submit='submit'>

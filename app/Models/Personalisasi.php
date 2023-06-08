@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-06-06T16:57                                             |
 |--------------------------------------------------------------------------|
 */
+
 class Personalisasi extends Model
 {
     use SoftDeletes;
@@ -23,24 +24,26 @@ class Personalisasi extends Model
     /**
      * The attributes that are mass assignable.
      * @var name string 
-* @var age integer 
-* @var kehamilan_ke integer 
-* @var usia_anak_terakhir integer 
-* @var hpht string 
-* @var usia_kehamilan integer 
-* @var gph string 
-* @var keluhan text 
-*/
+     * @var age integer 
+     * @var kehamilan_ke integer 
+     * @var usia_anak_terakhir integer 
+     * @var hpht string 
+     * @var usia_kehamilan integer 
+     * @var gph string 
+     * @var keluhan text 
+     */
     protected $table =  'personalisasi';
     protected $fillable = [
-'name',  
-'age',  
-'kehamilan_ke',  
-'usia_anak_terakhir',  
-'hpht',  
-'usia_kehamilan',  
-'gph',  
-'keluhan',  
+        'name',
+        'age',
+        'kehamilan_ke',
+        'usia_anak_terakhir',
+        'hpht',
+        'usia_kehamilan',
+        'gph',
+        'keluhan',
+        'review',
+        'verifikasi',
 
     ];
 
@@ -48,16 +51,16 @@ class Personalisasi extends Model
     protected $hidden = [];
 
     public $searchable = [
-'name',  
-'age',  
-'kehamilan_ke',  
-'usia_anak_terakhir',  
-'hpht',  
-'usia_kehamilan',  
-'gph',  
-'keluhan',  
+        'name',
+        'age',
+        'kehamilan_ke',
+        'usia_anak_terakhir',
+        'hpht',
+        'usia_kehamilan',
+        'gph',
+        'keluhan',
+        'review',
+        'verifikasi',
 
     ];
 }
-
-            

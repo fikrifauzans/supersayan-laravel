@@ -24,9 +24,9 @@
                 return [
                   { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
 
-                { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
+                { name: 'name', label: 'Nama', field: 'name', sortable: true, align: 'left', },
 
-                { name: 'description', label: 'Description', field: 'description', sortable: true, align: 'left', },
+                { name: 'description', label: 'Deskripsi', field: 'description', sortable: true, align: 'left', },
 
                 ]
               }

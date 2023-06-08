@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('rekap_simulasi', function (Blueprint $table) {
-            $table->text('details')->nullable();
+        Schema::table('personalisasi', function (Blueprint $table) {
+            $table->text('review')->nullable();
+            $table->boolean('verifikasi')->nullable();
         });
     }
 
