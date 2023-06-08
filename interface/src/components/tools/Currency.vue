@@ -1,7 +1,7 @@
 <template>
   <q-field v-if="currency == ''" :label="label" :dense="dense === false ? false : true" :model-value="modelValue"
     :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" outlined :prefix="prefix"
-    :class="`q-absolute_label col-12 col-sm-6 col-md-${col} q-px-xs q-mb-lg`" :readonly="readonly == ''"
+    :class="`q-absolute_label col-12 col-sm-6 col-md-${col} q-px-xs q-mb-md`" :readonly="readonly == ''"
     :color="color ? color : 'primary'">
     <template v-slot:control="{ id, floatingLabel }">
       <money :id="id" class="q-field__input text-right" :model-value="modelValue" v-bind="moneyFormatForComponent"

@@ -1,8 +1,8 @@
 <template>
   <q-input v-if="currency != ''" outlined :type="type" :model-value="modelValue"
     @update:modelValue="(val) => $emit('update:modelValue', val)" :label="label" :dense="dense === false ? false : true"
-    :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${required != '' ? 'q-mb-lg' : 'q-mb-sm'
-    }`" :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" lazy-rules :required="required == ''"
+    :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${required != '' ? 'q-mb-md' : 'q-mb-sm'
+      }`" :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" lazy-rules :required="required == ''"
     @blur="$emit('blur')" @focus="$emit('focus')" :color="color ? color : 'primary'">
     <template v-slot:append>
       <div>

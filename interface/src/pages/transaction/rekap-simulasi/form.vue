@@ -4,34 +4,28 @@
     <s-loading :load='loading' />
     <s-drawer @refresh='refresh' :useModal='useModal' form @submit='submit' @back='back' :Meta='Meta'>
       <div>
-        <s-form class='q-px-md q-py-lg'>
-          <div class="text-bold">
-            Soal Simulasi
-          </div>
-          <div class="col-12 q-mb-sm">tambahkan pertanyaan anda untuk menentukan nilai dari simulasi</div>
-          <t-input type="textarea" col='12' label='name' v-model='model.question' />
-          <t-input col='12' label='jawaban' v-model='model.answer_value' readonly />
-          <!-- <t-input col='6' label='value' v-model='model.value' /> -->
-          <div class="text-bold row justify-between col-12">
-            <div>
-              Opsi Simulasi
+        <s-form v-if="$route.params.id" class='q-px-md q-py-lg' title='Rekap Simulasi'>
+          <t-select-api col='4' equired label='user' v-model='model.user_id' topLabel='user' api="users" r />
+          <t-currency col='4' label='total_pertanyaan' currency v-model='model.total_pertanyaan'
+            topLabel='total_pertanyaan' />
+          <t-currency col='4' label='jawaban_benar' currency v-model='model.jawaban_benar' topLabel='jawaban_benar' />
+          <t-currency col='4' label='jawaban_salah' currency v-model='model.jawaban_salah' topLabel='jawaban_salah' />
+          <t-currency col='4' label='persentasi_skor' currency v-model='model.persentasi_skor'
+            topLabel='persentasi_skor' />
+        </s-form>
+        <s-form v-else class='q-px-md q-py-lg' title='Rekap Simulasi'>
+          <div class="col-12 q-mt-md" v-for="(item, index) in model" :key="index">
+            <div class="q-mb-md">
+              {{ index + 1 }}. {{ item.question }}
             </div>
-            <div>
-              <q-btn size="sm" icon="add" color="primary" label="tambah jawaban simulasi" @click="() => {
-                model.childs.push({ answer: '', value: $Static.getWord()[model.childs.length] })
-              }" />
+            <div class="col-12 row items-center " v-for="i in item.childs" :key="i">
+              <q-radio :val="i.value" color="teal" v-model='item.answer_value' />
+              {{ i.answer }}
+              <q-btn :color="i.value == model.answer_value ? 'positive' : 'primary'" :flat="i.value != model.answer_value"
+                round rounded :label="item.value" />
             </div>
-          </div>
 
-          <div class="col-12">tambahkan opsi simulasi pertanyaan anda untuk menentukan nilai dari simulasi</div>
-          <div class="col-12 q-mt-md">
-            <div class="col-12 row items-start " v-for="item in model.childs" :key="item">
-              <q-radio :val="item.value" color="teal" v-model='model.answer_value' />
-              <t-input label='Answer' v-model='item.answer' />
-              <q-btn  :color="item.value == model.answer_value ? 'positive' :  'primary'" :flat="item.value != model.answer_value" round rounded :label="item.value" />
-            </div>
           </div>
-
         </s-form>
       </div>
     </s-drawer>
@@ -49,11 +43,17 @@ export default {
     this.Meta.model = {}
     if (this.$route.params.id) {
       this.param = this.$route.params.id ? this.$route.params.id : null
+    } else {
+      this.model = []
+      this.getSimulasiData()
+
     }
     if (this.id) this.param = this.id ? this.id : null
     if (this.modal && this.modal.add === true) this.useModal = true
     if (this.modal && this.modal.edit === true) this.useModal = true
     if (this.param !== null) this.findId(this.param)
+
+
     this.$Handle.loadingStop()
   },
   data() {
@@ -64,6 +64,7 @@ export default {
       loading: false,
       edit: false,
       param: null,
+      soalSumulasi: []
     }
   },
 
@@ -83,7 +84,7 @@ export default {
       })
     },
     async submit() {
-      this.$Handle.loadingStart()
+      // this.$Handle.loadingStart()
       if (this.param !== null) await this.editData(this.param)
       else await this.postData(this.model)
     },
@@ -98,8 +99,15 @@ export default {
       })
     },
     postData(model) {
+      let answers = model.map(val => {
+        return { id: val.id, answer_value: val.answer_value }
+      })
+      let question = model.map(val => {
+        return { ...val }
+      })
+
       let endpoint = this.Meta.module
-      this.$api.post(endpoint, model, (data, status, message, full) => {
+      this.$api.post(endpoint, { answers, question }, (data, status, message, full) => {
         if (status == 200) {
           this.$Handle.successMessage(message)
           this.$Handle.loadingStop()
@@ -112,6 +120,13 @@ export default {
       else
         return this.$router.push({ name: Meta.module, query: { ...this.$route.query } })
     },
+
+
+    getSimulasiData() {
+      this.$api.get('simulasi?select=id,question,childs', (data, status) => {
+        if (status == 200) this.model = data
+      }, (e) => { })
+    }
   },
 }
 </script>

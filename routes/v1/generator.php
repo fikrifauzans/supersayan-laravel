@@ -5,6 +5,7 @@ use App\Http\Controllers\LaravoltController;
 use App\Http\Controllers\V1\Transaction\KlinikKebidananController;
 use App\Http\Controllers\V1\Transaction\KonselingController;
 use App\Http\Controllers\V1\Transaction\PersonalisasiController;
+use App\Http\Controllers\v1\Transaction\RekapSimulasiController;
 use App\Http\Controllers\V1\Transaction\SimulasiController;
 
 
@@ -53,6 +54,15 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::delete('/{id}', [SimulasiController::class, 'destroy']);
                 Route::delete('/force/{id}', [SimulasiController::class, 'force']);
                 Route::put('/restore/{id}', [SimulasiController::class, 'restore']);
+            });
+            Route::group(['prefix' => 'rekap-simulasi'], function () {
+                Route::get('/', [RekapSimulasiController::class, 'index']);
+                Route::get('/{id}', [RekapSimulasiController::class, 'show']);
+                Route::post('/', [RekapSimulasiController::class, 'store']);
+                Route::put('/{id}', [RekapSimulasiController::class, 'update']);
+                Route::delete('/{id}', [RekapSimulasiController::class, 'destroy']);
+                Route::delete('/force/{id}', [RekapSimulasiController::class, 'force']);
+                Route::put('/restore/{id}', [RekapSimulasiController::class, 'restore']);
             });
 
         });

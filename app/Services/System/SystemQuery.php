@@ -23,7 +23,7 @@ trait SystemQuery
 
         if ($queries['limit'])          $data = $this->queryLimit($data, $queries['limit']);
 
-        if ($queries['table'] == '')    return $this->dataTable($data->with($relations), $queries['limit']);
+        if (isset($queries['table']))    return $this->dataTable($data->with($relations), $queries['limit']);
 
         else                            return $data->with($relations)->get();
     }

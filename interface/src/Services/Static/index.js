@@ -56,28 +56,8 @@ class Static {
     return 'auto'
   }
 
-
-  smester() {
-    return [
-      { name: 'I' },
-      { name: 'II' },
-    ]
-  }
-
-  day = [
-    { label: 'senin', value: 1 },
-    { label: 'selasa', value: 2 },
-    { label: 'rabu', value: 3 },
-    { label: 'kamis', value: 4 },
-    { label: 'jumat', value: 5 },
-    { label: 'sabtu', value: 6 },
-    { label: 'minggu', value: 7 },
-  ]
-   genderList() {
-    return [
-      { val: 1, label: 'Laki Laki' },
-      { val: 2, label: 'Perempuan' },
-    ]
+  getWord() {
+    return ['A' ,'B' ,'C' ,'D' ,'E' ,'F' ,'G' ,'H' ,'I' ,'J' ,'K' ,'L' ,'M' ,'N' ,'O' ,'P' ,'Q' ,'R' ,'S' ,'T' ,'U' ,'V' ,'W' ,'X' ,'Y' ,'Z']
   }
 
 

@@ -4,7 +4,7 @@
     :optionValue="optionValue ? optionValue : 'id'" :multiple="multiple == ''" use-input
     :use-chips="multiple == '' ? true : false" map-options :emit-value="full == '' ? false : true" input-debounce="0"
     :label="label" :options="stringOptions" @filter="filterFn"
-    :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${required != '' ? 'q-mb-lg' : ''
+    :rules="required == '' ? [(val) => !!val || 'Field is required'] : false" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${required != '' ? 'q-mb-md' : ''
       }`" :required="required == ''">
     <template v-slot:no-option>
       <q-item>

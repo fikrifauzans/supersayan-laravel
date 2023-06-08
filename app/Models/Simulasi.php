@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-06-06T16:57                                             |
 |--------------------------------------------------------------------------|
 */
+
 class Simulasi extends Model
 {
     use SoftDeletes;
@@ -23,29 +24,30 @@ class Simulasi extends Model
     /**
      * The attributes that are mass assignable.
      * @var parent_id integer 
-* @var name string 
-* @var answer_value string 
-* @var value string 
-*/
+     * @var name string 
+     * @var answer_value string 
+     * @var value string 
+     */
     protected $table =  'simulasi';
     protected $fillable = [
-'parent_id',  
-'name',  
-'answer_value',  
-'value',  
+        'question',
+        'answer_value',
+        'childs',
 
+
+    ];
+
+    protected $casts = [
+        'childs' => 'array'
     ];
 
 
     protected $hidden = [];
 
     public $searchable = [
-'parent_id',  
-'name',  
-'answer_value',  
-'value',  
+        'question',
+        'answer_value',
+        'childs',
 
     ];
 }
-
-            

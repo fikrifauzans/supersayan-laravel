@@ -26,5 +26,10 @@ export default [
    { name: 'edit-simulasi', path: 'simulasi/form/:id', component: () => import('pages/transaction/simulasi/form.vue') },
    { name: 'view-simulasi', path: 'simulasi/:id', component: () => import('pages/transaction/simulasi/detail.vue') },
 
+   { name: 'rekap-simulasi', path: 'rekap-simulasi', component: () => import('pages/transaction/rekap-simulasi/index.vue') },
+   { name: 'add-rekap-simulasi', path: 'rekap-simulasi/form', component: () => import('pages/transaction/rekap-simulasi/form.vue') },
+   { name: 'edit-rekap-simulasi', path: 'rekap-simulasi/form/:id', component: () => import('pages/transaction/rekap-simulasi/form.vue') },
+   { name: 'view-rekap-simulasi', path: 'rekap-simulasi/:id', component: () => import('pages/transaction/rekap-simulasi/detail.vue') },
+
               
 ];

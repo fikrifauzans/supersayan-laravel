@@ -5,7 +5,7 @@
     :emit-value="full == '' ? false : true" :label="label" :options="options" @filter="filterFn"
     :required="required == ''" :rules="required == '' ? [(val) => !!val || 'Field is required'] : false"
     @filter-abort="abortFilterFn" :class="`q-absolute_label  col-12 col-sm-6 col-md-${col} q-px-xs ${
-      required != '' ? 'q-mb-lg' : 'q-mb-sm'
+      required != '' ? 'q-mb-md' : 'q-mb-sm'
     }`">
     <template v-slot:append>
       <q-btn v-if="modelValue != null" icon="close"  size="xs" flat round rounded  @click="val => $emit('update:modelValue' , null)"  />
