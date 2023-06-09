@@ -22,13 +22,14 @@
               }" />
             </div>
           </div>
-
+          {{ model }}
           <div class="col-12">tambahkan opsi simulasi pertanyaan anda untuk menentukan nilai dari simulasi</div>
           <div class="col-12 q-mt-md">
             <div class="col-12 row items-start " v-for="item in model.childs" :key="item">
               <q-radio :val="item.value" color="teal" v-model='model.answer_value' />
               <t-input label='Answer' v-model='item.answer' />
-              <q-btn  :color="item.value == model.answer_value ? 'positive' :  'primary'" :flat="item.value != model.answer_value" round rounded :label="item.value" />
+              <q-btn :color="item.value == model.answer_value ? 'positive' : 'primary'"
+                :flat="item.value != model.answer_value" round rounded :label="item.value" />
             </div>
           </div>
 
@@ -46,7 +47,8 @@ export default {
   props: ['modal', 'id', 'submitOnModal'],
   created() {
     this.$Handle.loadingStart()
-    this.Meta.model = {}
+    this.model =  this.$Handle.resetObjectValue(this.Meta.model)
+    console.log(this.model);
     if (this.$route.params.id) {
       this.param = this.$route.params.id ? this.$route.params.id : null
     }
