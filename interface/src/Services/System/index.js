@@ -5,13 +5,9 @@ class System {
     // return process.env.API_BASE_URL ?? 'https://api.beytcoffeetigabelas.com'
     if (window.location.origin == 'http://localhost:8080') {
       return 'http://localhost:8090/'
-      // return 'https://api.beytcoffeetigabelas.com/'
-      // return 'https://api.ums.dutabaitullah.com/'
+    }  else if(window.location.origin == 'https://cms.pregnancy-learning.com')  {
+      return 'https://api.pregnancy-learning.com/'
     }
-    // else return 'api.ums.dutabaitullah.com/'
-   
-    else return 'http://localhost:8090/'
-    // return 'https://dev.maghfirah.com/'; 
   }
   apiTimeout() { return 10000 }
 
@@ -36,7 +32,7 @@ class System {
   }
 
   storageUrl(suffix = ''){
-    return 'http://localhost:8090//storage/' + suffix
+    return  this.apiRoot() + 'storage/' + suffix
   }
 }
 
