@@ -102,6 +102,7 @@
 export default {
   watch: {
     modelValue: async function (val) {
+
       if (val != null && this.multiple == undefined)
         await this.returnDefaultData(val);
       if (this.multiple === "") this.model = val;
@@ -168,6 +169,7 @@ export default {
       console.log(val);
       if (typeof val == "object") return false;
       let endpoint = this.api;
+       endpoint += "?table=";
       let requestEndpoint = this.checkHasFirstRequest(endpoint);
       if (this.optionValue != null)
         endpoint += `${requestEndpoint}where=${this.optionValue}:${val}`;
