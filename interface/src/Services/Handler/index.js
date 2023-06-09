@@ -133,8 +133,17 @@ class Handler {
 
   getLabelSelect(options = 'day', value, filedLabel = 'label') {
     let data = this.Static[options].filter((val) => val.value == value)
-    if (data[0] != undefined) return data[0][filedLabel] 
-    else if(value) return (value[filedLabel]);
+    if (data[0] != undefined) return data[0][filedLabel]
+    else if (value) return (value[filedLabel]);
+  }
+
+  resetObjectValue(model) {
+    let newModel = {}
+    for (const key in model) {
+      if (Array.isArray(model[key]))  model[key] = []
+      else model[key] = null
+    }
+    return  model
   }
 
 }

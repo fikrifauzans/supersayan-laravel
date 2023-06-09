@@ -64,13 +64,11 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Master Data',         'icon' => 'source',                          'path' => null,                           'link' => null],                //8
             ['name' => 'Files',               'icon' => 'source',                          'path' => 'files',                        'link' => '/files'],            //9
             ['name' => 'CMS',                 'icon' => 'circle',                          'path' => null,                           'link' =>  null],               //10
-            ['name' => 'Contents',            'icon' => 'circle',                          'path' => 'contents',                     'link' =>  '/contents'],        //11
+            ['name' => 'Contents',            'icon' => 'circle',                          'path' => 'contents',                     'link' =>  '/contents'],         //11
             ['name' => 'Klinik Kebidanan',    'icon' => 'circle',                          'path' => 'klinik-kebidanan',             'link' =>  '/klinik-kebidanan'], //12
             ['name' => 'Konseling',           'icon' => 'circle',                          'path' => 'konseling',                    'link' =>  '/konseling'],        //13
-            ['name' => 'Simulasi',           'icon' => 'circle',                           'path' => 'simulasi',                      'link' =>  '/simulasi'],        //14
-
-
-
+            ['name' => 'Simulasi',            'icon' => 'circle',                          'path' => 'simulasi',                     'link' =>  '/simulasi'],         //14
+            ['name' => 'Rekap Simulasi',      'icon' => 'circle',                          'path' => 'rekap-simulasi',               'link' =>  '/rekap-simulasi'],   //15
         ];
         Menus::insert($menus);
         MasterMenus::insert(
@@ -99,7 +97,7 @@ class SupersayanRepository extends BaseRepository
             ['master_menu_id' => 1, 'parent_id' => null,   'menu_id' => 13, 'sort' => 6], //'id' => 13, //
             ['master_menu_id' => 1, 'parent_id' => null,   'menu_id' => 14, 'sort' => 7], //'id' => 14, //
 
-            
+
 
 
 
@@ -131,6 +129,7 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Klinik Kebidanan',    'slug' => 'klinik-kebidanan'],
             ['name' => 'Konseling',           'slug' => 'konseling'],
             ['name' => 'Simulasi',            'slug' => 'simulasi'],
+            ['name' => 'Rekap Simulasi',      'slug' => 'rekap-simulasi'],
             // Master Data
 
         ];
@@ -181,7 +180,5 @@ class SupersayanRepository extends BaseRepository
          * @var details text 
          * @var photo_id integer 
          */
-      
-
     }
 }
