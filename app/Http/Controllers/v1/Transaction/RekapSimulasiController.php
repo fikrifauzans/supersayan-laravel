@@ -36,7 +36,7 @@ class RekapSimulasiController extends Controller
     protected $repository;
     protected $validator;
     protected $response;
-    protected $relations = [];
+    protected $relations = ['User'];
                 
     public function __construct(RekapSimulasiRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {

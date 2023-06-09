@@ -14,7 +14,7 @@ use Carbon\Carbon;
 
 
 
-class UsersRepository extends BaseRepository 
+class UsersRepository extends BaseRepository
 {
     use Notify;
 
@@ -28,24 +28,25 @@ class UsersRepository extends BaseRepository
 
     public function transformIndex($request, $relations)
     {
-        if($request->has('list')) return $this->get($request, [ 'Class' , "School"] , [ 'Class' , "School"]);
-        
-        else return  $this->get($request, $relations , ['Role' , 'Class' , "School"]) ;
+        if ($request->has('list')) return $this->get($request, ['Class', "School"], ['Class', "School"]);
 
+        else return  $this->get($request, $relations, ['Role', 'Class', "School"]);
     }
 
 
     public function register($request)
     {
-        $password = Helper::generateRandomString();
 
-        $role = Roles::where('slug', 'jamaah')->first();
+        $user = $this->model->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'is_customer' => 1
+        ]);
 
-        $user = $this->model->create(['name' => $request->name, 'email' => $request->email, 'username' => $request->username, 'password' => Hash::make($password), 'is_customer' => 1, 'role_id' => $role->id]);
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return ['users' => $user, 'access_token' => $token, 'token_type' => 'Bearer'];
+        if ($user->createToken('auth_token')->plainTextToken) return $user;
     }
 
     public function login($request)
@@ -81,7 +82,7 @@ class UsersRepository extends BaseRepository
 
             $avatar =  $this->moveImage($request, 'avatar')->storeFile(null, 'Users', 'Foto Profil ' . $user['name']);
 
-        $request->merge(['avatar_id' => $avatar['id']]);
+            $request->merge(['avatar_id' => $avatar['id']]);
         } else if ($request->file('avatar') != null && $user['avatar_id'] !=  null) {
 
             $this->updateFile($request['avatar_id'], $request, 'avatar');

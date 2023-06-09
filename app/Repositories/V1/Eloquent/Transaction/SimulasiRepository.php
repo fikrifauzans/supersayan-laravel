@@ -15,13 +15,13 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 | generate in 2023-06-06T16:57                                             |
 |--------------------------------------------------------------------------|
 */
-class SimulasiRepository extends BaseRepository 
+
+class SimulasiRepository extends BaseRepository
 {
     protected $model;
 
     public function __construct(Simulasi $model)
     {
-    $this->model = $model;
+        $this->model = $model;
     }
-    
 }

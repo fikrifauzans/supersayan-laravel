@@ -37,8 +37,8 @@ class RekapSimulasiRepository extends BaseRepository
         $jawaban_benar    = 0;
         $jawaban_salah    = 0;
         $persentasi_skor  = 0;
-        $details          = $request;
-        
+        $details          = $simulasi;
+
 
         # LOOPING CARI JAWABAN 
         foreach ($request['answers'] as $key => $value) {

@@ -9,8 +9,9 @@
 
     <q-drawer v-model="rightDrawerOpen" side="right">
       <!-- drawer content -->
-      <div class="q-pa-md">
-        <cms-logo width="200" />
+      
+       <div class="q-pa-md">
+          <cms-logo width="200" />
         <q-separator class="q-mt-xl" />
         <cms-menu column :data="$Handle.getContent('', 'Menu')" />
      
@@ -31,8 +32,7 @@
 <script>
 export default {
   created() {
-    if (this.getContents()) this.$router.push({ path: '/home' })
-
+     this.$router.push({ path: '/login' })
   },
   data() {
     return {

@@ -25,7 +25,7 @@ export default {
     columns: (Help, Lang, Static) => {
       return [
         { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-        { name: 'user_id', label: 'User', field: 'user_id', sortable: true, align: 'left', },
+        { name: 'user_id', label: 'User', field: val => Help.transformField( val,'user.name'), sortable: true, align: 'left', },
         { name: 'total_pertanyaan', label: 'Total Pertanyaan', field: 'total_pertanyaan', sortable: true, align: 'left', },
         { name: 'jawaban_benar', label: 'Total Jawaban Benar', field: 'jawaban_benar', sortable: true, align: 'left', },
         { name: 'jawaban_salah', label: 'Total Jawaban Salah', field: 'jawaban_salah', sortable: true, align: 'left', },

@@ -92,7 +92,7 @@ export default boot(async ({
   app.component('cms-logo', CmsLogo)
   app.component('cms-footer', CmsFooter)
 
-  
+
 
 
 })

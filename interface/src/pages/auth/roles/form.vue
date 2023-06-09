@@ -7,7 +7,7 @@
           <s-form title="Roles" class="q-px-md">
             <t-input col="12" label="name" required v-model="model.name" />
             <t-input col="12" label="slug" required v-model="model.slug" />
-            <t-select-api col="12" api="master-menus?" v-model="model.master_menu_id" optionValue="id" :optionLabel="(val) => (val ? val.name ?? model.master_menu.name : '')
+            <t-select-api col="12" api="master-menus" v-model="model.master_menu_id" optionValue="id" :optionLabel="(val) => (val ? val.name ?? model.master_menu.name : '')
               " label="Master Menu" />
           </s-form>
         </div>

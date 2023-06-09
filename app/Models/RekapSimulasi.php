@@ -44,4 +44,14 @@ class RekapSimulasi extends Model
         'persentasi_skor',
         'details'
     ];
+
+    /**
+     * Get the user that owns the RekapSimulasi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function User()
+    {
+        return $this->belongsTo(Users::class, 'user_id', 'id');
+    }
 }

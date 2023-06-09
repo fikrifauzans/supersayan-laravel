@@ -11,8 +11,6 @@ use App\Http\Controllers\v1\Auth\PermissionsAccessController;
 use App\Http\Controllers\v1\Auth\PermissionsController;
 use App\Http\Controllers\v1\Auth\FilesController;
 use App\Http\Controllers\v1\Master\ContentsController;
-
-
 use App\Http\Controllers\InitController;
 use App\Http\Controllers\v1\DashboardController;
 use App\Http\Controllers\PaymentController as PaymentGatewayController;
@@ -37,16 +35,16 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
         Route::post('/forgot', [AuthController::class, 'forgot']);
         Route::post('/otp-verification', [AuthController::class, 'verificationOtp']);
 
+        // Register For Customer
+        Route::prefix('common')->group(function () {
+            Route::post('/register', [AuthController::class, 'register']);
+        });
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/me', [AuthController::class, 'me']);
             Route::get('/auth', [AuthController::class, 'check']);
             Route::post('/profile', [AuthController::class, 'profile']);
             Route::post('/logout', [AuthController::class, 'logout']);
 
-            // Register For Customer
-            Route::prefix('common')->group(function () {
-                Route::post('/register', [AuthController::class, 'register']);
-            });
 
             Route::group(['prefix' => 'dashboard'], function () {
                 Route::get('/', [DashboardController::class, 'index']);

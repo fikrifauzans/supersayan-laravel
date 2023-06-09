@@ -7,11 +7,15 @@
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Nomor Telepon </small>
-        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.username" />
+        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.phone" />
+      </div>
+      <div class="col-12">
+        <small class="col-12 text-weight-light">Username </small>
+        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.phone" />
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Email </small>
-        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.email" />
+        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.username" />
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Nama </small>
@@ -103,13 +107,10 @@ export default {
     },
     createUser() {
       let endpoint = "common/register"
-      this.instance
-        .post(endpoint, this.model)
-        .then((response) => {
-          this.$Handle.successMessage(response.data.message)
-          this.$router.back()
-        })
-        .catch((e) => { })
+      this.$api.post(endpoint, this.model, (data , status) => {
+       this.$Handle.successMessage('user created')
+       this.$router.push({path:'/login'})
+      })
     },
   },
 }

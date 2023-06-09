@@ -22,7 +22,7 @@
               }" />
             </div>
           </div>
-          {{ model }}
+
           <div class="col-12">tambahkan opsi simulasi pertanyaan anda untuk menentukan nilai dari simulasi</div>
           <div class="col-12 q-mt-md">
             <div class="col-12 row items-start " v-for="item in model.childs" :key="item">
