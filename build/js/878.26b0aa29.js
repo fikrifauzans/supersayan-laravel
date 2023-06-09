@@ -1,1 +1,0 @@
-"use strict";(globalThis["webpackChunkmaghfirah"]=globalThis["webpackChunkmaghfirah"]||[]).push([[878],{5878:(a,r,n)=>{n.r(r),n.d(r,{default:()=>s});var h=n(9835);function i(a,r,n,i,t,e){return(0,h.wg)(),(0,h.iD)("div")}const t={name:"PrintLayout"};var e=n(1639);const u=(0,e.Z)(t,[["render",i]]),s=u}}]);

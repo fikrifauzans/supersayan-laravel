@@ -1,8 +1,8 @@
 {
-  "name": "maghfirah",
+  "name": "preglearn",
   "version": "0.0.1",
-  "description": "Travel Maghfirah",
-  "productName": "Maghfirah Travel",
+  "description": "Pregnancy Learning",
+  "productName": "Pregnancy Learning",
   "author": "Fikri Fauzan <fikrifauzans.goku@gmail.com>",
   "private": true,
   "scripts": {

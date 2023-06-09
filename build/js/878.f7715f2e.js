@@ -1,0 +1,1 @@
+"use strict";(globalThis["webpackChunkpreglearn"]=globalThis["webpackChunkpreglearn"]||[]).push([[878],{5878:(r,e,n)=>{n.r(e),n.d(e,{default:()=>s});var a=n(9835);function t(r,e,n,t,u,i){return(0,a.wg)(),(0,a.iD)("div")}const u={name:"PrintLayout"};var i=n(1639);const l=(0,i.Z)(u,[["render",t]]),s=l}}]);

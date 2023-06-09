@@ -12,7 +12,8 @@
       </q-tabs>
       <q-tabs v-else v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
         style="border-radius:10px 10px 0 0">
-        <q-tab label="All" :name="null" noCaps @click="getData()" />
+        
+        <q-tab v-if="$Handle.getLS('_user').role.slug == 'master'" label="All" :name="null" noCaps @click="getData()"  />
         <q-tab v-for="item in group" :key="item" :name="item.group" :label="item.group" noCaps @click="getData()" />
       </q-tabs>
 
