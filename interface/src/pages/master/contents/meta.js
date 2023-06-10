@@ -4,7 +4,7 @@ export default {
   module: 'contents',
   schema: 'master',
   module_name: 'Contents',
-  group: ['Ustadz', 'Testimonies', 'Carousel', 'Partners', 'Ruang Edukasi', 'Dokumentasi Video', 'Dokumentasi'],
+
 
 
   formType: {
@@ -33,25 +33,7 @@ export default {
   },
   table: {
     columns: (type) => {
-   
-      if (type == 'Informasi Kehamilan') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          { name: 'details', label: 'Detail', field: 'details', sortable: true, align: 'left', },
-
-        ]
-      } else if (type == 'Edukasi') {
-        return [
-          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
-          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
-          { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
-          { name: 'details', label: 'Detail', field: 'details', sortable: true, align: 'left', },
-        ]
-
-      }
-      else {
+      if (type == null || type == undefined) {
         return [
           { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
           { name: 'code', label: 'Code', field: 'code', sortable: true, align: 'left', },
@@ -71,6 +53,16 @@ export default {
           { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
         ]
       }
+      else {
+        return [
+          { name: 'id', label: 'Option', field: 'id', sortable: true, align: 'left', },
+          { name: 'photo_id', label: 'Photo', field: 'photo_id', sortable: true, align: 'left', },
+          { name: 'name', label: 'Name', field: 'name', sortable: true, align: 'left', },
+          { name: 'details', label: 'Detail', field: 'details', sortable: true, align: 'left', },
+        ]
+
+      }
+
 
 
 

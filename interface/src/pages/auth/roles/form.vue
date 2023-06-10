@@ -14,7 +14,7 @@
 
         <div class="col-6" style="height: 100%">
           <s-form class="q-px-md" title="Permissions Access">
-            <PermissionsTable  class="col-12" :permissions="model.permission_access" v-model="model.permission_access" />
+            <PermissionsTable  v-if="model.permission_access" class="col-12" :permissions="model.permission_access" v-model="model.permission_access" />
           </s-form>
 
           <!-- {{ model }} -->

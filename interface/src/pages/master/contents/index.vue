@@ -5,14 +5,8 @@
     <s-drawer wrapCard @refresh='refresh' :Meta='Meta' :filter='filter' :table='table' v-model='filter.query'
       @update:modelValue='refresh'>
       <div class="q-pb-sm"></div>
-      <q-tabs v-if="$Handle.getLS('role').slug === 'admin'" v-model="tab" inline-label outside-arrows mobile-arrows
-        class="bg-primary text-white shadow-2" style="border-radius:10px 10px 0 0">
-        <q-tab label="All" :name="null" noCaps @click="getData()" />
-        <q-tab v-for="item in Meta.group" :key="item" :name="item" :label="item" noCaps @click="getData()" />
-      </q-tabs>
-      <q-tabs v-else v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
+      <q-tabs  v-model="tab" inline-label outside-arrows mobile-arrows class="bg-primary text-white shadow-2"
         style="border-radius:10px 10px 0 0">
-        
         <q-tab v-if="$Handle.getLS('_user').role.slug == 'master'" label="All" :name="null" noCaps @click="getData()"  />
         <q-tab v-for="item in group" :key="item" :name="item.group" :label="item.group" noCaps @click="getData()" />
       </q-tabs>
@@ -231,5 +225,4 @@ export default {
   },
 }
 </script>
-      
-        
+

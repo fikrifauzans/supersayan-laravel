@@ -28,8 +28,8 @@
         </template>
         <template v-slot:body-cell-verifikasi="props">
           <q-td>
-            
-            <q-toggle :true-value="1" v-model="props.row.verifikasi" />
+            {{props.row.verifikasi}}
+            <q-toggle :true-value="'1'" v-model="props.row.verifikasi" />
 
           </q-td>
         </template>
@@ -202,5 +202,4 @@ export default {
   },
 }
 </script>
-      
-        
+

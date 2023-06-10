@@ -25,11 +25,13 @@
 
           <div class="col-12">tambahkan opsi simulasi pertanyaan anda untuk menentukan nilai dari simulasi</div>
           <div class="col-12 q-mt-md">
-            <div class="col-12 row items-start " v-for="item in model.childs" :key="item">
+            <div class="col-12 row items-start " v-for="(item,index) in model.childs" :key="item">
               <q-radio :val="item.value" color="teal" v-model='model.answer_value' />
               <t-input label='Answer' v-model='item.answer' />
               <q-btn :color="item.value == model.answer_value ? 'positive' : 'primary'"
-                :flat="item.value != model.answer_value" round rounded :label="item.value" />
+                :flat="item.value != model.answer_value" round rounded :label="item.value" class="q-mr-xs"/>
+              <q-btn color="negative"
+                 label="delete"  @click="model.childs.splice(index,1)" />
             </div>
           </div>
 
