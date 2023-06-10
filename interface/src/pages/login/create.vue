@@ -11,11 +11,11 @@
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Username </small>
-        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.phone" />
+        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.username" />
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Email </small>
-        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.username" />
+        <q-input dense outlined class="col-12" color="info" bg-color="white" v-model="model.email" />
       </div>
       <div class="col-12">
         <small class="col-12 text-weight-light">Nama </small>

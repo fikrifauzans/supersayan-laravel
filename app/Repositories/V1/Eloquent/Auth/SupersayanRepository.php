@@ -47,9 +47,10 @@ class SupersayanRepository extends BaseRepository
 
         ]);
         Roles::insert([
-            ['name'  => 'Superadmin',         'slug' => 'master',              'master_menu_id' => 1], //1
-            ['name'  => 'Siswa',              'slug' => 'siswa',              'master_menu_id' => 1], //1
-            ['name'  => 'Guru',               'slug' => 'guru',              'master_menu_id' => 1], //1
+            ['name'  => 'Superadmin',         'slug' => 'master',              'master_menu_id' => 1   ],    //1
+            ['name'  => 'Admin',              'slug' => 'admin',               'master_menu_id' => null] , //2
+            ['name'  => 'Customer',           'slug' => 'customer',            'master_menu_id' => null] , //2
+       
 
         ]);
 

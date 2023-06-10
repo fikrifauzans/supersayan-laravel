@@ -43,6 +43,7 @@ class UsersRepository extends BaseRepository
             'username' => $request->username,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'role_id'  => Roles::where('slug' , 'customer')->first()->id,
             'is_customer' => 1
         ]);
 
