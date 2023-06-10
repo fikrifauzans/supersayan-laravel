@@ -16,8 +16,6 @@ export default {
     email: null,
     address: null,
     password: null,
-    school_id : null,
-    class_id : null,
   },
   //TABLE
   table: {
@@ -31,8 +29,6 @@ export default {
         { name: "phone", label: "phone", field: "phone", sortable: true, align: "left", },
         { name: "role-name", label: "Role", field: (val) => Help.transformField(val, 'role.name'), sortable: true, align: "left", },
         { name: "role-master_menu_id", label: "Master Menu", field: (val) => Help.transformField(val, 'role.master_menu.name'), sortable: true, align: "left", },
-        { name: "school-name", label: "School", field: (val) => Help.transformField(val, 'school.name'), sortable: true, align: "left", },
-        { name: "class-name", label: "Classes", field: "class_id", sortable: true, field: (val) => Help.transformField(val, 'class.name'), align: "left", },
       ]
     }
   }
