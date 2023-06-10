@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\V1\Transaction\KlinikKebidananController;
-use App\Http\Controllers\V1\Transaction\KonselingController;
-use App\Http\Controllers\V1\Transaction\PersonalisasiController;
+use App\Http\Controllers\v1\Transaction\KlinikKebidananController;
+use App\Http\Controllers\v1\Transaction\KonselingController;
+use App\Http\Controllers\v1\Transaction\PersonalisasiController;
 use App\Http\Controllers\v1\Transaction\RekapSimulasiController;
-use App\Http\Controllers\V1\Transaction\SimulasiController;
+use App\Http\Controllers\v1\Transaction\SimulasiController;
 
 
 
