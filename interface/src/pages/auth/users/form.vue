@@ -4,9 +4,9 @@
     <s-drawer @refresh="refresh" :useModal="useModal" form @submit="submit" @back="back" :Meta="Meta">
       <div>
         <s-form class="q-px-md q-py-lg" title="Data User">
-          <t-input col="4" label="name" r-icon="person" required v-model="model.name" />
-          <t-input col="4" label="username" r-icon="person" required v-model="model.username" />
-          <t-input col="4" label="email" r-icon="mail" required v-model="model.email" />
+          <t-input col="4" label="name" r-icon="person"  v-model="model.name" />
+          <t-input col="4" label="username" r-icon="person"  v-model="model.username" />
+          <t-input col="4" label="email" r-icon="mail"  v-model="model.email" />
           <t-input col="4" type="password" label="password" r-icon="lock" v-model="model.password" />
           <t-input col="4" label="address" r-icon="home" v-model="model.address" />
           <t-input col="4" label="phone" v-model="model.phone" />
