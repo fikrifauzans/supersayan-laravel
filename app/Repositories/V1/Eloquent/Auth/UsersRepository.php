@@ -28,9 +28,8 @@ class UsersRepository extends BaseRepository
 
     public function transformIndex($request, $relations)
     {
-        if ($request->has('list')) return $this->get($request, ['Class', "School"], ['Class', "School"]);
 
-        else return  $this->get($request, $relations, ['Role', 'Class', "School"]);
+        return  $this->get($request, $relations, ['Role']);
     }
 
 
@@ -43,7 +42,7 @@ class UsersRepository extends BaseRepository
             'username' => $request->username,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'role_id'  => Roles::where('slug' , 'customer')->first()->id,
+            'role_id'  => Roles::where('slug', 'customer')->first()->id,
             'is_customer' => 1
         ]);
 
