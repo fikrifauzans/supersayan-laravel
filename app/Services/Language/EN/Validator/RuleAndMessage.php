@@ -12,12 +12,12 @@ class RuleAndMessage
             'rules' => [
                 'name' => 'required',
                 'username' => 'unique:users',
-                'email' => 'required|unique:users',
+                // 'email' => 'unique:users',
             ],
             'messages' => [
                 'name.required' => ':attribute must be filled',
-                // 'username.required' => ':attribute must be filled',
-                'email.required' => ':attribute must be filled',
+                'username.required' => ':attribute must be filled',
+                // 'email.required' => ':attribute must be filled',
             ]
         ],
         //-------------------------------------------------------------------------------
