@@ -16,23 +16,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-06-17T14:43                                             |
 |--------------------------------------------------------------------------|
 */
-class Customers extends Model
+class Categories extends Model
 {
     use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
-     * @var code string 
+     * @var group string 
+* @var code string 
 * @var name string 
-* @var phone string 
-* @var address string 
+* @var remark text 
 */
-    protected $table =  'customers';
+    protected $table =  'categories';
     protected $fillable = [
+'group',  
 'code',  
 'name',  
-'phone',  
-'address',  
+'remark',  
 
     ];
 
@@ -40,10 +40,10 @@ class Customers extends Model
     protected $hidden = [];
 
     public $searchable = [
+'group',  
 'code',  
 'name',  
-'phone',  
-'address',  
+'remark',  
 
     ];
 }

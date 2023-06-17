@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Repositories\V1\Eloquent\Master;
 
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Customers;
+use App\Repositories\V1\Eloquent\BaseRepository;
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -16,36 +15,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 | generate in 2023-06-17T14:43                                             |
 |--------------------------------------------------------------------------|
 */
-class Customers extends Model
+class CustomersRepository extends BaseRepository 
 {
-    use SoftDeletes;
+    protected $model;
 
-    /**
-     * The attributes that are mass assignable.
-     * @var code string 
-* @var name string 
-* @var phone string 
-* @var address string 
-*/
-    protected $table =  'customers';
-    protected $fillable = [
-'code',  
-'name',  
-'phone',  
-'address',  
-
-    ];
-
-
-    protected $hidden = [];
-
-    public $searchable = [
-'code',  
-'name',  
-'phone',  
-'address',  
-
-    ];
+    public function __construct(Customers $model)
+    {
+    $this->model = $model;
+    }
+    
 }
-
-            

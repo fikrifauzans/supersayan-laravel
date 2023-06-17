@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\v1\Transaction\KlinikKebidananController;
-use App\Http\Controllers\v1\Transaction\KonselingController;
-use App\Http\Controllers\v1\Transaction\PersonalisasiController;
-use App\Http\Controllers\v1\Transaction\RekapSimulasiController;
-use App\Http\Controllers\v1\Transaction\SimulasiController;
+use App\Http\Controllers\V1\Master\CategoriesController;
+use App\Http\Controllers\V1\Master\ProductsController;
+use App\Http\Controllers\V1\Master\CustomersController;
+use App\Http\Controllers\V1\Transaction\TransactionsController;
+use App\Http\Controllers\V1\Transaction\TransactionDetailsController;
 
 
 
@@ -16,53 +16,54 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
     Route::group(['prefix' => '{language}'], function () {
         Route::group(['middleware' => 'auth:sanctum'], function () {
                 
-            Route::group(['prefix' => 'klinik-kebidanan'], function () {
-                Route::get('/', [KlinikKebidananController::class, 'index']);
-                Route::get('/{id}', [KlinikKebidananController::class, 'show']);
-                Route::post('/', [KlinikKebidananController::class, 'store']);
-                Route::put('/{id}', [KlinikKebidananController::class, 'update']);
-                Route::delete('/{id}', [KlinikKebidananController::class, 'destroy']);
-                Route::delete('/force/{id}', [KlinikKebidananController::class, 'force']);
-                Route::put('/restore/{id}', [KlinikKebidananController::class, 'restore']);
+            Route::group(['prefix' => 'categories'], function () {
+                Route::get('/', [CategoriesController::class, 'index']);
+                Route::get('/{id}', [CategoriesController::class, 'show']);
+                Route::post('/', [CategoriesController::class, 'store']);
+                Route::put('/{id}', [CategoriesController::class, 'update']);
+                Route::delete('/{id}', [CategoriesController::class, 'destroy']);
+                Route::delete('/force/{id}', [CategoriesController::class, 'force']);
+                Route::put('/restore/{id}', [CategoriesController::class, 'restore']);
             });
 
-            Route::group(['prefix' => 'konseling'], function () {
-                Route::get('/', [KonselingController::class, 'index']);
-                Route::get('/{id}', [KonselingController::class, 'show']);
-                Route::post('/', [KonselingController::class, 'store']);
-                Route::put('/{id}', [KonselingController::class, 'update']);
-                Route::delete('/{id}', [KonselingController::class, 'destroy']);
-                Route::delete('/force/{id}', [KonselingController::class, 'force']);
-                Route::put('/restore/{id}', [KonselingController::class, 'restore']);
+            Route::group(['prefix' => 'products'], function () {
+                Route::get('/', [ProductsController::class, 'index']);
+                Route::get('/{id}', [ProductsController::class, 'show']);
+                Route::post('/', [ProductsController::class, 'store']);
+                Route::put('/{id}', [ProductsController::class, 'update']);
+                Route::delete('/{id}', [ProductsController::class, 'destroy']);
+                Route::delete('/force/{id}', [ProductsController::class, 'force']);
+                Route::put('/restore/{id}', [ProductsController::class, 'restore']);
             });
 
-            Route::group(['prefix' => 'personalisasi'], function () {
-                Route::get('/', [PersonalisasiController::class, 'index']);
-                Route::get('/{id}', [PersonalisasiController::class, 'show']);
-                Route::post('/', [PersonalisasiController::class, 'store']);
-                Route::put('/{id}', [PersonalisasiController::class, 'update']);
-                Route::delete('/{id}', [PersonalisasiController::class, 'destroy']);
-                Route::delete('/force/{id}', [PersonalisasiController::class, 'force']);
-                Route::put('/restore/{id}', [PersonalisasiController::class, 'restore']);
+            Route::group(['prefix' => 'customers'], function () {
+                Route::get('/', [CustomersController::class, 'index']);
+                Route::get('/{id}', [CustomersController::class, 'show']);
+                Route::post('/', [CustomersController::class, 'store']);
+                Route::put('/{id}', [CustomersController::class, 'update']);
+                Route::delete('/{id}', [CustomersController::class, 'destroy']);
+                Route::delete('/force/{id}', [CustomersController::class, 'force']);
+                Route::put('/restore/{id}', [CustomersController::class, 'restore']);
             });
 
-            Route::group(['prefix' => 'simulasi'], function () {
-                Route::get('/', [SimulasiController::class, 'index']);
-                Route::get('/{id}', [SimulasiController::class, 'show']);
-                Route::post('/', [SimulasiController::class, 'store']);
-                Route::put('/{id}', [SimulasiController::class, 'update']);
-                Route::delete('/{id}', [SimulasiController::class, 'destroy']);
-                Route::delete('/force/{id}', [SimulasiController::class, 'force']);
-                Route::put('/restore/{id}', [SimulasiController::class, 'restore']);
+            Route::group(['prefix' => 'transactions'], function () {
+                Route::get('/', [TransactionsController::class, 'index']);
+                Route::get('/{id}', [TransactionsController::class, 'show']);
+                Route::post('/', [TransactionsController::class, 'store']);
+                Route::put('/{id}', [TransactionsController::class, 'update']);
+                Route::delete('/{id}', [TransactionsController::class, 'destroy']);
+                Route::delete('/force/{id}', [TransactionsController::class, 'force']);
+                Route::put('/restore/{id}', [TransactionsController::class, 'restore']);
             });
-            Route::group(['prefix' => 'rekap-simulasi'], function () {
-                Route::get('/', [RekapSimulasiController::class, 'index']);
-                Route::get('/{id}', [RekapSimulasiController::class, 'show']);
-                Route::post('/', [RekapSimulasiController::class, 'store']);
-                Route::put('/{id}', [RekapSimulasiController::class, 'update']);
-                Route::delete('/{id}', [RekapSimulasiController::class, 'destroy']);
-                Route::delete('/force/{id}', [RekapSimulasiController::class, 'force']);
-                Route::put('/restore/{id}', [RekapSimulasiController::class, 'restore']);
+
+            Route::group(['prefix' => 'transaction-details'], function () {
+                Route::get('/', [TransactionDetailsController::class, 'index']);
+                Route::get('/{id}', [TransactionDetailsController::class, 'show']);
+                Route::post('/', [TransactionDetailsController::class, 'store']);
+                Route::put('/{id}', [TransactionDetailsController::class, 'update']);
+                Route::delete('/{id}', [TransactionDetailsController::class, 'destroy']);
+                Route::delete('/force/{id}', [TransactionDetailsController::class, 'force']);
+                Route::put('/restore/{id}', [TransactionDetailsController::class, 'restore']);
             });
 
         });

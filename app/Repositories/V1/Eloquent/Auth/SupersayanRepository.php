@@ -47,10 +47,10 @@ class SupersayanRepository extends BaseRepository
 
         ]);
         Roles::insert([
-            ['name'  => 'Superadmin',         'slug' => 'master',              'master_menu_id' => 1   ],    //1
-            ['name'  => 'Admin',              'slug' => 'admin',               'master_menu_id' => null] , //2
-            ['name'  => 'Customer',           'slug' => 'customer',            'master_menu_id' => null] , //2
-       
+            ['name'  => 'Superadmin',         'slug' => 'master',              'master_menu_id' => 1],    //1
+            ['name'  => 'Admin',              'slug' => 'admin',               'master_menu_id' => null], //2
+            ['name'  => 'Customer',           'slug' => 'customer',            'master_menu_id' => null], //2
+
 
         ]);
 
@@ -64,9 +64,13 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Roles',               'icon' => 'assignment_ind',                  'path' => 'roles',                        'link' => '/roles'],            //4
             ['name' => 'Master Data',         'icon' => 'source',                          'path' => null,                           'link' => null],                //8
             ['name' => 'Files',               'icon' => 'source',                          'path' => 'files',                        'link' => '/files'],            //9
-            ['name' => 'CMS',                 'icon' => 'circle',                          'path' => null,                           'link' =>  null],               //10
-            ['name' => 'Contents',            'icon' => 'circle',                          'path' => 'contents',                     'link' =>  '/contents'],         //11
-          
+            ['name' => 'Categories',          'icon' => 'source',                          'path' => 'categories',                   'link' => '/categories'],          //10
+            ['name' => 'Products',            'icon' => 'source',                          'path' => 'products',                     'link' => '/products'],            //11
+            ['name' => 'Customers',           'icon' => 'source',                          'path' => 'customers',                    'link' => '/customers'],           //12
+            ['name' => 'Transactions',        'icon' => 'source',                          'path' => 'transactions',                 'link' => '/transactions'],        //13
+            ['name' => 'Transaction Details', 'icon' => 'source',                          'path' => 'transaction-details',          'link' => '/transaction-details'], //14
+
+
         ];
         Menus::insert($menus);
         MasterMenus::insert(
@@ -87,10 +91,14 @@ class SupersayanRepository extends BaseRepository
             ['master_menu_id' => 1, 'parent_id' => 2,    'menu_id' => 7, 'sort' => 5], //'id' => 7, //
             //Master Data ------------------------------------------------------------------------/
             ['master_menu_id' => 1, 'parent_id' => null, 'menu_id' => 8, 'sort' => 3], //'id' => 8,
-            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 9, 'sort' => 1], //'id' => 9, //
-            ['master_menu_id' => 1, 'parent_id' => null, 'menu_id' => 10, 'sort' => 4], //'id' => 10, //
-            ['master_menu_id' => 1, 'parent_id' => 10,   'menu_id' => 11, 'sort' => 1], //'id' => 11, //
-        
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 10, 'sort' => 1], //'id' => 8,
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 11, 'sort' => 2], //'id' => 8,
+            ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 12, 'sort' => 3], //'id' => 8,
+            ['master_menu_id' => 1, 'parent_id' => null,    'menu_id' => 13, 'sort' => 4], //'id' => 8,
+            ['master_menu_id' => 1, 'parent_id' => null,    'menu_id' => 14, 'sort' => 5], //'id' => 8,
+            
+
+
 
 
 
@@ -115,7 +123,12 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Permission Acess',    'slug' => 'permission-access'],
             ['name' => 'Files',               'slug' => 'files'],
             ['name' => 'Contents',            'slug' => 'contents'],
-       
+            ['name' => 'Categories',          'slug' => 'categories'],
+            ['name' => 'Products',            'slug' => 'products'],
+            ['name' => 'Customers',            'slug' => 'customers'],
+            ['name' => 'Transactions',         'slug' => 'transactions'],
+            ['name' => 'Transaction Details',  'slug' => 'transaction-details'],
+
             // Master Data
 
         ];
