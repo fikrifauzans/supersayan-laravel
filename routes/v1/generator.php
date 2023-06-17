@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\V1\Transaction\TransactionDetailsController;
+use App\Http\Controllers\v1\Transaction\TransactionDetailsController;
 use App\Http\Controllers\v1\Master\ProductsController;
 use App\Http\Controllers\v1\Auth\CategoriesController;
 use App\Http\Controllers\v1\Master\CustomersController;
