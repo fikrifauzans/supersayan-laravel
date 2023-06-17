@@ -83,14 +83,14 @@ class TransactionDetails extends Model
 
     public function getTransactionCodeAttribute()
     {
-        if ($this->transaction_id != null) {
-            return Transactions::find($this->transaction_id)->code;
-        };
+
+        $transaction =  Transactions::find($this->transaction_id);
+        if ($transaction) return $transaction['code'];
     }
     public function getProductNameAttribute()
     {
-        if ($this->product_id != null) {
-            return Products::find($this->product_id)->name;
-        };
+
+        $product = Products::find($this->product_id);
+        if ($product) return $product['name'];
     }
 }

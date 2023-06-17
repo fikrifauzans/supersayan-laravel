@@ -80,7 +80,8 @@ class Transactions extends Model
     public function getCustomerNameAttribute()
     {
         if ($this->customer_id != null) {
-            return Customers::find($this->customer_id)->name;
+            $customer = Customers::find($this->customer_id);
+            if($customer) return $customer['name'];
         };
     }
 }

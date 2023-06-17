@@ -62,7 +62,8 @@ class Products extends Model
     public function getCategoryNameAttribute()
     {
         if ($this->category_id != null) {
-            return Categories::find($this->category_id)->name;
+            $category =  Categories::find($this->category_id);
+            if($category) return $category['name'];
         };
     }
 
