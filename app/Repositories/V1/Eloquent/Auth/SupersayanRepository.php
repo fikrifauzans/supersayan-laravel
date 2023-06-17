@@ -66,10 +66,7 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Files',               'icon' => 'source',                          'path' => 'files',                        'link' => '/files'],            //9
             ['name' => 'CMS',                 'icon' => 'circle',                          'path' => null,                           'link' =>  null],               //10
             ['name' => 'Contents',            'icon' => 'circle',                          'path' => 'contents',                     'link' =>  '/contents'],         //11
-            ['name' => 'Klinik Kebidanan',    'icon' => 'circle',                          'path' => 'klinik-kebidanan',             'link' =>  '/klinik-kebidanan'], //12
-            ['name' => 'Konseling',           'icon' => 'circle',                          'path' => 'konseling',                    'link' =>  '/konseling'],        //13
-            ['name' => 'Simulasi',            'icon' => 'circle',                          'path' => 'simulasi',                     'link' =>  '/simulasi'],         //14
-            ['name' => 'Rekap Simulasi',      'icon' => 'circle',                          'path' => 'rekap-simulasi',               'link' =>  '/rekap-simulasi'],   //15
+          
         ];
         Menus::insert($menus);
         MasterMenus::insert(
@@ -93,10 +90,7 @@ class SupersayanRepository extends BaseRepository
             ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 9, 'sort' => 1], //'id' => 9, //
             ['master_menu_id' => 1, 'parent_id' => null, 'menu_id' => 10, 'sort' => 4], //'id' => 10, //
             ['master_menu_id' => 1, 'parent_id' => 10,   'menu_id' => 11, 'sort' => 1], //'id' => 11, //
-            // Module 
-            ['master_menu_id' => 1, 'parent_id' => null,   'menu_id' => 12, 'sort' => 5], //'id' => 12, //
-            ['master_menu_id' => 1, 'parent_id' => null,   'menu_id' => 13, 'sort' => 6], //'id' => 13, //
-            ['master_menu_id' => 1, 'parent_id' => null,   'menu_id' => 14, 'sort' => 7], //'id' => 14, //
+        
 
 
 
@@ -120,17 +114,8 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Permissions',         'slug' => 'permissions'],
             ['name' => 'Permission Acess',    'slug' => 'permission-access'],
             ['name' => 'Files',               'slug' => 'files'],
-            ['name' => 'Schools',             'slug' => 'schools'],
-            ['name' => 'Studies',             'slug' => 'studies'],
-            ['name' => 'Classes',             'slug' => 'classes'],
-            ['name' => 'Lesson Timetable',    'slug' => 'lesson-timetable'],
-            ['name' => 'Lesson Timetable',    'slug' => 'lesson-timetable'],
-            ['name' => 'Presences',            'slug' => 'presences'],
             ['name' => 'Contents',            'slug' => 'contents'],
-            ['name' => 'Klinik Kebidanan',    'slug' => 'klinik-kebidanan'],
-            ['name' => 'Konseling',           'slug' => 'konseling'],
-            ['name' => 'Simulasi',            'slug' => 'simulasi'],
-            ['name' => 'Rekap Simulasi',      'slug' => 'rekap-simulasi'],
+       
             // Master Data
 
         ];
