@@ -4,6 +4,7 @@ namespace App\Repositories\V1\Eloquent\Master;
 
 use App\Models\Products;
 use App\Repositories\V1\Eloquent\BaseRepository;
+
 /*
 |--------------------------------------------------------------------------|
 | Supersayan Initator                                                      |
@@ -12,16 +13,16 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T14:43                                             |
+| generate in 2023-06-17T15:05                                             |
 |--------------------------------------------------------------------------|
 */
-class ProductsRepository extends BaseRepository 
+
+class ProductsRepository extends BaseRepository
 {
     protected $model;
 
     public function __construct(Products $model)
     {
-    $this->model = $model;
+        $this->model = $model;
     }
-    
 }

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T14:43                                             |
+| generate in 2023-06-17T15:05                                             |
 |--------------------------------------------------------------------------|
 */
 return new class extends Migration
