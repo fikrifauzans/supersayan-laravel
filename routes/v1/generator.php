@@ -48,7 +48,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
                 Route::delete('/force/{id}', [CustomersController::class, 'force']);
                 Route::put('/restore/{id}', [CustomersController::class, 'restore']);
             });
-            Route::group(['prefix' => 'customers'], function () {
+            Route::group(['prefix' => 'transactions'], function () {
                 Route::get('/', [TransactionsController::class, 'index']);
                 Route::get('/{id}', [TransactionsController::class, 'show']);
                 Route::post('/', [TransactionsController::class, 'store']);
