@@ -65,4 +65,10 @@ class Products extends Model
             return Categories::find($this->category_id)->name;
         };
     }
+
+ 
+    public function Category()
+    {
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    }
 }

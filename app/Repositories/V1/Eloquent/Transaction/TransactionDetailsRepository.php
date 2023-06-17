@@ -12,7 +12,7 @@ use App\Repositories\V1\Eloquent\BaseRepository;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T15:45                                             |
+| generate in 2023-06-17T19:18                                             |
 |--------------------------------------------------------------------------|
 */
 class TransactionDetailsRepository extends BaseRepository 

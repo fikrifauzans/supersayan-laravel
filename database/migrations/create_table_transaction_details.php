@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T15:45                                             |
+| generate in 2023-06-17T19:18                                             |
 |--------------------------------------------------------------------------|
 */
 return new class extends Migration
@@ -28,9 +28,10 @@ Schema::create('transaction_details', function (Blueprint $table) {
     $table->id();
     
     $table->integer('transaction_id')->nullable()->default(0);
-    $table->integer('barang_id')->nullable()->default(0);
+    $table->integer('product_id')->nullable()->default(0);
     $table->double('price')->nullable();
     $table->integer('qty')->nullable()->default(0);
+    $table->integer('last_stock')->nullable()->default(0);
     $table->double('discount_in_percent')->nullable();
     $table->double('discount_in_rupiah')->nullable();
     $table->double('amount')->nullable();

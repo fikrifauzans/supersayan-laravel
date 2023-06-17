@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Gate;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T15:45                                             |
+| generate in 2023-06-17T19:18                                             |
 |--------------------------------------------------------------------------|
 */
 
@@ -36,7 +36,7 @@ class TransactionDetailsController extends Controller
     protected $repository;
     protected $validator;
     protected $response;
-    protected $relations = [];
+    protected $relations = ['Product' ,'Transaction'];
                 
     public function __construct(TransactionDetailsRepository $repository, CustomValidator $validator, JsonCustomResponse $response)
     {
