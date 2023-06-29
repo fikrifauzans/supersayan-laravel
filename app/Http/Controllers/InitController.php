@@ -29,6 +29,7 @@ class InitController extends Controller
 
 
         ]);
+        Artisan::call('laravolt:indonesia:seed');
         $this->repository->init();
         return  $this->repository->getMaster();
     }

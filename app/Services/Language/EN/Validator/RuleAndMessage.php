@@ -76,66 +76,13 @@ class RuleAndMessage
             'rules' => [],
             'messages' => []
         ],
-
-
-        //////////////////////////////////MASTER DATA//////////////////////////////////
-        //-------------------------------------------------------------------------------
-        // Categories
-        // ------------------------------------------------------------------------------
-
-        'categories' => [
-            'rules' => ['name' => 'required',],
-            'messages' => ['name.required' => ':attribute must be filled',]
-        ],
-        'package_services' => [
-            'rules' => ['name' => 'required',],
-            'messages' => ['name.required' => ':attribute must be filled',]
-        ],
-
-        //-------------------------------------------------------------------------------
-        // Airports
-        // ------------------------------------------------------------------------------
-
-        'airports' => [
-            'rules' => ['name' => 'required',],
-            'messages' => ['name.required' => ':attribute must be filled',]
-        ],
-
-        //////////////////////////////////Transaction//////////////////////////////////
-        'inventories' => [
-            'rules' => ['name' => 'required',],
-            'messages' => ['name.required' => ':attribute must be filled',]
-        ],
-        'packages' => [
+        'contacts' => [
             'rules' => [],
             'messages' => []
         ],
 
-        'data_diri_transactions' => [
-            'rules' => ['name' => 'required',],
-            'messages' => ['name.required' => ':attribute must be filled',]
-        ],
 
-        'booking_packs' => [
-            'rules' => [],
-            'messages' => []
-        ],
-        'transactions' => [
-            'rules' => [],
-            'messages' => []
-        ],
-        'transaction_details' => [
-            'rules' => [],
-            'messages' => []
-        ],
-        'transaction_payments' => [
-            'rules' => [],
-            'messages' => []
-        ],
-        'inventori_categories' => [
-            'rules' => [],
-            'messages' => []
-        ],
+     
 
 
 

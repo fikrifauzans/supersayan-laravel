@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
 | if you have question, you can contact me as administrator by email in    |
 | fikrifauzans.goku@gmail.com - @Supersayan Basecode Architecture          |
 |                                                                          |
-| generate in 2023-06-17T14:43                                             |
+| generate in 2023-06-29T10:55                                             |
 |--------------------------------------------------------------------------|
 */
 return new class extends Migration
@@ -23,14 +23,15 @@ return new class extends Migration
 */
 public function up()
 {
-Schema::dropIfExists('categories');
-Schema::create('categories', function (Blueprint $table) {
+Schema::dropIfExists('contacts');
+Schema::create('contacts', function (Blueprint $table) {
     $table->id();
     
-    $table->string('group')->nullable();
-    $table->string('code')->nullable();
-    $table->string('name')->nullable();
-    $table->text('remark')->nullable();
+    $table->string('phone')->nullable();
+    $table->string('city')->nullable();
+    $table->string('province')->nullable();
+    $table->text('adress')->nullable();
+    $table->integer('user_id')->nullable()->default(0);
     $table->softDeletes();
     $table->timestamps();
     $table->integer('created_by')->nullable()->default(0);

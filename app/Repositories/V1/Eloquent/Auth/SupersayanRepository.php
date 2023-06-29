@@ -66,7 +66,7 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Files',               'icon' => 'source',                          'path' => 'files',                        'link' => '/files'],            //9
             ['name' => 'Categories',          'icon' => 'source',                          'path' => 'categories',                   'link' => '/categories'],       //10
             ['name' => 'Contacts',            'icon' => 'source',                          'path' => 'contacts',                     'link' => '/contacts'],          //11
-         
+
 
 
         ];
@@ -90,8 +90,8 @@ class SupersayanRepository extends BaseRepository
             //Master Data ------------------------------------------------------------------------/
             ['master_menu_id' => 1, 'parent_id' => null, 'menu_id' => 8, 'sort' => 3], //'id' => 8,
             ['master_menu_id' => 1, 'parent_id' => 8,    'menu_id' => 11, 'sort' => 1], //'id' => 8,
-            
-            
+
+
 
 
 
@@ -119,7 +119,7 @@ class SupersayanRepository extends BaseRepository
             ['name' => 'Files',               'slug' => 'files'],
             ['name' => 'Contents',            'slug' => 'contents'],
             ['name' => 'contacts',            'slug' => 'contacts'],
-   
+
 
             // Master Data
 
