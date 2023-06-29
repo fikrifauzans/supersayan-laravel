@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaravoltController;
-use App\Http\Controllers\V1\Master\ContactsController;
+use App\Http\Controllers\v1\Master\ContactsController;
 
 
 
